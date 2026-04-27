@@ -137,7 +137,8 @@
     box-shadow: 0 4px 14px rgba(120,80,50,0.12);
   }
   .gift-cover img {
-    width: 100%; height: 100%; object-fit: cover;
+    width: 100%; height: 100%; object-fit: contain;
+    background: #fffdf9;
     transition: transform 0.4s ease;
   }
   .gift-card:hover .gift-cover img { transform: scale(1.04); }
@@ -212,6 +213,8 @@
   .worry-msg { text-align: center; margin-top: 30px; font-size: 16px; color: #6b5548; line-height: 2; }
 
   .benefit { background: #fffdf9; }
+  .benefit-image { max-width: 480px; margin: 0 auto; }
+  .benefit-image img { width: 100%; height: auto; border-radius: 8px; }
   .benefit-grid { display: grid; gap: 20px; max-width: 500px; margin: 0 auto; }
   .benefit-card { background: #faf4ec; padding: 28px 24px; border-radius: 10px; border-left: 3px solid #d4a37c; }
   .benefit-card .num { font-family: "Playfair Display", serif; font-style: italic; color: #b8764d; font-size: 23px; margin-bottom: 8px; }
@@ -659,16 +662,11 @@
 
       <div class="gift-card">
         <div class="gift-badge">特典 ②</div>
-        <div class="gift-cover gift-cover-placeholder">
-          <div class="placeholder-inner">
-            <div class="ph-tag">リピ殺到</div>
-            <div class="ph-title">デトックス<br>スープ</div>
-            <div class="ph-pop">レシピ<span>3選</span></div>
-            <div class="ph-deco">♡</div>
-          </div>
+        <div class="gift-cover">
+          <img src="images/present2.png" alt="痩せるスープレシピ3選">
         </div>
-        <h3 class="gift-card-title">リピ殺到！<br>デトックススープレシピ 3選</h3>
-        <p class="gift-card-desc">作り置きOK・5分で完成。<br>朝飲むだけで、お腹がスッキリ。</p>
+        <h3 class="gift-card-title">頑張らずに美味しく続く<br>痩せるスープレシピ 3選</h3>
+        <p class="gift-card-desc">脂肪燃焼・白滝ダイエット・<br>デトックススンドゥブの3レシピ。</p>
       </div>
     </div>
   </section>
@@ -694,27 +692,8 @@
   <section class="benefit">
     <p class="section-tag">A F T E R</p>
     <h2 class="section-title">講座で、<br><span class="line">手に入るもの</span></h2>
-    <div class="benefit-grid">
-      <div class="benefit-card">
-        <div class="num">01</div>
-        <h3>痩せて、肌まできれいになる</h3>
-        <p>体重だけじゃない。鏡に映る自分が、好きになる。</p>
-      </div>
-      <div class="benefit-card">
-        <div class="num">02</div>
-        <h3>お通じが整い、体の中から軽くなる</h3>
-        <p>回数も質も変わる。デトックスの実感が毎日続く。</p>
-      </div>
-      <div class="benefit-card">
-        <div class="num">03</div>
-        <h3>ホルモンバランスが整う</h3>
-        <p>生理痛・PMSがほぼ消えて、毎月が楽になる。</p>
-      </div>
-      <div class="benefit-card">
-        <div class="num">04</div>
-        <h3>イライラがなくなる</h3>
-        <p>家族にも、自分にも、優しくなれる毎日へ。</p>
-      </div>
+    <div class="benefit-image">
+      <img src="images/benefits.png" alt="講座で手に入る4つのこと">
     </div>
   </section>
 
