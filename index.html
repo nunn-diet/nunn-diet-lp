@@ -465,18 +465,60 @@
   .fg-sub { display: block; font-size: 11px; color: #a8907d; margin-top: 2px; font-family: sans-serif; }
   .feature-graph svg { width: 100%; height: auto; display: block; }
   .fg-line {
-    fill: none; stroke: #b8764d; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round;
-    stroke-dasharray: 600; stroke-dashoffset: 600;
+    fill: none; stroke: url(#lineGrad); stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round;
+    stroke-dasharray: 1200; stroke-dashoffset: 1200;
+    filter: drop-shadow(0 0 4px rgba(232,184,154,0.0));
   }
   .fg-area { fill: url(#grad); opacity: 0; }
   .fg-dots circle { opacity: 0; }
-  .feature-client.in-view .fg-line { animation: drawLine 2.4s cubic-bezier(0.4,0,0.2,1) forwards; }
-  .feature-client.in-view .fg-area { animation: fadeArea 1.4s ease-out 1s forwards; }
-  .feature-client.in-view .fg-dots circle:nth-child(1) { animation: popDot 0.4s ease-out 0.2s forwards; }
+  .fg-comet { opacity: 0; filter: url(#glow); }
+  .fg-sparkle { opacity: 0; transform-box: fill-box; transform-origin: center; }
+  .fg-burst { opacity: 0; }
+  .feature-client.in-view .fg-line {
+    animation: drawLine 2.6s cubic-bezier(0.4,0,0.2,1) forwards, lineGlow 2.6s ease-out forwards;
+  }
+  .feature-client.in-view .fg-area { animation: fadeArea 1.4s ease-out 1.4s forwards; }
+  .feature-client.in-view .fg-comet {
+    animation: cometRun 2.6s cubic-bezier(0.4,0,0.2,1) forwards;
+  }
+  .feature-client.in-view .fg-burst { animation: burstPop 1.2s ease-out 2.4s forwards; }
+  .feature-client.in-view .fg-sparkle { animation: twinkle 1.6s ease-in-out infinite; }
+  .feature-client.in-view .fg-sparkle.s1 { animation-delay: 2.6s; }
+  .feature-client.in-view .fg-sparkle.s2 { animation-delay: 2.9s; }
+  .feature-client.in-view .fg-sparkle.s3 { animation-delay: 3.2s; }
+  .feature-client.in-view .fg-sparkle.s4 { animation-delay: 2.75s; }
+  .feature-client.in-view .fg-sparkle.s5 { animation-delay: 3.05s; }
+  .feature-client.in-view .fg-dots circle:nth-child(1) { animation: popDot 0.4s ease-out 0.1s forwards; }
   .feature-client.in-view .fg-dots circle:nth-child(2) { animation: popDot 0.4s ease-out 1.0s forwards; }
-  .feature-client.in-view .fg-dots circle:nth-child(3) { animation: popDot 0.4s ease-out 1.6s forwards; }
-  .feature-client.in-view .fg-dots circle:nth-child(4) { animation: popDot 0.5s ease-out 2.2s forwards; }
+  .feature-client.in-view .fg-dots circle:nth-child(3) { animation: popDot 0.4s ease-out 1.7s forwards; }
+  .feature-client.in-view .fg-dots circle:nth-child(4) {
+    animation: popDot 0.5s ease-out 2.4s forwards, goalPulse 1.8s ease-out 2.9s infinite;
+  }
   @keyframes popDot { 0% { opacity: 0; transform: scale(0.3); transform-box: fill-box; transform-origin: center; } 100% { opacity: 1; transform: scale(1); } }
+  @keyframes lineGlow {
+    0% { filter: drop-shadow(0 0 0px rgba(232,184,154,0)); }
+    60% { filter: drop-shadow(0 0 6px rgba(244,217,168,0.95)); }
+    100% { filter: drop-shadow(0 0 3px rgba(232,184,154,0.55)); }
+  }
+  @keyframes cometRun {
+    0% { opacity: 0; }
+    8% { opacity: 1; }
+    92% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.15; transform: scale(0.6) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.3) rotate(45deg); }
+  }
+  @keyframes burstPop {
+    0% { opacity: 0; transform: scale(0.2); transform-box: fill-box; transform-origin: center; }
+    40% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: 0; transform: scale(2.4); }
+  }
+  @keyframes goalPulse {
+    0%, 100% { transform: scale(1); transform-box: fill-box; transform-origin: center; filter: drop-shadow(0 0 2px rgba(184,118,77,0.4)); }
+    50% { transform: scale(1.35); filter: drop-shadow(0 0 8px rgba(244,217,168,1)); }
+  }
   .fg-stats {
     display: flex; gap: 8px; align-items: stretch; margin-top: 14px;
     padding-top: 14px; border-top: 1px solid rgba(184,118,77,0.2);
@@ -757,6 +799,23 @@
           <stop offset="0%" stop-color="#b8764d" stop-opacity="0.35"/>
           <stop offset="100%" stop-color="#b8764d" stop-opacity="0"/>
         </linearGradient>
+        <linearGradient id="lineGrad" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stop-color="#d4a37c"/>
+          <stop offset="60%" stop-color="#b8764d"/>
+          <stop offset="100%" stop-color="#e8b89a"/>
+        </linearGradient>
+        <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="2.4" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <radialGradient id="sparkGrad">
+          <stop offset="0%" stop-color="#fff8e8" stop-opacity="1"/>
+          <stop offset="40%" stop-color="#f4d9a8" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#b8764d" stop-opacity="0"/>
+        </radialGradient>
+        <symbol id="starShape" viewBox="-10 -10 20 20">
+          <path d="M0,-9 L2.2,-2.2 L9,0 L2.2,2.2 L0,9 L-2.2,2.2 L-9,0 L-2.2,-2.2 Z" fill="#fff4d4"/>
+        </symbol>
       </defs>
     </svg>
 
@@ -933,40 +992,50 @@
   (function(){
     var container = document.getElementById('clients');
     if (!container) return;
+    // Waypoints per client: [xFrac 0..1, dropFrac 0..1] (0=start kg, 1=end kg)
+    // Approximated from each client's actual weight log graph
+    var shapes = {
+      c6: [[0,0],[0.12,0.78],[0.22,0.55],[0.4,0.6],[0.55,0.58],[0.7,0.62],[0.82,1.05],[0.9,1.0],[1,0.85]],
+      takahashi: [[0,0.05],[0.08,0],[0.18,0.55],[0.3,0.78],[0.5,0.7],[0.65,0.72],[0.8,0.8],[0.92,1.05],[1,1]],
+      c2: [[0,0],[0.08,0.3],[0.2,0.85],[0.4,0.78],[0.55,0.72],[0.7,0.95],[0.82,1.05],[0.92,0.95],[1,0.9]],
+      c3: [[0,0],[0.1,0.15],[0.22,0.45],[0.4,0.55],[0.55,0.5],[0.68,0.55],[0.78,0.6],[0.9,0.95],[1,1]],
+      c4: [[0,0],[0.1,0.25],[0.22,0.55],[0.4,0.6],[0.55,0.55],[0.68,0.65],[0.8,0.7],[0.9,0.95],[1,1]],
+      c5: [[0,0],[0.08,0.05],[0.2,0.4],[0.35,0.5],[0.55,0.55],[0.7,0.55],[0.82,0.95],[0.92,0.85],[1,0.9]]
+    };
     var clients = [
       {
         img: 'images/client6.jpg', height: 155, start: 65.9, end: 57.6, down: 8.3,
-        age: '40代・フリーランス',
+        age: '40代・フリーランス', shape: shapes.c6,
         why: '<span class="hl">絶対に痩せない体質</span>なので、結果が出るのか、出てもすぐにリバウンドしないのか、正直不安しかありませんでした。ぬんさんのサポートがなければ、<span class="hl">絶対途中で挫折していました</span>。',
         future: '終えてみた今、ほんとーーーにやって良かったしかありません！<span class="hl">結果が出てる、リバウンドしてない、身体が軽い</span>！<span class="hl">この知識は一生の財産</span>です。ぬんさんありがとうございました♡'
       },
       {
         img: 'images/takahashi.jpg', height: 169, start: 72.3, end: 64.9, down: 7.4,
-        age: '会社員',
+        age: '会社員', shape: shapes.takahashi,
         why: 'アルコール大好き・居酒屋大好きな私に合わせて、<span class="hl">否定せずに食事指導をしてくれる</span>のが嬉しかった。<span class="hl">ぬんさんだったら信頼できる</span>と思ってサポートをお願いしました。',
         future: '卒業のとき当初の写真を見て「こんな変わってるんだ！」と自分でもびっくり。<span class="hl">想像以上の結果が出ました</span>。ありがとうございます！'
       },
       {
         img: 'images/client2.jpg', height: 157, start: 72.0, end: 63.0, down: 9.0,
-        age: '20代・会社員',
+        age: '20代・会社員', shape: shapes.c2,
         why: 'ぬんさんに不安や質問を送ると<span class="hl">すぐに返信をくれた</span>。ダイエットが続かない私にとって、それが<span class="hl">メンタルの支え</span>でした。',
         future: 'いつも外見に厳しい方にも<span class="hl">「痩せたね」って言ってもらえてびっくり</span>。本当に嬉しい！これからも続けます！'
       },
       {
         img: 'images/client3.jpg', height: 162, start: 86.4, end: 76.1, down: 10.3,
-        age: '40代・自営業',
+        age: '40代・自営業', shape: shapes.c3,
         why: '返信が遅れても<span class="hl">絶対に見捨てず、フォローしてくださった</span>からこその結果。一人じゃ絶対に痩せられませんでした。',
         future: '体重以上に<span class="hl">「元気・活力が出た」</span>ところが一番嬉しくて、家族も喜んでくれてる。いつも温かい愛をありがとうございます！ぬんさん大好き♡'
       },
       {
         img: 'images/client4.jpg', height: 166, start: 65.5, end: 57.5, down: 8.0,
-        age: '50代・個人事業主',
+        age: '50代・個人事業主', shape: shapes.c4,
         why: '<span class="hl">常に寄り添い、たくさん褒めて</span>、やる気UPしてくれます。間食の誘惑に負けても、<span class="hl">それすら否定せず、どう挽回するか考えて教えてくれる</span>。',
         future: 'ファスティング期間も空腹を感じず、辛くなく過ごせました。パンツサイズも<span class="hl">キツキツのLから余裕のあるMサイズに</span>！今後の指針をたくさん授けてくれてありがとう❤️'
       },
       {
         img: 'images/client5.jpg', height: 148, start: 52.7, end: 47.4, down: 5.3,
-        age: '40代・専業主婦',
+        age: '40代・専業主婦', shape: shapes.c5,
         why: '一人では絶対に続かなかったダイエットも、<span class="hl">ぬんさんのサポートのおかげで続けることができました</span>。ダイエット以外のことも親身になってお話を聞いてくれて、本当にありがとうございました！',
         future: '5キロの減量に成功して、<span class="hl">自分に自信が持てるように</span>。今ではオシャレをしたり、<span class="hl">自分の機嫌を自分でとれる</span>ようになってきたり💖メンタルも前向きになって、朝活まで始めました（笑）'
       }
@@ -974,11 +1043,23 @@
     var html = '';
     clients.forEach(function(c, idx){
       var num = ('0' + (idx+1)).slice(-2);
-      // Map weight range to graph y coordinates (160 height, padded)
-      // Top ≈ start kg, bottom ≈ end kg. Use 30..150 range.
-      var yTop = 30, yBot = 150;
-      // Y label values: 3 grid lines at start, mid, end
+      // Map weight range to graph y coordinates
+      var xL = 40, xR = 380, yTop = 30, yBot = 150;
       var midKg = ((c.start + c.end) / 2).toFixed(1);
+      // Build smooth path from waypoints (Catmull-Rom-ish via cubic bezier)
+      var pts = c.shape.map(function(p){
+        return [xL + p[0]*(xR-xL), yTop + p[1]*(yBot-yTop)];
+      });
+      var d = 'M' + pts[0][0].toFixed(1) + ',' + pts[0][1].toFixed(1);
+      for (var i=0; i<pts.length-1; i++){
+        var p0 = pts[i===0?i:i-1], p1 = pts[i], p2 = pts[i+1], p3 = pts[i+2<pts.length?i+2:i+1];
+        var c1x = p1[0] + (p2[0]-p0[0])/6, c1y = p1[1] + (p2[1]-p0[1])/6;
+        var c2x = p2[0] - (p3[0]-p1[0])/6, c2y = p2[1] - (p3[1]-p1[1])/6;
+        d += ' C' + c1x.toFixed(1) + ',' + c1y.toFixed(1) + ' ' + c2x.toFixed(1) + ',' + c2y.toFixed(1) + ' ' + p2[0].toFixed(1) + ',' + p2[1].toFixed(1);
+      }
+      var lastPt = pts[pts.length-1];
+      var dArea = d + ' L' + lastPt[0].toFixed(1) + ',170 L' + pts[0][0].toFixed(1) + ',170 Z';
+      var pathId = 'fgp-' + idx;
       html += '<div class="client-block feature-client">' +
         '<div class="client-label"><span class="bar"></span>CLIENT ' + num + '<span class="bar"></span></div>' +
         '<div class="feature-img"><img src="' + c.img + '" alt="CLIENT ' + num + ' Before / After"></div>' +
@@ -994,14 +1075,23 @@
             '<text x="26" y="34" font-size="9" fill="#a8907d" text-anchor="end" font-family="sans-serif">' + c.start.toFixed(1) + '</text>' +
             '<text x="26" y="94" font-size="9" fill="#a8907d" text-anchor="end" font-family="sans-serif">' + midKg + '</text>' +
             '<text x="26" y="154" font-size="9" fill="#a8907d" text-anchor="end" font-family="sans-serif">' + c.end.toFixed(1) + '</text>' +
-            '<path class="fg-area" d="M40,30 Q120,42 180,68 T280,118 T380,150 L380,170 L40,170 Z"/>' +
-            '<path class="fg-line" d="M40,30 Q120,42 180,68 T280,118 T380,150"/>' +
+            '<path class="fg-area" d="' + dArea + '"/>' +
+            '<path id="' + pathId + '" class="fg-line" d="' + d + '"/>' +
+            '<circle class="fg-comet" r="4" fill="#fff8e8">' +
+              '<animateMotion dur="2.6s" begin="indefinite" fill="freeze" rotate="auto"><mpath href="#' + pathId + '"/></animateMotion>' +
+            '</circle>' +
+            '<circle class="fg-burst" cx="' + lastPt[0].toFixed(1) + '" cy="' + lastPt[1].toFixed(1) + '" r="14" fill="url(#sparkGrad)"/>' +
             '<g class="fg-dots">' +
-              '<circle cx="40"  cy="30"  r="4.5" fill="#b8764d"/>' +
-              '<circle cx="180" cy="68"  r="3"   fill="#d4a37c"/>' +
-              '<circle cx="280" cy="118" r="3"   fill="#d4a37c"/>' +
-              '<circle cx="380" cy="150" r="5"   fill="#fff" stroke="#b8764d" stroke-width="2.5"/>' +
+              '<circle cx="' + pts[0][0].toFixed(1) + '" cy="' + pts[0][1].toFixed(1) + '" r="4.5" fill="#b8764d"/>' +
+              '<circle cx="' + pts[Math.floor(pts.length/3)][0].toFixed(1) + '" cy="' + pts[Math.floor(pts.length/3)][1].toFixed(1) + '" r="3" fill="#d4a37c"/>' +
+              '<circle cx="' + pts[Math.floor(2*pts.length/3)][0].toFixed(1) + '" cy="' + pts[Math.floor(2*pts.length/3)][1].toFixed(1) + '" r="3" fill="#d4a37c"/>' +
+              '<circle cx="' + lastPt[0].toFixed(1) + '" cy="' + lastPt[1].toFixed(1) + '" r="5.5" fill="#fff" stroke="#b8764d" stroke-width="2.5"/>' +
             '</g>' +
+            '<use class="fg-sparkle s1" href="#starShape" x="' + (lastPt[0]-14).toFixed(1) + '" y="' + (lastPt[1]-12).toFixed(1) + '" width="10" height="10"/>' +
+            '<use class="fg-sparkle s2" href="#starShape" x="' + (lastPt[0]+6).toFixed(1) + '" y="' + (lastPt[1]-16).toFixed(1) + '" width="8" height="8"/>' +
+            '<use class="fg-sparkle s3" href="#starShape" x="' + (lastPt[0]+10).toFixed(1) + '" y="' + (lastPt[1]+4).toFixed(1) + '" width="9" height="9"/>' +
+            '<use class="fg-sparkle s4" href="#starShape" x="' + (lastPt[0]-18).toFixed(1) + '" y="' + (lastPt[1]+2).toFixed(1) + '" width="7" height="7"/>' +
+            '<use class="fg-sparkle s5" href="#starShape" x="' + (lastPt[0]-4).toFixed(1) + '" y="' + (lastPt[1]+10).toFixed(1) + '" width="8" height="8"/>' +
           '</svg>' +
           '<div class="fg-stats">' +
             '<div class="stat"><div class="l">START</div><div class="v">' + c.start.toFixed(1) + '<small>kg</small></div></div>' +
@@ -1029,7 +1119,12 @@
       if (!els.length) return;
       var io = new IntersectionObserver(function(entries){
         entries.forEach(function(e){
-          if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+          if (e.isIntersecting) {
+            e.target.classList.add('in-view');
+            var motion = e.target.querySelector('animateMotion');
+            if (motion && motion.beginElement) { try { motion.beginElement(); } catch(_){} }
+            io.unobserve(e.target);
+          }
         });
       }, { threshold: 0.25 });
       els.forEach(function(el){ io.observe(el); });
