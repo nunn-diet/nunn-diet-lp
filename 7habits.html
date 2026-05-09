@@ -172,28 +172,79 @@
     margin-bottom:6px;
   }
 
-  /* CTA button */
+  /* CTA button — rounded, 3D, animated, sparkle */
   .cta{
+    position:relative;
     display:block;
     text-align:center;
-    background:linear-gradient(135deg,var(--accent),var(--accent-deep));
+    background:linear-gradient(135deg,#ff8fa3 0%,#ff5e7e 50%,#e63462 100%);
     color:#fff !important;
     text-decoration:none;
-    padding:16px 18px;
-    border-radius:0;
+    padding:18px 22px;
+    border-radius:999px;
     font-weight:700;
-    font-size:14.5px;
-    margin:18px 0 4px;
-    min-height:54px;
-    box-shadow:0 6px 16px rgba(201,138,115,.3);
-    transition:transform .2s ease, box-shadow .2s ease;
+    font-size:15px;
+    margin:22px 0 6px;
+    min-height:58px;
+    box-shadow:0 8px 0 rgba(160,40,72,.35), 0 14px 28px rgba(230,52,98,.32), inset 0 2px 0 rgba(255,255,255,.55), inset 0 -3px 0 rgba(0,0,0,.10);
+    transition:transform .15s ease, box-shadow .15s ease;
     letter-spacing:.04em;
+    overflow:hidden;
+    isolation:isolate;
+    animation:ctaWobble 2.8s ease-in-out infinite;
   }
   .cta:hover{
-    transform:translateY(-2px);
-    box-shadow:0 8px 22px rgba(201,138,115,.4);
+    transform:translateY(-3px);
+    box-shadow:0 11px 0 rgba(160,40,72,.35), 0 18px 34px rgba(230,52,98,.42), inset 0 2px 0 rgba(255,255,255,.55), inset 0 -3px 0 rgba(0,0,0,.10);
   }
-  .cta::after{content:"  →";}
+  .cta:active{
+    transform:translateY(3px);
+    box-shadow:0 3px 0 rgba(160,40,72,.35), 0 6px 14px rgba(230,52,98,.3), inset 0 2px 0 rgba(255,255,255,.45), inset 0 -2px 0 rgba(0,0,0,.10);
+  }
+  .cta::after{content:" →"; display:inline-block; margin-left:6px; animation:ctaArrow 1.2s ease-in-out infinite;}
+  /* shine sweep */
+  .cta::before{
+    content:""; position:absolute; top:0; left:-60%; width:50%; height:100%;
+    background:linear-gradient(115deg, transparent 0%, rgba(255,255,255,.55) 50%, transparent 100%);
+    transform:skewX(-20deg);
+    animation:ctaShine 3.2s ease-in-out infinite;
+    pointer-events:none;
+  }
+  /* per-button colors */
+  .cta.c-pink{   background:linear-gradient(135deg,#ffb3c6 0%,#ff5e8a 50%,#d92d61 100%); box-shadow:0 8px 0 rgba(140,30,60,.35), 0 14px 28px rgba(217,45,97,.32), inset 0 2px 0 rgba(255,255,255,.55), inset 0 -3px 0 rgba(0,0,0,.10);}
+  .cta.c-orange{ background:linear-gradient(135deg,#ffd28a 0%,#ff9b3d 50%,#ee6b1c 100%); box-shadow:0 8px 0 rgba(160,80,20,.35), 0 14px 28px rgba(238,107,28,.32), inset 0 2px 0 rgba(255,255,255,.55), inset 0 -3px 0 rgba(0,0,0,.10);}
+  .cta.c-mint{   background:linear-gradient(135deg,#b6f0d4 0%,#3fc59a 50%,#1f9c7a 100%); box-shadow:0 8px 0 rgba(20,90,70,.35), 0 14px 28px rgba(31,156,122,.32), inset 0 2px 0 rgba(255,255,255,.55), inset 0 -3px 0 rgba(0,0,0,.10);}
+  .cta.c-violet{ background:linear-gradient(135deg,#d8b4ff 0%,#a96bff 50%,#7a3ee0 100%); box-shadow:0 8px 0 rgba(70,30,140,.35), 0 14px 28px rgba(122,62,224,.32), inset 0 2px 0 rgba(255,255,255,.55), inset 0 -3px 0 rgba(0,0,0,.10);}
+  .cta.c-gold{   background:linear-gradient(135deg,#ffe7a8 0%,#f4b942 50%,#c8861a 100%); color:#fff !important; box-shadow:0 8px 0 rgba(120,80,20,.35), 0 14px 28px rgba(244,185,66,.4), inset 0 2px 0 rgba(255,255,255,.55), inset 0 -3px 0 rgba(0,0,0,.10);}
+  /* sparkle stars */
+  .cta .spark{position:absolute; width:14px; height:14px; pointer-events:none; opacity:0; }
+  .cta .spark::before, .cta .spark::after{
+    content:""; position:absolute; top:50%; left:50%;
+    background:#fff; transform:translate(-50%,-50%);
+  }
+  .cta .spark::before{ width:100%; height:2px; border-radius:2px; }
+  .cta .spark::after{ width:2px; height:100%; border-radius:2px; }
+  .cta .spark.s1{ top:8px; left:18px; animation:twinkle 1.6s ease-in-out infinite; }
+  .cta .spark.s2{ top:14px; right:24px; width:10px; height:10px; animation:twinkle 1.6s ease-in-out .4s infinite; }
+  .cta .spark.s3{ bottom:10px; left:36px; width:8px; height:8px; animation:twinkle 1.6s ease-in-out .8s infinite; }
+  .cta .spark.s4{ bottom:14px; right:18px; width:11px; height:11px; animation:twinkle 1.6s ease-in-out 1.2s infinite; }
+  @keyframes twinkle{
+    0%,100%{ opacity:0; transform:scale(.4) rotate(0deg); }
+    50%{ opacity:1; transform:scale(1.2) rotate(45deg); }
+  }
+  @keyframes ctaShine{
+    0%{ left:-60%; }
+    60%{ left:120%; }
+    100%{ left:120%; }
+  }
+  @keyframes ctaWobble{
+    0%,100%{ transform:translateY(0) scale(1); }
+    50%{ transform:translateY(-2px) scale(1.015); }
+  }
+  @keyframes ctaArrow{
+    0%,100%{ transform:translateX(0); }
+    50%{ transform:translateX(4px); }
+  }
 
   /* Points section */
   .points{
@@ -342,7 +393,7 @@
 <div class="wrapper">
 
   <header class="hero hero-cover">
-    <img class="hero-cover-img" src="images/hero.jpg" alt="私が5キロ痩せたときにやっていた7つの習慣">
+    <img class="hero-cover-img" src="images/7habits_fv.jpg" alt="私が5キロ痩せたときにやっていた7つの習慣">
   </header>
 
   <section class="intro">
@@ -422,7 +473,7 @@
     </div>
 
     <!-- リンク先URL: [ユーザーが後で設定] -->
-    <a href="#" class="cta">一番人気の痩せレシピ3選を<br>受け取る</a>
+    <a href="#" class="cta c-pink"><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span>一番人気の痩せレシピ3選を<br>受け取る</a>
   </article>
 
   <!-- Habit 3 -->
@@ -465,7 +516,7 @@
     </div>
 
     <!-- リンク先URL: [ユーザーが後で設定] -->
-    <a href="#" class="cta">おすすめの<br>朝トレ動画を見る</a>
+    <a href="#" class="cta c-orange"><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span>おすすめの<br>朝トレ動画を見る</a>
   </article>
 
   <!-- Habit 4 -->
@@ -507,7 +558,7 @@
     </div>
 
     <!-- リンク先URL: [ユーザーが後で設定] -->
-    <a href="#" class="cta">おすすめの<br>置き換えセットはこちら</a>
+    <a href="#" class="cta c-mint"><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span>おすすめの<br>置き換えセットはこちら</a>
   </article>
 
   <!-- Habit 5 -->
@@ -646,7 +697,7 @@
     </div>
 
     <!-- リンク先URL: [ユーザーが後で設定] -->
-    <a href="#" class="cta">個別相談に申し込む</a>
+    <a href="#" class="cta c-violet"><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span>個別相談に申し込む</a>
   </article>
 
   <!-- Points -->
@@ -694,7 +745,7 @@
       一緒に見つけましょう。
     </p>
     <!-- リンク先URL: [ユーザーが後で設定] -->
-    <a href="#" class="cta">個別相談に申し込む</a>
+    <a href="#" class="cta c-gold"><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span><span class="spark s4"></span>個別相談に申し込む</a>
   </section>
 
   <footer>5キロ痩せた7つの習慣 — Special Gift</footer>
