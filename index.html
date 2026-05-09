@@ -267,9 +267,31 @@
   .profile-card .role { font-size: 12px; letter-spacing: 0.3em; color: #b8764d; margin-bottom: 8px; }
   .profile-card .nm { font-size: 23px; letter-spacing: 0.1em; color: #4a3329; margin-bottom: 6px; }
   .profile-card .nm small { display: block; font-size: 14px; color: #8a6f5c; margin-top: 6px; letter-spacing: 0.05em; }
-  .profile-story { text-align: left; margin-top: 30px; font-size: 15px; line-height: 2.1; color: #4a3329; background: #faf4ec; padding: 28px 24px; border-radius: 0; }
-  .profile-story p { margin-bottom: 16px; }
+  .profile-story { text-align: left; margin-top: 30px; font-size: 15px; line-height: 2.1; color: #4a3329; background: #faf4ec; padding: 32px 26px; border-radius: 0; }
+  .profile-story p { margin-bottom: 20px; }
   .profile-story p:last-child { margin-bottom: 0; }
+  .profile-story .lead-line { font-size: 17px; font-weight: 600; padding-bottom: 14px; border-bottom: 1px dashed #d4a37c; }
+  .profile-story .hl {
+    font-weight: 600; color: #4a3329;
+    background: linear-gradient(transparent 60%, rgba(232,184,154,0.55) 60%);
+    padding: 0 1px;
+  }
+  .profile-story .hl-deep { font-weight: 700; color: #b8764d; }
+  .profile-story .hl-quote { font-weight: 600; color: #b8764d; font-style: italic; }
+  .profile-story .under { border-bottom: 1.5px solid #d4a37c; padding-bottom: 1px; font-weight: 500; }
+  .profile-story .quote-line {
+    font-size: 17px; font-weight: 600; color: #8a5a38;
+    text-align: center; line-height: 1.9;
+    border-left: 3px solid #b8764d; border-right: 3px solid #b8764d;
+    padding: 12px 14px; margin: 24px 0; background: #fffdf9;
+  }
+  .profile-story .big-number {
+    display: inline-block;
+    font-weight: 800; font-size: 19px; color: #b8764d;
+    background: linear-gradient(transparent 55%, rgba(244,217,168,0.7) 55%);
+    padding: 0 4px; letter-spacing: 0.02em;
+  }
+  .profile-story .closing { font-weight: 500; padding-top: 16px; border-top: 1px dashed #d4a37c; }
   .achievements { margin-top: 20px; padding: 24px 22px; background: #fff; border-radius: 0; border: 1px solid #ead9c5; text-align: left; }
   .achievements .h {
     display: inline-block;
@@ -934,15 +956,15 @@
   <section class="profile">
     <div class="profile-card">
       <div class="profile-story reveal">
-        <p>夫大好きな、元公務員・35歳。</p>
-        <p>2年前、大好きだった夫に冷められたことをきっかけに、過去最高体重に。職場で「3人目？」と聞かれた日の恥ずかしさは、今も忘れません。</p>
-        <p>インスタのレシピ、ジム、痩身エステ──やれることは全部やった。でも、痩せない。肌は荒れる。イライラは加速する。</p>
-        <p>「体の中から、メンタルから変えないと、私は変われない」</p>
-        <p>そう気づいてたどり着いたのが、ファスティングと食事改善でした。<strong>1ヶ月半で−5kg。</strong>肌が整い、生理痛が消え、朝が軽くなった。そして──冷めきっていた夫に、私から逆プロポーズ。仲直りができました。</p>
-        <p>"自分で自分を幸せにできる"感覚を届けたくて、今、同じように悩む女性のサポートをしています。</p>
+        <p class="lead-line"><span class="hl-deep">夫大好きな、元公務員・35歳。</span></p>
+        <p>2年前、<span class="hl">大好きだった夫に冷められた</span>ことをきっかけに、過去最高体重に。職場で<span class="hl-quote">「3人目？」</span>と聞かれた日の恥ずかしさは、<span class="under">今も忘れません</span>。</p>
+        <p>インスタのレシピ、ジム、痩身エステ──<span class="hl">やれることは全部やった</span>。でも、痩せない。肌は荒れる。イライラは加速する。</p>
+        <p class="quote-line">「体の中から、メンタルから変えないと、<br>私は変われない」</p>
+        <p>そう気づいてたどり着いたのが、<span class="hl-deep">ファスティングと食事改善</span>でした。<span class="big-number">1ヶ月半で−5kg。</span>肌が整い、生理痛が消え、朝が軽くなった。そして──冷めきっていた夫に、<span class="hl">私から逆プロポーズ。仲直りができました</span>。</p>
+        <p class="closing"><span class="hl-quote">"自分で自分を幸せにできる"</span>感覚を届けたくて、今、同じように悩む女性のサポートをしています。</p>
       </div>
       <div class="achievements reveal">
-        <div class="h">講座生の結果</div>
+        <div class="h">この1年間の結果</div>
         <ul>
           <li>医師から減量指導を受けていた方を<strong>−10kg</strong>に導いた</li>
           <li>Lサイズしか履けなかった方を<strong>Mサイズ</strong>に変えた</li>
