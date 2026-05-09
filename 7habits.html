@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>私が5キロ痩せた時にやっていた7つの習慣</title>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fdf6f0;
+    --card:#ffffff;
+    --accent:#e8b4a0;
+    --accent-deep:#c98a73;
+    --accent-soft:#f5dcd0;
+    --text:#5a4438;
+    --text-soft:#8a7568;
+    --line:#f0e0d4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans JP',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.95;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrapper{max-width:500px;margin:0 auto;padding:0 22px 60px;}
+
+  /* Hero */
+  .hero{
+    text-align:center;
+    padding:44px 18px 36px;
+    background:linear-gradient(160deg,#fce4d6 0%,#f7d4c2 100%);
+    margin:0 -16px 26px;
+  }
+  .hero-cover{
+    padding:0;
+    background:none;
+    margin:0 -16px 26px;
+  }
+  .hero-cover-img{
+    width:100%;
+    display:block;
+  }
+  .hero .badge{
+    display:inline-block;
+    font-family:'Klee One',serif;
+    font-size:12px;
+    color:var(--accent-deep);
+    background:#fff;
+    padding:5px 16px;
+    border-radius:0;
+    letter-spacing:.18em;
+    margin-bottom:18px;
+    box-shadow:0 2px 8px rgba(201,138,115,.15);
+  }
+  .hero h1{
+    font-family:'Klee One',serif;
+    font-size:23px;
+    font-weight:600;
+    color:#6b4a3c;
+    line-height:1.55;
+    letter-spacing:.02em;
+  }
+  .hero h1 .num{
+    color:var(--accent-deep);
+    font-size:30px;
+    margin:0 2px;
+  }
+  .hero .sub{
+    margin-top:14px;
+    font-size:12.5px;
+    color:var(--text-soft);
+    line-height:1.7;
+  }
+
+  /* Intro */
+  .intro{
+    background:var(--card);
+    padding:28px 24px;
+    margin-bottom:30px;
+    box-shadow:0 4px 18px rgba(180,130,100,.08);
+    font-size:16px;
+    line-height:2;
+    text-align:center;
+  }
+
+  /* Habit card */
+  .habit{
+    background:var(--card);
+    padding:28px 22px;
+    margin-bottom:24px;
+    box-shadow:0 4px 18px rgba(180,130,100,.08);
+  }
+  .habit-head{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding-bottom:14px;
+    margin-bottom:16px;
+    border-bottom:1.5px dashed var(--line);
+  }
+  .habit-num{
+    flex-shrink:0;
+    width:50px;height:50px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-deep));
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Klee One',serif;
+    font-size:11px;
+    line-height:1.1;
+    font-weight:600;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(201,138,115,.3);
+  }
+  .habit-num span{display:block;font-size:20px;}
+  .habit-title{
+    font-family:'Klee One',serif;
+    font-size:19px;
+    font-weight:600;
+    color:#6b4a3c;
+    line-height:1.5;
+  }
+  .habit h3{
+    font-size:16.5px;
+    color:var(--accent-deep);
+    margin:20px 0 10px;
+    font-weight:700;
+    display:flex;align-items:center;gap:6px;
+  }
+  .habit h3::before{
+    content:"";
+    width:6px;height:6px;border-radius:50%;
+    background:var(--accent);
+  }
+  .habit p{
+    margin-bottom:6px;
+    font-size:16px;
+    line-height:1.95;
+  }
+  .habit ul{
+    list-style:none;
+    padding-left:0;
+  }
+  .habit ul li{
+    padding:6px 0 6px 22px;
+    position:relative;
+    font-size:16px;
+    line-height:1.85;
+  }
+  .habit ul li::before{
+    content:"";
+    position:absolute;
+    left:6px;top:14px;
+    width:5px;height:5px;
+    background:var(--accent);
+  }
+  .tip{
+    background:var(--accent-soft);
+    padding:18px 20px;
+    margin-top:14px;
+    font-size:15.5px;
+    line-height:1.95;
+  }
+  .tip strong{color:var(--accent-deep);}
+  .tip-title{
+    font-weight:700;
+    color:var(--accent-deep);
+    display:block;
+    margin-bottom:6px;
+  }
+
+  /* CTA button */
+  .cta{
+    display:block;
+    text-align:center;
+    background:linear-gradient(135deg,var(--accent),var(--accent-deep));
+    color:#fff !important;
+    text-decoration:none;
+    padding:16px 18px;
+    border-radius:0;
+    font-weight:700;
+    font-size:14.5px;
+    margin:18px 0 4px;
+    min-height:54px;
+    box-shadow:0 6px 16px rgba(201,138,115,.3);
+    transition:transform .2s ease, box-shadow .2s ease;
+    letter-spacing:.04em;
+  }
+  .cta:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 22px rgba(201,138,115,.4);
+  }
+  .cta::after{content:"  →";}
+
+  /* Points section */
+  .points{
+    background:linear-gradient(160deg,#fff5ee,#fce4d6);
+    padding:28px 22px;
+    margin:30px -16px;
+  }
+  .points h2{
+    font-family:'Klee One',serif;
+    font-size:18px;
+    text-align:center;
+    color:#6b4a3c;
+    margin-bottom:18px;
+    line-height:1.6;
+  }
+  .points .item{
+    background:#fff;
+    padding:16px 18px;
+    margin-bottom:10px;
+    font-size:13.5px;
+    line-height:1.85;
+  }
+  .points .item strong{
+    display:block;
+    color:var(--accent-deep);
+    margin-bottom:4px;
+    font-size:14px;
+  }
+
+  /* Outro */
+  .outro{
+    text-align:center;
+    background:var(--card);
+    padding:32px 22px;
+    margin-top:24px;
+    box-shadow:0 4px 18px rgba(180,130,100,.08);
+  }
+  .outro h2{
+    font-family:'Klee One',serif;
+    font-size:18px;
+    color:#6b4a3c;
+    margin-bottom:14px;
+    line-height:1.6;
+  }
+  .outro p{
+    font-size:13.5px;
+    line-height:2;
+  }
+
+  footer{
+    text-align:center;
+    margin-top:34px;
+    font-size:11px;
+    color:var(--text-soft);
+  }
+
+  /* Images */
+  .hero-img{
+    width:calc(100% + 32px);
+    margin:18px -16px -36px;
+    display:block;
+    border-radius:0;
+  }
+  .habit-hero{
+    width:75%;
+    margin:0 auto 22px;
+    display:block;
+    height:auto;
+  }
+  .habit-img{
+    width:80%;
+    display:block;
+    margin:18px auto 6px;
+    height:auto;
+  }
+  .img-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin:18px 0 6px;
+    align-items:center;
+  }
+  .img-grid img{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+  .outro-img{
+    width:calc(100% + 44px);
+    margin:-32px -22px 22px;
+    display:block;
+  }
+  .deficit-list{
+    list-style:none;
+    padding:0;
+    margin:14px 0 8px;
+  }
+  .deficit-list li{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:14px 16px !important;
+    background:#fdf3ec;
+    margin-bottom:10px;
+  }
+  .deficit-list li::before{display:none !important;}
+  .deficit-list img{
+    width:64px;
+    height:64px;
+    flex-shrink:0;
+    object-fit:contain;
+  }
+  .deficit-list strong{
+    font-size:15.5px;
+    line-height:1.6;
+    color:var(--text);
+  }
+  .protein-q{
+    width:calc(100% + 44px);
+    margin:24px -22px 18px;
+    display:block;
+  }
+  .big-question{
+    text-align:center;
+    font-family:'Klee One',serif;
+    font-size:24px;
+    font-weight:600;
+    color:var(--accent-deep);
+    line-height:1.5;
+    padding:24px 8px;
+    border-top:1.5px dashed var(--line);
+    border-bottom:1.5px dashed var(--line);
+    margin:24px 0 18px;
+  }
+  .big-question .small{
+    display:block;
+    font-size:14px;
+    color:var(--text-soft);
+    margin-top:8px;
+    font-family:'Noto Sans JP',sans-serif;
+    font-weight:400;
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header class="hero hero-cover">
+    <img class="hero-cover-img" src="images/hero.jpg" alt="私が5キロ痩せたときにやっていた7つの習慣">
+  </header>
+
+  <section class="intro">
+    なかなか痩せなかった私が、<br>
+    <strong>1ヶ月半で5キロ</strong>痩せた時の<br>
+    習慣をまとめました。<br><br>
+    まずは1つだけでも、<br>
+    試してみてください。
+  </section>
+
+  <!-- Habit 1 -->
+  <article class="habit">
+    <img class="habit-hero" src="images/real/tea.jpg" alt="">
+    <div class="habit-head">
+      <div class="habit-num">No<span>1</span></div>
+      <div class="habit-title">起床後5分以内に<br>白湯1杯</div>
+    </div>
+
+    <h3>なぜ効果的？</h3>
+    <p>
+      内臓を温めて<br>
+      代謝をスイッチオン。<br>
+      腸も動き出して<br>
+      デトックス効果も。
+    </p>
+
+    <h3>やり方</h3>
+    <ul>
+      <li>コップ1杯（200ml）</li>
+      <li>50〜60℃をゆっくり</li>
+      <li>冷たい水はNG</li>
+    </ul>
+
+    <div class="img-grid">
+      <img src="images/habits/2.jpg" alt="">
+      <img src="images/habits/3.jpg" alt="">
+    </div>
+
+    <div class="tip">
+      <span class="tip-title">続けるコツ</span>
+      沸かしたお湯と浄水を<br>
+      半々で割ると、<br>
+      すぐ飲める温度に。
+    </div>
+  </article>
+
+  <!-- Habit 2 -->
+  <article class="habit">
+    <img class="habit-hero" src="images/habits/6.jpg" alt="">
+    <div class="habit-head">
+      <div class="habit-num">No<span>2</span></div>
+      <div class="habit-title">まいにちスープ習慣</div>
+    </div>
+
+    <h3>なぜ効果的？</h3>
+    <p>
+      簡単なのに満腹感があり、<br>
+      体も温まって代謝UP。<br>
+      ビタミン・ミネラル・<br>
+      食物繊維も一度に。
+    </p>
+
+    <h3>やり方</h3>
+    <ul>
+      <li>野菜＋タンパク質<br>（鶏肉、豆腐など）</li>
+      <li>塩分は控えめに</li>
+    </ul>
+
+    <div class="img-grid">
+      <img src="images/habits/9.jpg" alt="">
+      <img src="images/habits/10.jpg" alt="">
+    </div>
+
+    <div class="tip">
+      一番人気の痩せレシピを<br>
+      プレゼント中です。
+    </div>
+
+    <!-- リンク先URL: [ユーザーが後で設定] -->
+    <a href="#" class="cta">一番人気の痩せレシピ3選を<br>受け取る</a>
+  </article>
+
+  <!-- Habit 3 -->
+  <article class="habit">
+    <img class="habit-hero" src="images/real/workout.jpg" alt="">
+    <div class="habit-head">
+      <div class="habit-num">No<span>3</span></div>
+      <div class="habit-title">朝5分の軽い宅トレ<br>（YouTube活用）</div>
+    </div>
+
+    <h3>なぜ効果的？</h3>
+    <p>
+      朝に体を動かすと<br>
+      1日中代謝が高い状態に。<br>
+      冷えやむくみも改善。
+    </p>
+
+    <h3>やり方</h3>
+    <ul>
+      <li>起床後、5〜10分</li>
+      <li>YouTubeの<br>「朝ヨガ」「朝ストレッチ」</li>
+      <li>気持ちいい程度でOK</li>
+    </ul>
+
+    <div class="img-grid">
+      <img src="images/habits/12.jpg" alt="">
+      <img src="images/habits/14.jpg" alt="">
+    </div>
+
+    <div class="tip">
+      <span class="tip-title">続けるコツ</span>
+      <strong>毎日のルーティンに<br>組み込む</strong>のがコツ。<br><br>
+      私は毎朝、<br>
+      化粧水やクリームを塗って<br>
+      顔を乾かしている時間に<br>
+      ながらでやっています。<br><br>
+      「○○のついで」にすると、<br>
+      やる気がない日でも<br>
+      自然と続きます。
+    </div>
+
+    <!-- リンク先URL: [ユーザーが後で設定] -->
+    <a href="#" class="cta">おすすめの<br>朝トレ動画を見る</a>
+  </article>
+
+  <!-- Habit 4 -->
+  <article class="habit">
+    <img class="habit-hero" src="images/habits/18.jpg" alt="">
+    <div class="habit-head">
+      <div class="habit-num">No<span>4</span></div>
+      <div class="habit-title">16時間ファスティング</div>
+    </div>
+
+    <h3>なぜ効果的？</h3>
+    <p>
+      内臓を休ませることで<br>
+      脂肪燃焼モードに。<br>
+      むくみ解消、<br>
+      胃腸の調子も整います。
+    </p>
+
+    <h3>やり方</h3>
+    <ul>
+      <li>朝ごはんを<br>酵素ドリンクとプロテインに変更</li>
+      <li>水・白湯・お茶はOK</li>
+      <li>毎日続けてOK</li>
+      <li>体調が悪い時は無理しない</li>
+    </ul>
+
+    <img class="habit-img" src="images/habits/19.jpg" alt="">
+
+    <div class="tip" style="margin-top:14px;">
+      <span class="tip-title">置き換えドリンクは<br>「無添加」を選んで</span>
+      せっかく内臓を休ませるのに、<br>
+      添加物入りのドリンクでは<br>
+      意味がありません。<br><br>
+      私がおすすめしているのは、<br>
+      <strong>無添加で体に優しい<br>
+      酵素ドリンクとプロテイン</strong>。<br><br>
+      朝ごはんの時間が浮くと、<br>
+      一日を有意義に使えます。
+    </div>
+
+    <!-- リンク先URL: [ユーザーが後で設定] -->
+    <a href="#" class="cta">おすすめの<br>置き換えセットはこちら</a>
+  </article>
+
+  <!-- Habit 5 -->
+  <article class="habit">
+    <img class="habit-hero" src="images/habits/25.jpg" alt="">
+    <div class="habit-head">
+      <div class="habit-num">No<span>5</span></div>
+      <div class="habit-title">まいにち湯船に<br>15分浸かる</div>
+    </div>
+
+    <h3>なぜ効果的？</h3>
+    <p>
+      血流が改善され、<br>
+      冷えやむくみを解消。<br>
+      睡眠の質も上がり、<br>
+      成長ホルモンも分泌されます。
+    </p>
+
+    <h3>やり方</h3>
+    <ul>
+      <li>38〜40℃のお湯に15分</li>
+      <li>肩まで浸かって深呼吸</li>
+      <li>入浴後は常温水を1杯</li>
+    </ul>
+
+    <h3>湯船で一緒にやること</h3>
+    <ul>
+      <li>足首を回す<br>（冷え・むくみに）</li>
+      <li>頭皮マッサージ<br>（血行促進・リフトアップ）</li>
+    </ul>
+
+    <img class="habit-img" src="images/habits/scalp.png" alt="">
+
+    <div class="tip">
+      <span class="tip-title">続けるコツ</span>
+      お気に入りの入浴剤を用意して、<br>
+      自分を労わる時間に。
+    </div>
+  </article>
+
+  <!-- Habit 6 -->
+  <article class="habit">
+    <img class="habit-hero" src="images/real/sleep.jpg" alt="">
+    <div class="habit-head">
+      <div class="habit-num">No<span>6</span></div>
+      <div class="habit-title">7時間睡眠を<br>確保する</div>
+    </div>
+
+    <h3>なぜ効果的？</h3>
+    <p>
+      睡眠不足は食欲ホルモンを増やし、<br>
+      満腹ホルモンを減らします。<br>
+      質の良い睡眠こそ、<br>
+      痩せ体質の土台。
+    </p>
+
+    <h3>やり方</h3>
+    <ul>
+      <li>まずは7時間を目標に</li>
+      <li>就寝1時間前は<br>スマホを見ない</li>
+      <li>寝室は暗く、静かに、涼しく</li>
+    </ul>
+
+    <h3>質を上げる工夫</h3>
+    <ul>
+      <li>寝る前のストレッチ</li>
+      <li>カモミールティー</li>
+    </ul>
+
+    <div class="img-grid">
+      <img src="images/real/laptop.jpg" alt="">
+      <img src="images/habits/28.jpg" alt="">
+    </div>
+
+    <div class="tip">
+      <span class="tip-title">続けるコツ</span>
+      22時に寝るのが理想ですが、<br>
+      私もなかなかできていません。<br><br>
+      私がやっている対策は、<br>
+      <strong>ブルーライトカットのシートを<br>
+      パソコンとスマホに貼ること</strong>。<br><br>
+      これだけでも<br>
+      睡眠の質が変わります。
+    </div>
+  </article>
+
+  <!-- Habit 7 -->
+  <article class="habit">
+    <img class="habit-hero" src="images/real/salad.jpg" alt="">
+    <div class="habit-head">
+      <div class="habit-num">No<span>7</span></div>
+      <div class="habit-title">タンパク質を<br>しっかり摂る</div>
+    </div>
+
+    <h3>なぜ大事？</h3>
+    <p>
+      タンパク質は、<br>
+      筋肉・肌・髪・爪・<br>
+      ホルモン・免疫の材料。<br>
+      ダイエット中こそ<br>
+      最優先で摂りたい栄養です。
+    </p>
+
+    <h3>不足するとどうなる？</h3>
+    <ul class="deficit-list">
+      <li>
+        <img src="illust/c1_belly.png" alt="">
+        <strong>筋肉が落ちて<br>代謝が下がる</strong>
+      </li>
+      <li>
+        <img src="illust/c1_think.png" alt="">
+        <strong>肌・髪・爪が荒れる</strong>
+      </li>
+      <li>
+        <img src="illust/c2_scribble.png" alt="">
+        <strong>甘いものが<br>やめられなくなる</strong>
+      </li>
+      <li>
+        <img src="illust/c1_hug.png" alt="">
+        <strong>むくみやすくなる</strong>
+      </li>
+      <li>
+        <img src="illust/c1_stress.png" alt="">
+        <strong>気分の落ち込み・<br>疲れやすさ</strong>
+      </li>
+    </ul>
+
+    <img class="protein-q" src="images/protein_q.png" alt="あなたのたんぱく質の必要量、知ってますか？">
+
+    <div class="tip">
+      <span class="tip-title">「必要量」を<br>知ることが大事</span>
+      自分に必要な量が<br>
+      分からない方が本当に多いです。<br><br>
+      <strong>必要量を知るだけでも<br>
+      今後の人生は大きく変わります</strong>。
+    </div>
+
+    <!-- リンク先URL: [ユーザーが後で設定] -->
+    <a href="#" class="cta">個別相談に申し込む</a>
+  </article>
+
+  <!-- Points -->
+  <section class="points">
+    <h2>実践のポイント</h2>
+
+    <div class="item">
+      <strong>一度に全部やろうとしない</strong>
+      1つから始めて、慣れたら追加。
+    </div>
+
+    <div class="item">
+      <strong>完璧主義にならない</strong>
+      できない日があってもOK。<br>
+      明日またやればいい。
+    </div>
+
+    <div class="item">
+      <strong>記録をつける</strong>
+      スマホのメモにチェックするだけで<br>
+      モチベーションUP。
+    </div>
+
+    <div class="item">
+      <strong>自分に合うものを選ぶ</strong>
+      7つ全部でなく、<br>
+      合うもの3〜4つで十分。
+    </div>
+  </section>
+
+  <!-- Outro -->
+  <section class="outro">
+    <img class="outro-img" src="images/consultation.jpg" alt="">
+    <h2>最後に</h2>
+    <p>
+      ここまで読んでくれて<br>
+      ありがとうございました。<br><br>
+      「自分に必要な量が分からない」<br>
+      「何から始めたらいいか迷う」<br>
+      という方は、<br>
+      ぜひ一度<br>
+      <strong>個別相談に申し込んで<br>
+      診断してもらえたら嬉しいです</strong>。<br><br>
+      あなたに合った最短ルートを<br>
+      一緒に見つけましょう。
+    </p>
+    <!-- リンク先URL: [ユーザーが後で設定] -->
+    <a href="#" class="cta">個別相談に申し込む</a>
+  </section>
+
+  <footer>5キロ痩せた7つの習慣 — Special Gift</footer>
+
+</div>
+</body>
+</html>
