@@ -270,10 +270,18 @@
   .profile-story { text-align: left; margin-top: 30px; font-size: 15px; line-height: 2.1; color: #4a3329; background: #faf4ec; padding: 28px 24px; border-radius: 0; }
   .profile-story p { margin-bottom: 16px; }
   .profile-story p:last-child { margin-bottom: 0; }
-  .achievements { margin-top: 20px; padding: 20px; background: #fff; border-radius: 0; border: 1px solid #ead9c5; }
-  .achievements .h { font-size: 13px; letter-spacing: 0.2em; color: #b8764d; margin-bottom: 12px; text-align: center; }
-  .achievements ul { list-style: none; font-size: 14px; }
-  .achievements li { padding: 8px 0 8px 20px; position: relative; line-height: 1.7; }
+  .achievements { margin-top: 20px; padding: 24px 22px; background: #fff; border-radius: 0; border: 1px solid #ead9c5; text-align: left; }
+  .achievements .h {
+    display: inline-block;
+    font-size: 19px; font-weight: 700; letter-spacing: 0.08em;
+    color: #fff; margin-bottom: 16px; text-align: center;
+    padding: 8px 22px;
+    background: linear-gradient(135deg, #e8b89a 0%, #b8764d 50%, #8a5a38 100%);
+    box-shadow: 0 4px 12px rgba(184,118,77,0.3);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  }
+  .achievements ul { list-style: none; font-size: 14px; text-align: left; }
+  .achievements li { padding: 8px 0 8px 20px; position: relative; line-height: 1.7; text-align: left; }
   .achievements li::before { content: "◆"; position: absolute; left: 0; color: #d4a37c; font-size: 11px; top: 11px; }
 
   .final { background: linear-gradient(180deg, #efd9c4 0%, #e5c3a3 100%); text-align: center; }
@@ -967,7 +975,7 @@
         <p>"自分で自分を幸せにできる"感覚を届けたくて、今、同じように悩む女性のサポートをしています。</p>
       </div>
       <div class="achievements">
-        <div class="h">A C H I E V E M E N T S</div>
+        <div class="h">講座生の結果</div>
         <ul>
           <li>医師から減量指導を受けていた方を<strong>−10kg</strong>に導いた</li>
           <li>Lサイズしか履けなかった方を<strong>Mサイズ</strong>に変えた</li>
