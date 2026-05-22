@@ -408,10 +408,9 @@
       </p>
       <div class="study-note">
         <strong>SNSコンサル監修の設計理論</strong>
-        フォロワー3.3万から51.7万の<br>人気アカウント16名を分析。<br>
         ・独自肩書(造語) ・大胆宣言 ・スタイル形容詞<br>
         ・屈辱フリップ ・野望宣言 ・数字スペック行<br>
-        など、伸びる名前の6パターンを全て反映。
+        など、伸びる名前の6パターンを全て反映した設計AIです。
       </div>
       <div class="meta">
         <span>全 12 STEP</span>
@@ -583,6 +582,7 @@ const questions = [
       { value: 'bodymake', label: 'ボディメイク・筋トレ', em: 'ID候補: bodymake / fitness' },
       { value: 'beauty', label: '美容・垢抜け', em: 'ID候補: beauty / biyou' },
       { value: 'mama', label: '産後・ママダイエット', em: 'ID候補: mama_diet / yase_mama' },
+      { value: 'recipe', label: 'レシピ・食事', em: 'ID候補: recipe / gohan / cook' },
       { value: 'mental', label: 'メンタル・自己肯定感', em: 'ID候補: mind / self' }
     ]
   },
@@ -1401,6 +1401,7 @@ function buildAccountID() {
     bodymake: ['bodymake', 'fitness', 'workout'],
     beauty: ['beauty', 'biyou', 'akanuke'],
     mama: ['mama_diet', 'mama_yase', 'mama'],
+    recipe: ['recipe', 'gohan', 'cook'],
     mental: ['mind', 'self', 'kokoro']
   };
   const ids = genreIds[answers.genre] || ['diet'];

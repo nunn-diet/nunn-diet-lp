@@ -220,6 +220,27 @@
   .feature-card p { font-size: 14.5px; color: #5a4538; line-height: 1.9; }
   .feature-card p strong { color: #b8764d; font-weight: 600; }
 
+  /* ===== Zoomサポートギャラリー ===== */
+  .zoom-support { background: #fffdf9; }
+  .zoom-lead {
+    text-align: center; font-size: 15px; line-height: 2; color: #5a4538;
+    max-width: 480px; margin: 0 auto 32px;
+  }
+  .zoom-lead strong { color: #b8764d; }
+  .zoom-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    max-width: 540px; margin: 0 auto;
+  }
+  .zoom-grid img {
+    width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
+    box-shadow: 0 6px 16px rgba(120,80,50,0.12);
+  }
+  .zoom-grid .wide { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+  .zoom-caption {
+    text-align: center; margin-top: 18px; font-size: 13px; color: #8a7569;
+    line-height: 1.8;
+  }
+
   /* ===== お客様の声 ===== */
   .voices { background: #fef3e6; }
   .voice-card {
@@ -526,8 +547,8 @@
       </div>
       <div class="achievement-card">
         <div class="label">S T U D E N T &nbsp; 's &nbsp; R E S U L T</div>
-        <div class="big-num">20<small>万円</small> / 2ヶ月</div>
-        <div class="desc">講座生さんが、<strong>収益化開始から2ヶ月で月収20万円</strong>を達成。<br>未経験スタートでした。</div>
+        <div class="big-num">118,000<small>円</small></div>
+        <div class="desc">講座生さんが、<strong>受講開始から2ヶ月目でマネタイズに成功</strong>。<br>未経験スタートでした。</div>
       </div>
     </div>
 
@@ -634,6 +655,33 @@
 
       <p class="v-meta">未経験から、ぬん式メソッドで2ヶ月目にマネタイズ達成</p>
     </div>
+  </section>
+
+  <!-- ============== Zoomサポート風景 ============== -->
+  <section class="zoom-support">
+    <span class="section-tag">S U P P O R T &nbsp; S C E N E</span>
+    <h2 class="section-title">講座生さんとの<br><span class="em">サポート風景</span></h2>
+
+    <p class="zoom-lead">
+      ぬん式アカデミーでは、<br>
+      <strong>Zoomでの個別＆グループサポート</strong>を行っています。<br>
+      ひとりじゃない、温かい伴走の現場です。
+    </p>
+
+    <div class="zoom-grid">
+      <img src="images/zoom/zoom2.jpg" alt="講座生さんとのZoomサポート" class="wide">
+      <img src="images/zoom/zoom1.jpg" alt="講座生さんとのZoomサポート">
+      <img src="images/zoom/zoom3.jpg" alt="講座生さんとのZoomサポート">
+      <img src="images/zoom/zoom4.jpg" alt="講座生さんとのZoomサポート">
+      <img src="images/zoom/zoom5.jpg" alt="講座生さんとのZoomサポート">
+      <img src="images/zoom/zoom6.jpg" alt="講座生さんとのZoomサポート">
+      <img src="images/zoom/zoom7.jpg" alt="講座生さんとのZoomサポート">
+    </div>
+
+    <p class="zoom-caption">
+      毎週のオンラインミーティング・個別フィードバックで、<br>
+      あなたの「やってみよう！」を、結果につなげます。
+    </p>
   </section>
 
   <!-- ============== 離脱ブロック ============== -->
