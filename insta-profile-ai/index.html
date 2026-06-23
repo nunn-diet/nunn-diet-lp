@@ -59,15 +59,9 @@
   .progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary-light), var(--primary)); width: 0%; transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
   .progress-text { font-size: 11px; letter-spacing: 0.15em; color: var(--text-mute); text-align: right; margin-top: 8px; }
 
-  /* LIVE PREVIEW (sticky during questions) */
+  /* LIVE PREVIEW (sticky during questions) - 非表示 */
   .live-preview {
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 16px;
-    margin-bottom: 16px;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.4s ease;
+    display: none !important;
   }
   .live-preview-header {
     display: flex;
@@ -179,9 +173,66 @@
 
   /* BUTTONS */
   .button-row { display: flex; gap: 12px; margin-top: 24px; }
-  .btn { flex: 1; padding: 15px 24px; border: none; border-radius: 2px; font-family: 'Noto Serif JP', serif; font-size: 14px; font-weight: 500; letter-spacing: 0.15em; cursor: pointer; transition: all 0.3s ease; }
-  .btn-primary { background: var(--primary); color: white; }
-  .btn-primary:hover { background: var(--primary-deep); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(168, 102, 70, 0.25); }
+  .btn { flex: 1; padding: 15px 24px; border: none; border-radius: 2px; font-family: 'Noto Serif JP', serif; font-size: 14px; font-weight: 500; letter-spacing: 0.15em; cursor: pointer; transition: all 0.18s ease; }
+  .btn-primary {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg,
+      #cc7a55 0%,
+      #b86a3f 35%,
+      #a05830 65%,
+      #8c4820 100%);
+    color: white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    box-shadow:
+      0 5px 0 #6a3010,
+      0 8px 18px rgba(120,55,20,0.4),
+      inset 0 1px 0 rgba(255,255,255,0.22);
+    transform: translateY(0);
+  }
+  /* 上部光沢 */
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 2px; left: 8%; width: 84%; height: 44%;
+    background: linear-gradient(180deg,
+      rgba(255,255,255,0.3) 0%,
+      rgba(255,255,255,0.05) 100%);
+    border-radius: 2px 2px 60% 60%;
+    pointer-events: none;
+  }
+  /* 光スライド */
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: -60%; left: -70%;
+    width: 45%; height: 220%;
+    background: linear-gradient(105deg, transparent 25%, rgba(255,255,255,0.45) 50%, transparent 75%);
+    transform: skewX(-15deg);
+    animation: btnPrimaryShine 3.2s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 8px 0 #6a3010,
+      0 14px 26px rgba(120,55,20,0.45),
+      inset 0 1px 0 rgba(255,255,255,0.28);
+  }
+  .btn-primary:active {
+    transform: translateY(4px);
+    box-shadow:
+      0 1px 0 #6a3010,
+      0 3px 8px rgba(120,55,20,0.3),
+      inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+  @keyframes btnPrimaryShine {
+    0%   { left: -70%; opacity: 0; }
+    15%  { opacity: 1; }
+    50%  { left: 120%; opacity: 1; }
+    51%  { opacity: 0; }
+    100% { left: 120%; opacity: 0; }
+  }
   .btn-secondary { background: transparent; color: var(--text-mid); border: 1px solid var(--line); flex: 0 0 auto; padding: 15px 20px; }
   .btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
   .btn:disabled { opacity: 0.4; cursor: not-allowed; }
@@ -189,31 +240,16 @@
   /* WELCOME */
   .welcome { text-align: center; padding: 16px 0; }
   .welcome-photo {
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    overflow: hidden;
+    width: 160px;
+    height: 160px;
     margin: 0 auto 18px;
-    padding: 3px;
-    background: var(--white);
-    border: 1px solid var(--accent);
-    box-shadow: 0 8px 24px rgba(168, 102, 70, 0.15);
     position: relative;
   }
-  .welcome-photo::before {
-    content: "";
-    position: absolute;
-    inset: -10px;
-    border: 1px solid var(--accent);
-    border-radius: 50%;
-    opacity: 0.4;
-    pointer-events: none;
-  }
+  .welcome-photo::before { display: none; }
   .welcome-photo img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
+    object-fit: contain;
   }
   .welcome-byline {
     font-family: 'Cormorant Garamond', serif;
@@ -267,9 +303,13 @@
   .insta-id { font-size: 11.5px; color: var(--text-mute); margin-bottom: 14px; }
   .insta-body { font-size: 13px; line-height: 1.9; white-space: pre-wrap; color: var(--text); }
 
-  .ab-switch { display: flex; gap: 8px; margin-bottom: 14px; }
-  .ab-btn { flex: 1; padding: 12px; background: transparent; border: 1px solid var(--line); border-radius: 2px; cursor: pointer; font-family: inherit; font-size: 12px; letter-spacing: 0.1em; color: var(--text-mid); transition: all 0.3s ease; }
-  .ab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+  .ab-switch { margin-bottom: 16px; }
+  .ab-toggle-row { display: flex; gap: 0; border: 1.5px solid var(--primary); border-radius: 3px; overflow: hidden; }
+  .ab-btn { flex: 1; padding: 13px 8px; background: transparent; border: none; cursor: pointer; font-family: inherit; font-size: 13px; letter-spacing: 0.08em; color: var(--primary); transition: all 0.3s ease; font-weight: 500; position: relative; }
+  .ab-btn:first-child { border-right: 1px solid var(--primary); }
+  .ab-btn.active { background: var(--primary); color: white; }
+  .ab-btn:not(.active)::after { content: "タップ"; display: block; font-size: 9px; letter-spacing: 0.15em; opacity: 0.6; margin-top: 2px; }
+  .ab-hint { text-align: center; font-size: 10px; color: var(--text-mute); letter-spacing: 0.15em; margin-top: 7px; }
 
   .action-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
   .action-btn { padding: 13px; background: var(--cream); border: 1px solid var(--line); border-radius: 2px; cursor: pointer; font-family: inherit; font-size: 12px; color: var(--text); transition: all 0.3s ease; letter-spacing: 0.05em; }
@@ -292,7 +332,7 @@
 
   /* COURSE CTA */
   .course-cta {
-    margin-top: 40px;
+    margin-top: 28px;
     background: linear-gradient(160deg, #FAF5EE 0%, #EFE0CD 100%);
     border: 1px solid var(--accent);
     border-radius: 4px;
@@ -317,8 +357,8 @@
     border-radius: 2px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   }
-  .photo-frame { width: 110px; height: 110px; border-radius: 50%; overflow: hidden; margin: 16px auto; border: 3px solid white; box-shadow: 0 6px 20px rgba(168, 102, 70, 0.2); }
-  .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+  .photo-frame { width: 100px; height: 100px; margin: 0; flex-shrink: 0; }
+  .photo-frame img { width: 100%; height: 100%; object-fit: contain; }
   .coach-name { text-align: center; font-family: 'Noto Serif JP', serif; font-size: 14px; color: var(--text); margin-bottom: 4px; letter-spacing: 0.1em; }
   .coach-title { text-align: center; font-size: 11px; color: var(--text-mute); letter-spacing: 0.2em; margin-bottom: 22px; }
   .course-msg { font-size: 13px; line-height: 2; color: var(--text); margin-bottom: 18px; }
@@ -330,6 +370,111 @@
   .course-btn:hover { background: var(--primary-deep); box-shadow: 0 10px 30px rgba(168, 102, 70, 0.3); transform: translateY(-2px); }
   .course-btn .arrow { margin-left: 8px; transition: transform 0.3s; display: inline-block; }
   .course-btn:hover .arrow { transform: translateX(4px); }
+
+  /* グリーン グロッシーピル型CTAボタン */
+  .cta-shine {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    /* 外枠：深みのある緑のボーダー */
+    border: 2px solid #1a5c28;
+    border-radius: 50px;
+    padding: 18px 24px;
+    /* 本体グラデーション：明→暗の縦グラデ */
+    background: linear-gradient(180deg,
+      #4db86a 0%,
+      #2e9e4a 30%,
+      #1d8038 60%,
+      #166030 85%,
+      #1a7035 100%);
+    box-shadow:
+      0 7px 0 #0d4020,
+      0 10px 24px rgba(20,80,40,0.5),
+      inset 0 1px 0 rgba(255,255,255,0.15);
+    color: white;
+    text-decoration: none;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+    transition: all 0.15s ease;
+    transform: translateY(0);
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  /* 上半分の光沢ハイライト */
+  .cta-shine::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 8%;
+    width: 84%;
+    height: 46%;
+    background: linear-gradient(180deg,
+      rgba(255,255,255,0.38) 0%,
+      rgba(255,255,255,0.08) 100%);
+    border-radius: 50px 50px 60% 60%;
+    pointer-events: none;
+  }
+  /* 光スライド */
+  .cta-shine::after {
+    content: '';
+    position: absolute;
+    top: -60%;
+    left: -70%;
+    width: 45%;
+    height: 220%;
+    background: linear-gradient(105deg, transparent 25%, rgba(255,255,255,0.5) 50%, transparent 75%);
+    transform: skewX(-15deg);
+    animation: ctaGreenShine 2.8s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .cta-play {
+    font-size: 13px;
+    background: rgba(255,255,255,0.22);
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding-left: 2px;
+  }
+  .cta-label { display: inline; }
+  .cta-accent {
+    color: #ffe97a;
+    font-size: 17px;
+    font-weight: 900;
+    text-shadow: 0 0 8px rgba(255,220,60,0.6), 0 1px 3px rgba(0,0,0,0.4);
+    letter-spacing: 0.04em;
+  }
+  .cta-shine:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 10px 0 #0d4020,
+      0 16px 30px rgba(20,80,40,0.55),
+      inset 0 1px 0 rgba(255,255,255,0.2);
+  }
+  .cta-shine:active {
+    transform: translateY(5px);
+    box-shadow:
+      0 2px 0 #0d4020,
+      0 4px 10px rgba(20,80,40,0.4),
+      inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  @keyframes ctaGreenShine {
+    0%   { left: -70%; opacity: 0; }
+    15%  { opacity: 1; }
+    55%  { left: 120%; opacity: 1; }
+    56%  { opacity: 0; }
+    100% { left: 120%; opacity: 0; }
+  }
 
   .restart { text-align: center; margin-top: 28px; }
   .restart button { background: none; border: none; color: var(--text-mute); font-size: 12px; letter-spacing: 0.15em; cursor: pointer; font-family: inherit; text-decoration: underline; text-underline-offset: 4px; }
@@ -352,12 +497,21 @@
   }
   .symbol-chip.active { background: var(--primary); color: white; border-color: var(--primary); }
 
+  .mode-select { margin-top: 8px; }
+  .mode-select-label { text-align: center; font-size: 13px; letter-spacing: 0.1em; color: var(--text-mid); margin-bottom: 14px; font-weight: 600; }
+  .mode-select-note { text-align: center; font-size: 11px; color: var(--text-mute); letter-spacing: 0.08em; margin-top: 10px; line-height: 1.7; }
+  .mode-detail-btn { border: 1.5px solid var(--primary) !important; color: var(--primary) !important; background: white !important; }
+  .mode-detail-btn:hover { background: var(--cream) !important; }
+
   @media (max-width: 480px) {
     .app { padding: 22px 14px 40px; }
     .card { padding: 28px 20px; }
     .question { font-size: 16px; }
     .welcome h2 { font-size: 20px; }
     .field-row { flex-direction: column; gap: 6px; }
+    .course-cta p, .course-cta div { word-break: keep-all; overflow-wrap: break-word; }
+    .course-msg { font-size: 14px !important; }
+    .ab-btn { font-size: 12px; }
   }
 
   @media print {
@@ -371,8 +525,6 @@
   <!-- HEADER -->
   <div class="header">
     <span class="latin">Instagram Profile Design</span>
-    <h1>売れるプロフィール 設計AI</h1>
-    <div class="line"></div>
     <div class="by">EXCLUSIVE GIFT FOR YOU</div>
   </div>
 
@@ -397,10 +549,10 @@
   <div class="card" id="screen-welcome">
     <div class="welcome">
       <div class="welcome-photo">
-        <img src="photo-3.jpg" alt="">
+        <img src="kaoappu/5.jpg" alt="">
       </div>
       <div class="welcome-byline">— a gift from nun —</div>
-      <h2>あなただけの<br>"売れるプロフィール"を<br>10分で作りましょう</h2>
+      <h2>あなただけの<br>"売れるプロフィール"を<br>作りましょう</h2>
       <p class="lead">
         質問に答えていくだけで、<br>
         SNSコンサル監修の"フォローしたくなる"<br>
@@ -412,12 +564,16 @@
         ・屈辱フリップ ・野望宣言 ・数字スペック行<br>
         など、伸びる名前の6パターンを全て反映した設計AIです。
       </div>
-      <div class="meta">
-        <span>全 12 STEP</span>
-        <span>約 10 分</span>
-        <span>無 料</span>
+      <div class="mode-select">
+        <p class="mode-select-label">どちらのバージョンで作りますか？</p>
+        <button class="btn btn-primary" style="width:100%; margin-bottom:12px;" onclick="startApp('simple')">
+          ⚡ 簡易バージョン（9ステップ）
+        </button>
+        <button class="btn btn-secondary mode-detail-btn" style="width:100%;" onclick="startApp('detail')">
+          ✦ 詳細バージョン（12ステップ）
+        </button>
+        <p class="mode-select-note">簡易は手軽に・詳細はより精度の高いプロフィールが完成します</p>
       </div>
-      <button class="btn btn-primary" style="width:100%;" onclick="startApp()">はじめる &nbsp;→</button>
     </div>
   </div>
 
@@ -447,13 +603,16 @@
   <div class="card hidden" id="screen-result">
     <div class="result-header">
       <span class="latin">Your Profile</span>
-      <h2>あなたの売れるプロフィール</h2>
+      <h2>あなただけの売れるプロフィール</h2>
       <div class="deco">— completed —</div>
     </div>
 
     <div class="ab-switch">
-      <button class="ab-btn active" id="abA" onclick="switchAB('A')">A. 共感型</button>
-      <button class="ab-btn" id="abB" onclick="switchAB('B')">B. 実績型</button>
+      <div class="ab-toggle-row">
+        <button class="ab-btn active" id="abA" onclick="switchAB('A')">A. 共感型</button>
+        <button class="ab-btn" id="abB" onclick="switchAB('B')">B. 実績型</button>
+      </div>
+      <div class="ab-hint">← 共感型 / 実績型をタップで切り替え →</div>
     </div>
 
     <div class="insta-preview">
@@ -466,6 +625,31 @@
     <div class="action-row">
       <button class="action-btn" onclick="copyName()">📋 名前欄コピー</button>
       <button class="action-btn" onclick="copyProfile()">📋 プロフィール本文コピー</button>
+    </div>
+
+    <div class="course-cta">
+      <img src="%E3%82%B5%E3%83%9F%E3%83%83%E3%83%88.jpg" alt="ダイエットコーチぬん" style="width:100%; border-radius:4px; display:block; margin-bottom:0;">
+
+      <p style="font-family:'Noto Serif JP',serif; font-size:19px; font-weight:600; line-height:1.9; text-align:center; color:var(--text); margin:20px 0 20px; letter-spacing:0.04em;">
+        このプロフィールで<br>
+        <span style="color:var(--primary); font-size:21px; font-weight:700;">そんな働き方を実現しませんか？</span>
+      </p>
+
+      <div style="background:white; border:2px solid var(--primary); border-radius:4px; padding:18px 16px; margin-bottom:20px; text-align:center;">
+        <div style="font-family:'Noto Serif JP',serif; font-size:18px; font-weight:700; color:var(--primary); letter-spacing:0.05em; margin-bottom:12px; line-height:1.5;">✦ 第2期正規メンバー募集中！✦</div>
+        <p style="font-size:13px; line-height:2; color:var(--text); margin:0 0 12px;">
+          今なら分からないことはすぐ聞ける、<br>
+          気軽に相談できる距離感で<br>
+          一緒に進んでいけます
+        </p>
+        <div style="display:inline-flex; align-items:center; gap:6px; background:var(--primary); color:white; font-size:12px; padding:6px 16px; border-radius:20px; letter-spacing:0.05em; font-weight:600;">
+          <span>✦</span> 初期メンバー枠 残りわずか <span>✦</span>
+        </div>
+      </div>
+
+      <a href="https://s.lmes.jp/l/6lEcOTBQTzj" class="course-btn cta-shine" id="courseLink">
+        <span class="cta-play">▶</span><span class="cta-label"><span class="cta-accent">３日間限定・無料</span>の詳細はこちら</span>
+      </a>
     </div>
 
     <div class="section">
@@ -496,32 +680,6 @@
       <div id="highlightList"></div>
     </div>
 
-    <div class="course-cta">
-      <div style="text-align:center;">
-        <span class="badge">SPECIAL INVITATION</span>
-      </div>
-      <h3 style="text-align:center;">プロフィールができたあなたへ<br>次のステップのご案内</h3>
-
-      <div class="photo-frame" style="width:130px; height:130px; margin:24px auto;">
-        <img src="photo-1.jpg" alt="ぬん">
-      </div>
-      <div class="coach-name" style="font-size:18px; letter-spacing:0.3em;">ぬん</div>
-      <div class="coach-title">DIET COACH</div>
-
-      <p class="course-msg" style="text-align:center;">
-        自分の経験を価値に変えて、<br>
-        在宅で自分らしく稼ぐ女性へ。<br>
-        <br>
-        詳しいご案内は、<br>
-        こちらのリンクからどうぞ。
-      </p>
-
-      <!-- TODO: 講座LPが完成したら、href の "#" を実URLに差し替える -->
-      <a href="#" class="course-btn" id="courseLink">
-        詳細を見る<span class="arrow">→</span>
-      </a>
-    </div>
-
     <div class="restart">
       <button onclick="restart()">もう一度作り直す</button>
     </div>
@@ -545,22 +703,8 @@
 
 const questions = [
   {
-    key: 'phase',
-    label: 'STEP 1 / 12 ─ 現在地',
-    text: '今のあなたの状況を教えてください',
-    sub: '一番近いものを1つ選んでください。',
-    type: 'options',
-    options: [
-      { value: 'A', label: 'これから起業 / まだ収益0' },
-      { value: 'B', label: '月収 0〜10万円' },
-      { value: 'C', label: '月収 10〜30万円' },
-      { value: 'D', label: '月収 30〜100万円' },
-      { value: 'E', label: '月収 100万円以上' }
-    ]
-  },
-  {
     key: 'basic',
-    label: 'STEP 2 / 12 ─ 基本情報',
+    label: 'STEP 1 / 12 ─ 基本情報',
     text: 'あなたの基本情報',
     sub: 'インスタの「名前欄」と「ID」に使います。',
     type: 'composite',
@@ -572,7 +716,7 @@ const questions = [
   },
   {
     key: 'genre',
-    label: 'STEP 3 / 12 ─ ジャンル',
+    label: 'STEP 2 / 12 ─ ジャンル',
     text: 'メインの発信ジャンルは?',
     sub: 'アカウントIDの一部にも使います。',
     type: 'options',
@@ -588,7 +732,7 @@ const questions = [
   },
   {
     key: 'target',
-    label: 'STEP 4 / 12 ─ 届けたい人',
+    label: 'STEP 3 / 12 ─ 届けたい人',
     text: '"誰の"力になりたい?',
     sub: '年代・属性・状況を1〜2語で。',
     type: 'text',
@@ -598,7 +742,7 @@ const questions = [
   },
   {
     key: 'pain',
-    label: 'STEP 5 / 12 ─ 悩み',
+    label: 'STEP 4 / 12 ─ 悩み',
     text: 'その人の悩みは?',
     sub: '1行目の"フック"の材料になります。',
     type: 'text',
@@ -608,7 +752,7 @@ const questions = [
   },
   {
     key: 'numbers',
-    label: 'STEP 6 / 12 ─ あなたの数字',
+    label: 'STEP 5 / 12 ─ あなたの数字',
     text: 'プロフィールに入れる「数字」を教えてください',
     sub: '伸びているアカウントの共通点は「数字の多さ」。わかる範囲でOK。',
     type: 'composite',
@@ -623,19 +767,19 @@ const questions = [
   },
   {
     key: 'kids',
-    label: 'STEP 7 / 12 ─ 属性',
+    label: 'STEP 6 / 12 ─ 属性',
     text: 'お子さん・職業・資格はありますか?',
     sub: 'ママ層の共感装置として効きます。なければ空欄でOK。',
     type: 'composite',
     fields: [
-      { name: 'kids', label: 'お子さん(あれば)', placeholder: '例:2児ママ(3・0歳) / 7&4歳ママ', type: 'text', optional: true, maxLength: 16 },
+      { name: 'kids', label: 'お子さん(いらっしゃれば)', placeholder: '例:2児ママ(3・0歳) / 5歳と7歳', type: 'text', optional: true, maxLength: 16 },
       { name: 'authority', label: '資格・職業(あれば)', placeholder: '例:ピラティス資格 / 元看護師 / 理学療法士', type: 'text', optional: true, maxLength: 18 }
     ],
-    hint: '「<strong>○児ママ + 資格</strong>」の組み合わせは権威性と親近感を両立させる最強パターン。'
+    hint: '「<strong>○児ママ + 資格</strong>」の組み合わせが最強。年齢のみ(例:5歳と7歳)でもそのまま使えます。'
   },
   {
     key: 'deep',
-    label: 'STEP 8 / 12 ─ あなたの本音',
+    label: 'STEP 7 / 12 ─ あなたの本音',
     text: 'あなたを"衝撃的にする"言葉を引き出します',
     sub: '名前欄の最強フックを作るために、本音を聞かせてください。空欄でもOKですが、ここが命です。',
     type: 'composite',
@@ -647,6 +791,18 @@ const questions = [
     hint: '<strong>恥ずかしいくらいで丁度いいです。</strong>「夫を沼らせたい35歳妻」「相撲取りに間違えられた35歳」など、本音を晒した名前ほど一発でフォローされます。'
   },
   {
+    key: 'memory',
+    label: 'STEP 8 / 12 ─ 変化の記憶',
+    text: 'あなたの"リアルな物語"を教えてください',
+    sub: 'フォロワーが「この人だ」と感じる瞬間は、数字より感情のリアルさです。空欄でもOK。',
+    type: 'composite',
+    fields: [
+      { name: 'worstMoment', label: '一番辛かった瞬間はいつ?(Q3)', placeholder: '例:子供に「ママ太い」と言われた夜 / 結婚式の写真を見て泣いた / 健康診断で再検査と言われた日', type: 'text', optional: true, maxLength: 30 },
+      { name: 'firstWin', label: '変化を初めて実感した瞬間(Q6)', placeholder: '例:ズボンのボタンが閉まった / 夫が二度見した / 階段で息切れしなくなった', type: 'text', optional: true, maxLength: 30 }
+    ],
+    hint: '<strong>小さな瞬間でOK。</strong>「階段で息切れしなくなった」くらいの日常のリアルが、1万フォロワーより共感を呼びます。'
+  },
+  {
     key: 'unique',
     label: 'STEP 9 / 12 ─ あなたの独自性',
     text: '伸びてるアカウントは"独自の言葉"を持っています',
@@ -655,20 +811,21 @@ const questions = [
     fields: [
       { name: 'style', label: 'あなたのスタイルを1語で(形容詞・パワーワード)', placeholder: '例:本気 / 最短 / 賢い / 365日 / 99%再現 / 食べて痩せる', type: 'text', optional: true, maxLength: 10 },
       { name: 'bigClaim', label: '大胆な約束/独自の動詞表現', placeholder: '例:夫を沼らせる / 鏡が変わる体に / 食欲を味方にする / 別人級ビフォアフ量産', type: 'text', optional: true, maxLength: 18 },
-      { name: 'nicheLabel', label: 'あなただけの独自肩書(造語OK)', placeholder: '例:体型革命コーチ / 痩せマインド先生 / 美人習慣デザイナー / 食欲リセット専門家', type: 'text', optional: true, maxLength: 18 }
+      { name: 'nicheLabel', label: 'あなただけの独自肩書(造語OK)', placeholder: '例:体型革命コーチ / 痩せマインド先生 / 美人習慣デザイナー / 食欲リセット専門家', type: 'text', optional: true, maxLength: 18 },
+      { name: 'enemy', label: 'ダイエットの天敵は何?(Q34)', placeholder: '例:夜中の甘いもの / 週末の外食 / 自分へのご褒美グセ / スマホ見ながら食べ', type: 'text', optional: true, maxLength: 20 }
     ],
     hint: '<strong>"言葉を自分で作る"のが伸びる秘訣。</strong>既存の肩書ではなく、あなただけの造語を考えてみてください。'
   },
   {
     key: 'values',
-    label: 'STEP 10 / 12 ─ 提供価値',
-    text: '発信したい・提供したいテーマ3つ',
+    label: 'STEP 10 / 12 ─ 発信テーマ',
+    text: 'あなたが伝えたいこと・得意なこと 3つ',
     sub: '1つずつ、15文字以内で短く。プロフィール本文の箇条書きになります。',
     type: 'composite',
     fields: [
-      { name: 'value1', label: '価値① 主軸(提供価値)', placeholder: '例:無理なく続くダイエット', type: 'text', maxLength: 15 },
-      { name: 'value2', label: '価値② サブ(Before/Afterや想い)', placeholder: '例:心と体を整える習慣', type: 'text', maxLength: 15 },
-      { name: 'value3', label: '価値③ ビジョン(届けたい未来)', placeholder: '例:自信を取り戻す女性へ', type: 'text', maxLength: 15 }
+      { name: 'value1', label: 'テーマ① メイン(一番伝えたいこと)', placeholder: '例:無理なく続くダイエット', type: 'text', maxLength: 15 },
+      { name: 'value2', label: 'テーマ② サブ(あなたならではの切り口)', placeholder: '例:心と体を整える習慣', type: 'text', maxLength: 15 },
+      { name: 'value3', label: 'テーマ③ ビジョン(届けたい未来・変化)', placeholder: '例:自信を取り戻す女性へ', type: 'text', maxLength: 15 }
     ],
     hint: '各15文字以内に。<strong>短いほど読まれます</strong>。'
   },
@@ -700,15 +857,22 @@ const questions = [
 // 状態
 // =====================================================================
 let currentStep = 0;
-let answers = { numbers: {}, basic: {}, kids: {}, values: {}, symbol: '▶' };
+let answers = { numbers: {}, basic: {}, kids: {}, values: {}, memory: {}, symbol: '▶' };
 let currentAB = 'A';
 let generatedProfiles = { A: '', B: '' };
 let generatedNames = { A: '', B: '' };
+let appMode = 'detail';
+const simpleQuestionKeys = ['basic','genre','kids','deep','memory','unique','values','symbol','cta'];
+let currentQuestions = questions;
 
 // =====================================================================
 // 開始
 // =====================================================================
-function startApp() {
+function startApp(mode) {
+  appMode = mode || 'detail';
+  currentQuestions = appMode === 'simple'
+    ? questions.filter(q => simpleQuestionKeys.includes(q.key))
+    : questions;
   document.getElementById('screen-welcome').classList.add('hidden');
   document.getElementById('screen-question').classList.remove('hidden');
   document.getElementById('progress').classList.remove('hidden');
@@ -721,14 +885,15 @@ function startApp() {
 // 質問描画
 // =====================================================================
 function renderQuestion() {
-  const q = questions[currentStep];
-  document.getElementById('stepLabel').textContent = q.label;
+  const q = currentQuestions[currentStep];
+  const stepTitle = q.label.replace(/STEP \d+ \/ \d+/, `STEP ${currentStep+1} / ${currentQuestions.length}`);
+  document.getElementById('stepLabel').textContent = stepTitle;
   document.getElementById('qText').textContent = q.text;
   document.getElementById('qSub').textContent = q.sub || '';
 
-  const pct = (currentStep / questions.length) * 100;
+  const pct = (currentStep / currentQuestions.length) * 100;
   document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressText').textContent = `STEP ${currentStep+1} / ${questions.length}`;
+  document.getElementById('progressText').textContent = `STEP ${currentStep+1} / ${currentQuestions.length}`;
 
   const inputArea = document.getElementById('qInput');
   inputArea.innerHTML = '';
@@ -853,7 +1018,7 @@ function renderQuestion() {
 // 進む・戻る
 // =====================================================================
 function goNext() {
-  const q = questions[currentStep];
+  const q = currentQuestions[currentStep];
 
   // 必須チェック(composite と text)
   if (q.type === 'text') {
@@ -869,7 +1034,7 @@ function goNext() {
   }
 
   currentStep++;
-  if (currentStep >= questions.length) {
+  if (currentStep >= currentQuestions.length) {
     showLoading();
   } else {
     renderQuestion();
@@ -973,35 +1138,97 @@ function simplifyPain(pain) {
 }
 
 // --- 1行目用「悩みのキーワード」を抽出(短く・名詞形に揃える)
-// 長い悩み文を1〜2語のキャッチーなフックワードに変換する
+// 長い悩み文(動詞文含む)を1〜2語のキャッチーな名詞フックに変換する
 const PAIN_KEYWORDS = [
+  // ▼ 食事・甘いもの・食欲系
   { match: /甘いもの|スイーツ|お菓子|チョコ|ケーキ/, kw: '甘いもの' },
-  { match: /食べ過ぎ|食欲|過食|間食|ドカ食い/, kw: '食欲' },
-  { match: /続かない|三日坊主|挫折|諦め/, kw: '続かない自分' },
-  { match: /痩せない|やせない|落ちない|変わらない/, kw: 'どうせ痩せない' },
-  { match: /リバウンド|戻っ/, kw: 'リバウンド' },
-  { match: /自己否定|自己嫌悪|嫌い/, kw: '自己否定' },
+  { match: /夜中.*食べ|夜食|寝る前.*食/, kw: '夜中の過食' },
+  { match: /寂し.*食|ストレス.*食|食.*やめられ/, kw: 'ストレス食い' },
+  { match: /食べ過ぎ|過食|間食|ドカ食い|食欲.*止まら/, kw: '食欲が止まらない悩み' },
+  { match: /食欲/, kw: '食欲コントロール' },
+
+  // ▼ 続かない・挫折・リバウンド系
+  { match: /続かない|三日坊主|挫折|諦め|やめてしまう/, kw: '続かない自分' },
+  { match: /リバウンド|また太/, kw: 'リバウンド' },
+
+  // ▼ 痩せない系
+  { match: /何やっても|何しても|どうしても痩せ/, kw: '何やっても痩せない' },
+  { match: /痩せない|やせない|落ちない|変わらない|減らない|停滞/, kw: 'どうせ痩せない' },
+
+  // ▼ メンタル・自己否定系
+  { match: /自己否定|自己嫌悪|自分.*嫌|嫌い/, kw: '自己否定' },
+  { match: /自信.*ない|自信が|自信を失/, kw: '自信のなさ' },
+  { match: /人生.*何|人生.*迷|自分.*わからない|自分.*迷子/, kw: '自分迷子' },
+  { match: /私の役目|役割|存在意義/, kw: '存在意義の迷子' },
   { match: /我慢|ストレス/, kw: '我慢ダイエット' },
-  { match: /運動.*嫌|運動嫌|運動苦手/, kw: '運動嫌い' },
   { match: /モチベ|やる気/, kw: 'モチベ依存' },
+
+  // ▼ 運動・忙しさ
+  { match: /運動.*嫌|運動嫌|運動苦手/, kw: '運動嫌い' },
   { match: /忙し|時間がない|時間ない/, kw: '時間がない毎日' },
-  { match: /一人|孤独|ひとり/, kw: '一人ダイエット' },
-  { match: /夫|旦那|パートナー/, kw: '夫婦のすれ違い' },
+
+  // ▼ 一人・孤独・寂しさ
+  { match: /寂し|孤独|ひとり/, kw: '寂しさからの過食' },
+  { match: /一人/, kw: '一人ダイエット' },
+
+  // ▼ 夫婦・関係系
+  { match: /夫.*冷め|女として.*見.*ない|妻として.*見.*ない|冷め.*言われ/, kw: '夫に冷められた悩み' },
+  { match: /離婚|別れ|別居/, kw: '離婚危機' },
+  { match: /逆プロ|愛され.*ない|愛されたい/, kw: '愛されたい願望' },
+  { match: /単身赴任|夫.*遠|夫.*帰/, kw: '単身赴任妻の孤独' },
+  { match: /夫|旦那|パートナー|妻として/, kw: '夫婦のすれ違い' },
+
+  // ▼ ママ・子育て系
   { match: /産後|出産後|妊娠/, kw: '産後太り' },
-  { match: /更年期|アラフォー|40代/, kw: '年齢のせい' },
-  { match: /子供.*太|ママ太|子に言われ/, kw: '「ママ太い」と言われた過去' },
-  { match: /婚活|アプリ|ブロック|モテ/, kw: '婚活で選ばれない自分' },
-  { match: /同窓会|友達|見返/, kw: '同窓会で見返したい' }
+  { match: /育児.*疲|育児.*太|育児.*後回し/, kw: '育児疲れで自分後回し' },
+  { match: /子離|子供.*独立|子.*巣立/, kw: '子離れロス' },
+  { match: /ママ太|子.*太い.*言われ/, kw: '「ママ太い」と言われた過去' },
+
+  // ▼ 年齢・老化系
+  { match: /更年期|アラフィフ|50代/, kw: '更年期太り' },
+  { match: /アラフォー|40代/, kw: '40代の体型崩れ' },
+  { match: /老け|老化|シワ|たるみ|急に.*老/, kw: '老化への焦り' },
+  { match: /おばあちゃん|年寄り|お婆|歳に見られ/, kw: '老けて見られる悩み' },
+  { match: /娘.*綺麗|娘.*若|娘に.*負け/, kw: '娘に負けたくない悩み' },
+
+  // ▼ 服・サイズ・体型
+  { match: /服.*入らない|服.*きつ|サイズ.*合わない|入らなくな/, kw: '服が入らない現実' },
+  { match: /電車.*席|席.*譲ら|デブ|肥満/, kw: '体型コンプレックス' },
+  { match: /鏡.*見|鏡.*嫌|姿.*ショック/, kw: '鏡を見るのが嫌' },
+
+  // ▼ 婚活・モテ系
+  { match: /婚活|マッチング|アプリ|ブロック|モテない|タイプじゃない/, kw: '婚活で選ばれない自分' },
+  { match: /同窓会|友達.*会|見返/, kw: '同窓会で見返したい' },
+
+  // ▼ お金・経済・キャリア系
+  { match: /お金.*不安|経済.*不安|将来.*不安|稼げない|貯金/, kw: '将来のお金の不安' },
+  { match: /パート|主婦.*稼|副業|在宅.*稼/, kw: '在宅で稼ぎたい願望' },
+  { match: /退職|定年|もう何もしなくて/, kw: '退職後の役目喪失' },
+
+  // ▼ 後回し・自分のこと
+  { match: /自分.*後回し|自分のこと|自分のため.*できない/, kw: '自分のこと後回し' }
 ];
 function extractPainKeyword(pain) {
   if (!pain) return '';
   for (const r of PAIN_KEYWORDS) {
     if (r.match && r.match.test(pain)) return r.kw;
   }
-  // ルールに当たらなければ「核」を自然な位置で切り出し、末尾助詞を除去
-  let kw = trimAtNaturalBoundary(simplifyPain(pain), 8);
-  kw = kw.replace(/(を|で|に|が|は|と|へ|から|まで|より|の|や)+$/g, '');
-  return kw;
+  // ルール未マッチ:テーマ判定で「絶対におかしくならない汎用ワード」を返す
+  return safeGenericPainKw(pain);
+}
+
+// 入力テキストのテーマを判定し、必ず自然な名詞フレーズを返す
+// (ユーザー入力の不自然な切り出しを発生させないための最終防衛線)
+function safeGenericPainKw(pain) {
+  if (/体型|太|痩せ|kg|体重|サイズ|服/.test(pain)) return '体型コンプレックス';
+  if (/夫|妻|夫婦|パートナー|彼|恋人|旦那/.test(pain)) return '夫婦関係の悩み';
+  if (/子|ママ|育児|出産|産後/.test(pain)) return '子育て中の自分後回し';
+  if (/お金|経済|稼|貯|将来.*不安|キャリア|仕事/.test(pain)) return '将来のお金の不安';
+  if (/年齢|老|歳|更年期|アラ/.test(pain)) return '年齢のせい';
+  if (/自信|自己|メンタル|心|不安|モヤ/.test(pain)) return '自信のなさ';
+  if (/婚活|モテ|アプリ|マッチング/.test(pain)) return '選ばれない悩み';
+  if (/食|甘い|お菓子|間食/.test(pain)) return '食欲コントロール';
+  return '人生のモヤモヤ';
 }
 
 // --- 売れる言い回しに変換するルール辞書(必ず数字 or キャッチーワードを入れる)
@@ -1039,39 +1266,106 @@ const POWER_RULES = [
 // 入力テキストを"売れる"コピーに変換(必ず加工する)
 function powerUp(text) {
   if (!text) return '';
-  // 入力にすでに数字が入っている場合は、辞書で上書きせず数字を保持する
   const hasUserNumber = /\d|[一二三四五六七八九十百千万億]/.test(text);
-  if (hasUserNumber) {
-    return wrapAsStory(text);
-  }
+  if (hasUserNumber) return wrapAsStory(text);
   for (const rule of POWER_RULES) {
     if (rule.match.test(text)) {
-      const idx = text.length % rule.out.length;
-      return rule.out[idx];
+      return rule.out[text.length % rule.out.length];
     }
   }
   return wrapAsStory(text);
 }
 
+// 使用済み語尾パターンを避けてpowerUp(連続重複防止用)
+function powerUpAvoid(text, usedEndings) {
+  if (!text) return '';
+  const hasUserNumber = /\d|[一二三四五六七八九十百千万億]/.test(text);
+  if (!hasUserNumber) {
+    for (const rule of POWER_RULES) {
+      if (rule.match.test(text)) {
+        const fresh = rule.out.filter(s => !usedEndings.some(u => s.endsWith(u)));
+        const pool = fresh.length > 0 ? fresh : rule.out;
+        return pool[text.length % pool.length];
+      }
+    }
+  }
+  return wrapAsStoryAvoid(text, usedEndings);
+}
+
+// wrapAsStory の重複回避版
+function wrapAsStoryAvoid(text, usedEndings) {
+  if (!text) return '';
+  let trimmed = trimAtNaturalBoundary(text, 15);
+  if (visualLen(trimmed) < 5) trimmed = truncate(text, 15);
+  // 末尾が助詞・中断サインなら取り除く(「〜へを実践中」等の不自然さ防止)
+  trimmed = trimmed.replace(/[をへにでがはと]$/, '');
+  // 末尾が小書き仮名で終わっていたら切り落とす(ダイエッ→ダイエ防止)
+  trimmed = trimmed.replace(/[ッっゃゅょぁぃぅぇぉァィゥェォャュョ]$/, '');
+  if (!trimmed) return '';
+  const endsWithVerb = /[るうくすつぬむゆえいきしちにみり]$/.test(trimmed);
+  const endsWithNeg = /ない$/.test(trimmed);
+  const wrappers = endsWithVerb || endsWithNeg ? [
+    `${trimmed}5ステップ`,
+    `${trimmed}コツを毎日発信`,
+    `${trimmed}リアル公開中`,
+    `${trimmed}秘訣を伝授`,
+    `${trimmed}人続出`
+  ] : [
+    `${trimmed}を毎日発信`,
+    `${trimmed}を実践中`,
+    `話題の${trimmed}`,
+    `${trimmed}徹底解説`,
+    `${trimmed}のリアル`
+  ];
+  const fresh = wrappers.filter(w => !usedEndings.some(u => w.endsWith(u)));
+  const pool = fresh.length > 0 ? fresh : wrappers;
+  return pool[text.length % pool.length];
+}
+
+// 末尾の語尾パターンを抽出(重複チェック用)
+function extractEnding(s) {
+  if (!s) return '';
+  const patterns = ['コツを毎日発信', 'を毎日発信', 'リアル公開中', 'のリアル', '秘訣を伝授', '5ステップ', '徹底解説', 'を実践中', '人続出'];
+  for (const p of patterns) { if (s.endsWith(p)) return p; }
+  return s.slice(-4);
+}
+
+// 「成人N人」→「子供N人(独立済)」など意味が伝わる表現に変換
+function normalizeKids(str) {
+  if (!str) return str;
+  str = str.replace(/^成人(\d+)人$/, '子供$1人(独立済)').replace(/^成人(一|二|三|四|五|六)人$/, '子供$1人(独立済)');
+  // 年齢のみ入力(「5歳と7歳」「3歳・1歳」など)→「〇〇のママ」に変換
+  if (/\d+歳/.test(str) && !/ママ|パパ|児|子供|子ども/.test(str)) {
+    str = str + 'のママ';
+  }
+  return str;
+}
+
 // 数字・期間を組み込んでストーリー化(POWER_RULES に当たらなかった入力用)
 function wrapAsStory(text) {
   if (!text) return '';
-  // 13全角以内ならそのまま、長ければ自然な区切りで切る
-  const trimmed = trimAtNaturalBoundary(text, 13);
-  // 入力の語尾を見て、自然な語尾につながるラッパーを選ぶ
+  // 15全角まで許容(短文は丸ごと通す)
+  let trimmed = trimAtNaturalBoundary(text, 15);
+  if (visualLen(trimmed) < 5) trimmed = truncate(text, 15);
+  // 末尾の助詞・小書き仮名を取り除く
+  trimmed = trimmed.replace(/[をへにでがはと]$/, '').replace(/[ッっゃゅょぁぃぅぇぉァィゥェォャュョ]$/, '');
+  if (!trimmed) return '';
+  // 語尾を判定して、必ず意味が一意に通る自然な日本語に整える
+  // 「3ヶ月で○○メソッド」のような期間が曖昧にかかる構造は廃止
   const endsWithVerb = /[るうくすつぬむゆえいきしちにみり]$/.test(trimmed);
-  const wrappers = endsWithVerb ? [
-    `${trimmed}5ステップ`,
-    `${trimmed}メソッド公開中`,
-    `${trimmed}人続出の秘訣`,
-    `1日10分で${trimmed}習慣`,
-    `90日で${trimmed}リアル`
+  const endsWithNeg = /ない$/.test(trimmed);
+  const wrappers = endsWithVerb || endsWithNeg ? [
+    `${trimmed}5ステップ`,           // 動詞+5ステップ:OK「○○する5ステップ」
+    `${trimmed}コツを毎日発信`,        // 動詞+コツを発信:OK
+    `${trimmed}リアル公開中`,          // 動詞+リアル公開中:OK
+    `${trimmed}秘訣を伝授`,           // 動詞+秘訣を伝授:OK
+    `${trimmed}人続出`               // 動詞+人続出:OK「○○する人続出」
   ] : [
-    `90日で${trimmed}を実現`,
-    `3ヶ月で${trimmed}メソッド`,
-    `${trimmed}5ステップ`,
-    `${trimmed}リアル公開`,
-    `1日10分の${trimmed}習慣`
+    `${trimmed}を毎日発信`,           // 名詞+を発信:OK
+    `${trimmed}を実践中`,             // 名詞+を実践中:OK
+    `話題の${trimmed}`,              // 話題の+名詞:OK
+    `${trimmed}徹底解説`,             // 名詞+徹底解説:OK
+    `${trimmed}のリアル`              // 名詞+のリアル:OK
   ];
   return wrappers[text.length % wrappers.length];
 }
@@ -1101,7 +1395,9 @@ function trimAtNaturalBoundary(text, maxFullWidth) {
       pos++;
     }
   }
-  if (best && visualLen(best) >= maxFullWidth * 0.6) return best; // 短すぎる切り出しは却下
+  // best が見つかれば優先的に使う(途中切れより自然な区切りを優先)
+  // 短すぎる場合(全角3文字未満)のみ却下
+  if (best && visualLen(best) >= 3) return best;
   return truncate(text, maxFullWidth);
 }
 
@@ -1128,8 +1424,16 @@ function storifyAttribute(text) {
 // =====================================================================
 // 役割推定(妻/ママ/OL/主婦/起業家など)
 // =====================================================================
+// 期間に「で」を付けるべきか判定。「6ヶ月」「1年」など数字含むなら付ける、
+// 「進行中」「現在」など数字なしは「で」を省略してそのまま使う
+function periodPrefix(period) {
+  if (!period) return '';
+  return /\d|[一二三四五六七八九十百]/.test(period) ? `${period}で` : '';
+}
+
 function inferRole(target) {
   if (!target) return '';
+  if (/シングルマザ|シンママ/.test(target)) return 'シンママ';
   if (/起業|社長|代表|経営/.test(target)) return '起業家';
   if (/専業主婦/.test(target)) return '専業主婦';
   if (/妻|夫|旦那|既婚/.test(target)) return '妻';
@@ -1175,7 +1479,9 @@ function buildHookCandidates(version) {
     // ★ パターン1:屈辱フリップ ── 相撲取りに間違えられた35歳
     if (hum && age) add(`${hum}${ageStr}`, '屈辱フリップ');
     if (hum && role) add(`${hum}${role}`, '屈辱フリップ+役割');
-    if (hum) add(`${hum}卒業中`, '屈辱からの脱出');
+    // 「○○卒業中」は動詞末尾だと不自然(例:「会えない卒業中」)
+    // 代わりに「」で囲んで決別表現に変える(どんな入力でも自然)
+    if (hum) add(`「${hum}」と決別`, '屈辱と決別');
     // ★ パターン2:ギャップ ── 元100kgの35歳ママ
     if (gap && age && role) add(`${gap}の${ageStr}${role}`, 'ギャップ');
     if (gap && role) add(`${gap}の${role}`, 'ギャップ');
@@ -1213,18 +1519,18 @@ function buildHookCandidates(version) {
   if (version === 'A') {
     if (beforeKg && afterKg) {
       const diff = beforeKg - afterKg;
-      if (diff !== 0) add(`${period ? period + 'で' : ''}${diff > 0 ? '-' : '+'}${Math.abs(diff)}kg✨`, '数字フック');
+      if (diff !== 0) add(`${periodPrefix(period)}${diff > 0 ? '-' : '+'}${Math.abs(diff)}kg✨`, '数字フック');
     }
-    if (period && painKw) add(`${period}で「${painKw}」卒業`, '悩み卒業');
-    if (painKw) add(`「${painKw}」卒業✨`, '悩み卒業');
+    if (period && painKw) add(`${periodPrefix(period)}「${painKw}」を卒業`, '悩み卒業');
+    if (painKw) add(`「${painKw}」を卒業しました`, '悩み卒業');
   } else {
     if (period && beforeKg && afterKg) {
       const diff = beforeKg - afterKg;
-      add(`${period}で${diff > 0 ? '-' : '+'}${Math.abs(diff)}kg挑戦🔥`, '数字挑戦');
+      add(`${periodPrefix(period)}${diff > 0 ? '-' : '+'}${Math.abs(diff)}kg挑戦🔥`, '数字挑戦');
     }
     if (achievement) add(truncate(achievement, 14), '実績');
     if (beforeKg && afterKg) add(`${beforeKg}→${afterKg}kg挑戦中`, '数字フック');
-    if (period) add(`${period}で結果を出す🔥`, '期限宣言');
+    if (period) add(`${periodPrefix(period) || period}結果を出す🔥`, '期限宣言');
     if (gap && role) add(`${gap}→現${role}`, 'ギャップ→現在');
   }
 
@@ -1272,33 +1578,67 @@ function assembleName(version, sepOverride) {
 // プロフィール本文生成(売れる加工エンジン込み)
 // =====================================================================
 function buildProfile(version) {
-  const { basic, numbers, kids, values, symbol, target, pain, cta } = answers;
+  const { basic, numbers, kids, values, symbol, target, pain, deep, cta } = answers;
   const sym = symbol || '▶';
   const { primary } = parseTarget(target);
   const lines = [];
 
   // ============= 1行目(囲み記号フック) =============
-  // 全角22文字以内に必ず収める。長くなる組合せは捨てる。
+  // モバイル1行確実フィット:全角20文字以内に必ず収める
+  // 優先順位:野望(なりたい姿)>>>悩み卒業>属性世代
   const inferredRole = inferRole(target);
-  if (version === 'A') {
-    const painKw = extractPainKeyword(pain); // 1〜2語のキャッチーな名詞に変換
-    const tgt = inferredRole || trimAtNaturalBoundary(primary, 6);
-    const painEndsWithVerb = /[るうくすつぬむゆえいきしちにみり]$/.test(painKw);
-    const candidates = [];
-    if (tgt && painKw) {
-      if (painEndsWithVerb) {
-        candidates.push(`\\${painKw}までの${tgt}日記/`);
-        candidates.push(`\\${painKw}と決意した${tgt}/`);
-        candidates.push(`\\${painKw}までの記録/`);
-      } else {
-        candidates.push(`\\${painKw}を卒業したい${tgt}へ/`);
-        candidates.push(`\\${painKw}と決別する${tgt}/`);
+  const amb = (deep?.ambition || '').trim();
+  // ambitionを最大18全角まで許容 + 末尾の助詞を除去 + 小書き仮名の手前で切れた時のリカバリ
+  let ambShort = '';
+  if (amb) {
+    ambShort = trimAtNaturalBoundary(amb, 18);
+    // 元のテキストで「次の文字」が小書き仮名なら、切れた拗音をきれいに処理
+    // 例: 「おばあちゃん」を「おばあち」で切ると「ちゃ」が割れる → "おばあち" の末尾"ち"を削る
+    if (ambShort.length < amb.length) {
+      const nextChar = amb.charAt(ambShort.length);
+      if (/[ゃゅょぁぃぅぇぉっ]/.test(nextChar)) {
+        ambShort = ambShort.slice(0, -1); // 拗音前の文字も削除
       }
     }
-    if (painKw) candidates.push(painEndsWithVerb ? `\\${painKw}までの本気記録/` : `\\${painKw}を抜け出すリアル/`);
-    if (tgt) candidates.push(`\\${tgt}の本気ダイエット/`);
+    ambShort = ambShort.replace(/(を|で|に|が|は|と|へ|から|まで|より|や)$/, '');
+    if (visualLen(ambShort) < 5) ambShort = '';
+  }
+  const MAX_LINE1 = 20;
+
+  // 名前は ambition(野望)主役なので、1行目では bigClaim(提供価値)主役にして役割分担
+  const bigClaim = (answers.unique?.bigClaim || '').trim();
+  let bigShort = '';
+  if (bigClaim) {
+    bigShort = trimAtNaturalBoundary(bigClaim, 18);
+    if (bigShort.length < bigClaim.length) {
+      const nextChar = bigClaim.charAt(bigShort.length);
+      if (/[ゃゅょぁぃぅぇぉっ]/.test(nextChar)) bigShort = bigShort.slice(0, -1);
+    }
+    bigShort = bigShort.replace(/(を|で|に|が|は|と|へ|から|まで|より|や)$/, '');
+    if (visualLen(bigShort) < 5) bigShort = '';
+  }
+
+  if (version === 'A') {
+    const painKw = extractPainKeyword(pain);
+    const tgt = inferredRole || trimAtNaturalBoundary(primary, 6);
+    const candidates = [];
+
+    // ★ 最優先:大胆宣言(提供価値)を1行目主役にする(名前と被らない)
+    if (bigShort) {
+      candidates.push(`\\${bigShort}/`);
+      candidates.push(`\\${bigShort}メソッド公開中/`);
+    }
+    // ★ 次優先:悩み卒業
+    if (painKw) {
+      candidates.push(`\\「${painKw}」卒業計画/`);
+      candidates.push(`\\「${painKw}」と決別する毎日/`);
+    }
+    // ★ painKw + tgt(属性ベース・最後の砦)
+    if (tgt && painKw) {
+      candidates.push(`\\「${painKw}」を卒業する${tgt}/`);
+    }
     candidates.push(`\\本気で人生を変えたい人へ/`);
-    const line1 = candidates.find(s => visualLen(s) <= 22) || truncate(candidates[0], 22);
+    const line1 = candidates.find(s => visualLen(s) <= MAX_LINE1) || truncate(candidates[0], MAX_LINE1);
     lines.push(line1);
   } else {
     const before = parseFloat(numbers?.beforeKg);
@@ -1308,22 +1648,29 @@ function buildProfile(version) {
     const candidates = [];
     if (period && before && after) {
       const diff = before - after;
-      candidates.push(`\\${period}で${diff > 0 ? '-' : '+'}${Math.abs(diff)}kg挑戦中🔥/`);
+      candidates.push(`\\${periodPrefix(period)}${diff > 0 ? '-' : '+'}${Math.abs(diff)}kg挑戦中🔥/`);
     }
+    if (bigShort) candidates.push(`\\${bigShort}/`);
     if (before && after) candidates.push(`\\${before}→${after}kgへの記録/`);
-    if (period && tgt) candidates.push(`\\${period}で結果を出す${tgt}/`);
-    if (period) candidates.push(`\\${period}で結果を出す/`);
+    if (period && tgt) candidates.push(`\\${periodPrefix(period) || period}結果を出す${tgt}/`);
+    if (period) candidates.push(`\\${periodPrefix(period) || period}結果を出す/`);
     if (tgt) candidates.push(`\\${tgt}のリアル公開中/`);
     candidates.push(`\\本気ダイエット記録/`);
-    const line1 = candidates.find(s => visualLen(s) <= 22) || truncate(candidates[0], 22);
+    const line1 = candidates.find(s => visualLen(s) <= MAX_LINE1) || truncate(candidates[0], MAX_LINE1);
     lines.push(line1);
   }
 
-  // ============= 2-4行目: 売れる加工した箇条書き =============
+  // ============= 2-4行目: 売れる加工した箇条書き(語尾重複防止+文字数制限) =============
   const v = values || {};
-  if (v.value1) lines.push(`${sym}${powerUp(v.value1)}`);
-  if (v.value2) lines.push(`${sym}${powerUp(v.value2)}`);
-  if (v.value3) lines.push(`${sym}${powerUp(v.value3)}`);
+  const MAX_BULLET = 22;
+  const usedEndings = [];
+  [v.value1, v.value2, v.value3].forEach(val => {
+    if (!val) return;
+    const processed = powerUpAvoid(val, usedEndings);
+    const limited = visualLen(processed) > MAX_BULLET ? truncate(processed, MAX_BULLET) : processed;
+    lines.push(`${sym}${limited}`);
+    usedEndings.push(extractEnding(processed));
+  });
 
   // ============= スペック行(年齢/身長/体重→目標) =============
   const specParts = [];
@@ -1338,7 +1685,7 @@ function buildProfile(version) {
 
   // ============= 属性行(子供・資格)── ストーリー化 =============
   const attrParts = [];
-  if (kids?.kids) attrParts.push(truncate(kids.kids, 12));
+  if (kids?.kids) attrParts.push(truncate(normalizeKids(kids.kids), 12));
   if (kids?.authority) attrParts.push(storifyAttribute(kids.authority));
   if (attrParts.length > 0) lines.push(attrParts.join('｜'));
 
@@ -1517,7 +1864,7 @@ function generateExplanations(version) {
     },
     {
       title: '2〜4行目(箇条書き)',
-      text: `<code>${answers.symbol || '▶'}</code> で頭を揃え、提供価値を1行ずつ短く配置。記号で目で追える設計に。`
+      text: `<code>${answers.symbol || '▶'}</code> で頭を揃え、発信テーマを1行ずつ短く配置。記号で目で追える設計に。`
     },
     {
       title: 'スペック行',
@@ -1657,10 +2004,16 @@ function copyProfile() {
 
 function restart() {
   currentStep = 0;
-  answers = { numbers: {}, basic: {}, kids: {}, values: {}, symbol: '▶' };
+  answers = { numbers: {}, basic: {}, kids: {}, values: {}, memory: {}, symbol: '▶' };
   currentAB = 'A';
-  document.getElementById('screen-result').classList.add('hidden');
-  document.getElementById('screen-welcome').classList.remove('hidden');
+  appMode = 'detail';
+  currentQuestions = questions;
+  ['screen-result','screen-question','screen-loading','progress','livePreview'].forEach(function(id){
+    var el = document.getElementById(id); if(el){ el.style.cssText=''; el.classList.add('hidden'); }
+  });
+  var w = document.getElementById('screen-welcome');
+  w.style.cssText = '';
+  w.classList.remove('hidden');
 }
 </script>
 </body>
