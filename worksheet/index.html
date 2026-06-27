@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>強み発見シート × 初期設計AI | ぬんアカデミー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root {
+  --primary: #B86A4F;
+  --primary-deep: #8E4F38;
+  --primary-light: #D89878;
+  --accent: #E8C4A8;
+  --cream: #FAF5EE;
+  --cream-deep: #F2E8DA;
+  --white: #FFFFFF;
+  --text: #3D2818;
+  --text-mid: #6B4E3D;
+  --text-mute: #A08775;
+  --line: #E5D5C3;
+  --navy: #1A2B4A;
+  --gold: #B8860B;
+  --pink: #D4537E;
+  --success: #2D7A4F;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;}
+.serif{font-family:'Noto Serif JP',serif;}
+.app{max-width:560px;margin:0 auto;padding:28px 18px 80px;}
+.hidden{display:none!important;}
+
+/* HEADER */
+.hdr{text-align:center;margin-bottom:24px;}
+.hdr .eyebrow{font-size:11px;letter-spacing:.3em;color:var(--primary);margin-bottom:8px;display:block;}
+.hdr h1{font-family:'Noto Serif JP',serif;font-weight:500;font-size:18px;color:var(--text);letter-spacing:.06em;}
+.hdr .rule{width:32px;height:1px;background:var(--primary);margin:14px auto;}
+.hdr .sub{font-size:11px;color:var(--text-mute);letter-spacing:.15em;}
+
+/* LOGIN */
+.login-card{background:var(--white);border-radius:16px;padding:32px 24px;text-align:center;border:1px solid var(--line);box-shadow:0 4px 20px rgba(168,102,70,.08);}
+.login-card h2{font-family:'Noto Serif JP',serif;font-size:16px;font-weight:400;color:var(--text);margin-bottom:8px;}
+.login-card p{font-size:12px;color:var(--text-mute);line-height:1.8;margin-bottom:24px;}
+.btn-google{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px;border-radius:10px;border:1.5px solid var(--primary);background:var(--white);color:var(--primary);font-size:14px;font-weight:500;cursor:pointer;transition:.2s;font-family:'Noto Sans JP',sans-serif;}
+.btn-google:hover{background:var(--cream);transform:translateY(-1px);}
+.btn-google svg{width:18px;height:18px;flex-shrink:0;}
+
+/* TOP BAR */
+.top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+.user-name{font-size:12px;color:var(--text-mute);}
+.save-status{font-size:11px;color:var(--text-mute);display:flex;align-items:center;gap:5px;}
+.save-dot{width:7px;height:7px;border-radius:50%;background:var(--success);}
+.save-dot.saving{background:var(--gold);animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{opacity:.4;}50%{opacity:1;}}
+
+/* PROGRESS */
+.progress-wrap{margin-bottom:24px;}
+.progress-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:8px;}
+.tab-btn{padding:8px 4px;font-size:10px;border:1.5px solid var(--line);border-radius:8px;background:var(--white);color:var(--text-mute);cursor:pointer;text-align:center;transition:.2s;font-family:'Noto Sans JP',sans-serif;}
+.tab-btn.active{border-color:var(--primary);color:var(--primary);background:var(--cream);font-weight:500;}
+.tab-btn.done{border-color:var(--success);color:var(--success);background:#f0f8f4;}
+
+/* PART CARD */
+.part-title{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.part-badge{display:inline-block;background:var(--navy);color:#fff;font-size:10px;padding:3px 10px;border-radius:20px;letter-spacing:.1em;}
+.part-title h2{font-family:'Noto Serif JP',serif;font-size:17px;font-weight:400;color:var(--text);}
+
+.step-header{font-size:12px;font-weight:500;color:var(--primary);letter-spacing:.1em;padding:6px 0;border-bottom:1.5px solid var(--line);margin:24px 0 14px;}
+
+/* QUESTION */
+.q-block{margin-bottom:18px;}
+.q-label{font-size:13px;color:var(--text);line-height:1.7;margin-bottom:6px;display:block;}
+.q-num{font-weight:500;color:var(--primary-deep);margin-right:4px;}
+.q-hint{display:block;font-size:11px;color:var(--text-mute);margin-top:2px;font-style:italic;}
+textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:11px 13px;font-size:13px;font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--white);resize:vertical;min-height:72px;line-height:1.7;transition:.2s;outline:none;}
+textarea:focus{border-color:var(--primary-light);background:var(--cream);}
+textarea::placeholder{color:var(--text-mute);font-size:12px;}
+
+/* CONCEPT BOX */
+.concept-box{background:var(--cream-deep);border-radius:12px;padding:16px;margin-bottom:18px;border:1px solid var(--line);}
+.concept-box p{font-size:12.5px;color:var(--text-mid);line-height:1.9;margin-bottom:10px;}
+.concept-fill{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:6px;font-size:12px;color:var(--text-mid);}
+.concept-fill input{border:1.5px solid var(--line);border-radius:8px;padding:8px 10px;font-size:12px;font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--white);outline:none;}
+.concept-fill input:focus{border-color:var(--primary-light);}
+
+/* POSITION FINAL */
+.position-box{background:var(--navy);border-radius:14px;padding:20px;color:#fff;}
+.position-box h3{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:400;color:var(--accent);margin-bottom:14px;text-align:center;}
+.position-line{font-size:13px;line-height:2;color:#e0d5c5;}
+.position-line input{background:rgba(255,255,255,.12);border:none;border-bottom:1px solid rgba(255,255,255,.4);color:#fff;font-size:13px;font-family:'Noto Sans JP',sans-serif;padding:2px 6px;outline:none;width:120px;}
+.position-line input::placeholder{color:rgba(255,255,255,.4);}
+
+/* BUTTONS */
+.btn-next{display:block;width:100%;padding:16px;border-radius:12px;background:var(--primary);color:#fff;font-size:14px;font-weight:500;border:none;cursor:pointer;margin-top:28px;font-family:'Noto Sans JP',sans-serif;letter-spacing:.08em;transition:.2s;}
+.btn-next:hover{background:var(--primary-deep);transform:translateY(-1px);}
+.btn-ai{display:block;width:100%;padding:18px;border-radius:14px;background:linear-gradient(135deg,#1A2B4A,#2D4A7A);color:#fff;font-size:15px;font-weight:500;border:none;cursor:pointer;margin-top:28px;font-family:'Noto Serif JP',sans-serif;letter-spacing:.1em;transition:.2s;}
+.btn-ai:hover{opacity:.9;transform:translateY(-1px);}
+.btn-back{font-size:12px;color:var(--text-mute);background:none;border:none;cursor:pointer;display:block;text-align:center;margin-top:12px;font-family:'Noto Sans JP',sans-serif;}
+.btn-logout{font-size:11px;color:var(--text-mute);background:none;border:none;cursor:pointer;font-family:'Noto Sans JP',sans-serif;}
+
+/* LOADING */
+.loading-wrap{text-align:center;padding:60px 0;}
+.spinner{width:36px;height:36px;border:2px solid var(--line);border-top:2px solid var(--primary);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* CHAT */
+.chat-hdr{text-align:center;margin-bottom:20px;}
+.chat-hdr .eyebrow{font-size:10px;letter-spacing:.25em;color:var(--primary);display:block;margin-bottom:6px;}
+.chat-hdr h2{font-family:'Noto Serif JP',serif;font-size:17px;font-weight:400;color:var(--text);}
+.chat-context{background:var(--cream-deep);border-radius:12px;padding:14px 16px;margin-bottom:16px;font-size:11.5px;color:var(--text-mute);line-height:1.7;}
+.chat-context strong{color:var(--text-mid);}
+.chat-messages{display:flex;flex-direction:column;gap:14px;margin-bottom:16px;min-height:200px;}
+.msg{max-width:85%;padding:12px 14px;border-radius:14px;font-size:13px;line-height:1.75;}
+.msg.ai{background:var(--white);border:1px solid var(--line);color:var(--text);align-self:flex-start;border-bottom-left-radius:4px;}
+.msg.user{background:var(--navy);color:#fff;align-self:flex-end;border-bottom-right-radius:4px;}
+.msg.typing{opacity:.6;}
+.typing-dots{display:inline-flex;gap:4px;align-items:center;padding:4px 0;}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:var(--text-mute);animation:blink 1.2s infinite;}
+.typing-dots span:nth-child(2){animation-delay:.2s;}
+.typing-dots span:nth-child(3){animation-delay:.4s;}
+@keyframes blink{0%,80%,100%{opacity:.2;}40%{opacity:1;}}
+.chat-input-row{display:flex;gap:8px;align-items:flex-end;}
+.chat-input-row textarea{min-height:48px;max-height:120px;border-radius:12px;flex:1;padding:12px;}
+.btn-send{width:44px;height:44px;border-radius:12px;background:var(--primary);color:#fff;border:none;cursor:pointer;font-size:18px;flex-shrink:0;transition:.2s;}
+.btn-send:hover{background:var(--primary-deep);}
+.btn-send:disabled{background:var(--line);cursor:not-allowed;}
+.btn-back-sheet{font-size:12px;color:var(--text-mute);background:none;border:none;cursor:pointer;font-family:'Noto Sans JP',sans-serif;display:block;text-align:center;margin-top:16px;padding:8px;}
+</style>
+</head>
+<body>
+
+<!-- ========== SCREEN: LOGIN ========== -->
+<div id="scr-login">
+<div class="app">
+  <div class="hdr">
+    <span class="eyebrow serif">NUN ACADEMY</span>
+    <h1>強み発見シート<br>× 初期設計AI</h1>
+    <div class="rule"></div>
+    <span class="sub">「この人じゃないとダメ」と選ばれるアカウントをつくる</span>
+  </div>
+  <div class="login-card">
+    <h2>ログインして始める</h2>
+    <p>Googleアカウントでログインすると<br>入力内容が自動保存され、どこからでも<br>続きから書けます。</p>
+    <button class="btn-google" onclick="loginGoogle()">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      Googleでログイン
+    </button>
+    <p style="margin-top:18px;font-size:11px;color:var(--text-mute)">ぬんアカデミーの受講生専用ツールです</p>
+  </div>
+</div>
+</div>
+
+<!-- ========== SCREEN: LOADING ========== -->
+<div id="scr-loading" class="hidden">
+<div class="app">
+  <div class="loading-wrap">
+    <div class="spinner"></div>
+    <p style="font-size:13px;color:var(--text-mute)">読み込み中...</p>
+  </div>
+</div>
+</div>
+
+<!-- ========== SCREEN: WORKSHEET ========== -->
+<div id="scr-sheet" class="hidden">
+<div class="app">
+  <div class="hdr">
+    <span class="eyebrow serif">WORKSHEET</span>
+    <h1>強み発見シート</h1>
+  </div>
+
+  <div class="top-bar">
+    <span class="user-name" id="user-name-display"></span>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="save-status"><div class="save-dot" id="save-dot"></div><span id="save-label">保存済み</span></div>
+      <button class="btn-logout" onclick="logout()">ログアウト</button>
+    </div>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-tabs">
+      <button class="tab-btn active" id="tab1" onclick="goTab(1)">PART 1<br>強みを発見</button>
+      <button class="tab-btn" id="tab2" onclick="goTab(2)">PART 2<br>差別化</button>
+      <button class="tab-btn" id="tab3" onclick="goTab(3)">PART 3<br>ポジション</button>
+      <button class="tab-btn" id="tab4" onclick="goTab(4)">AI相談</button>
+    </div>
+  </div>
+
+  <!-- PART 1 -->
+  <div id="part1">
+    <div class="part-title">
+      <span class="part-badge">PART 1</span>
+      <h2 class="serif">あなたの「強み」を発見する</h2>
+    </div>
+
+    <div class="step-header">STEP 1　「得意」を深掘りする</div>
+    <p style="font-size:11.5px;color:var(--text-mute);margin-bottom:16px;line-height:1.8">「大したことじゃない」と思うことほど、実は強みです。素直に答えてください。</p>
+
+    <div class="q-block"><label class="q-label"><span class="q-num">Q1.</span>何となく人よりうまくできてしまうことは何ですか？</label><textarea id="q1" placeholder="例：人の話を聞いて本質を整理すること" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label"><span class="q-num">Q2.</span>自分では当たり前だと思っているけど、人から驚かれることは何ですか？</label><textarea id="q2" placeholder="" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label"><span class="q-num">Q3.</span>人のどんな状態を見ると「放っておけない」と感じますか？</label><textarea id="q3" placeholder="" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label"><span class="q-num">Q4.</span>無意識にイラッとしてしまう人の特徴は何ですか？<span class="q-hint">→ 逆に自分の価値観のヒントになります</span></label><textarea id="q4" placeholder="" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label"><span class="q-num">Q5.</span>人に何かを伝えるとき、つい熱が入ってしまうテーマは何ですか？</label><textarea id="q5" placeholder="" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label"><span class="q-num">Q6.</span>「なんでみんなそれで悩むの？」と感じたことは何ですか？</label><textarea id="q6" placeholder="" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label"><span class="q-num">Q7.</span>自分が「これだけは譲れない」と思う価値観は何ですか？</label><textarea id="q7" placeholder="" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label"><span class="q-num">Q8.</span>周りの人に「こうなってほしい」と思う理想は何ですか？</label><textarea id="q8" placeholder="" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label"><span class="q-num">Q9.</span>「これをやっている自分が一番好き」と思える瞬間はどんな時ですか？</label><textarea id="q9" placeholder="" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label"><span class="q-num">Q10.</span>あなたの存在が、誰のどんな未来を変えられると思いますか？</label><textarea id="q10" placeholder="" oninput="triggerSave()"></textarea></div>
+
+    <div class="step-header">STEP 2　「経験・ストーリー」から強みを見つける</div>
+
+    <div class="q-block"><label class="q-label"><span class="q-num">Q11.</span>過去の自分が一番苦しかった時、何に悩んでいましたか？</label><textarea id="q11" placeholder="" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label"><span class="q-num">Q12.</span>そのとき本当は、誰に何を言ってほしかったですか？</label><textarea id="q12" placeholder="" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label"><span class="q-num">Q13.</span>今の自分が、当時の自分にかけてあげられる言葉は何ですか？</label><textarea id="q13" placeholder="" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label"><span class="q-num">Q14.</span>「これが今の自分を作った」と思えるターニングポイントは何ですか？</label><textarea id="q14" placeholder="" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label"><span class="q-num">Q15.</span>その経験から得た「自分なりの答え」は何ですか？</label><textarea id="q15" placeholder="" oninput="triggerSave()"></textarea></div>
+
+    <div class="step-header">STEP 3　「他人の目」から見た自分</div>
+
+    <div class="q-block"><label class="q-label">周りからよく言われること（5つ以上）</label><textarea id="s3_1" rows="4" placeholder="例：明るい、話しやすい、行動が早い..." oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label">大切にしている価値観（5つ以上）</label><textarea id="s3_2" rows="4" placeholder="例：誠実さ、家族、自由、健康..." oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label">無意識にできていること・強み（5つ以上）</label><textarea id="s3_3" rows="4" placeholder="例：人の話を整理する、継続する、直感で動く..." oninput="triggerSave()"></textarea></div>
+
+    <button class="btn-next" onclick="goTab(2)">PART 2へ進む →</button>
+  </div>
+
+  <!-- PART 2 -->
+  <div id="part2" class="hidden">
+    <div class="part-title">
+      <span class="part-badge">PART 2</span>
+      <h2 class="serif">差別化ポイントを見つける</h2>
+    </div>
+    <p style="font-size:11.5px;color:var(--text-mute);margin-bottom:20px;line-height:1.8">ネガティブな部分こそ、唯一無二のポジションになります。正直に書いてください。</p>
+
+    <div class="q-block"><label class="q-label">▼ 環境（マイナスでもOK）<span class="q-hint">例：離婚経験・田舎暮らし・子育てしながら起業・ブラック企業出身</span></label><textarea id="d1" rows="3" placeholder="" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label">▼ 外見・体型（自信があってもなくてもOK）<span class="q-hint">例：産後20kg太った・40代でも痩せられた・元ぽっちゃり</span></label><textarea id="d2" rows="3" placeholder="" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label">▼ 人間関係・家族<span class="q-hint">例：離婚危機から夫婦関係を修復した・夫が太っている・ワンオペ育児</span></label><textarea id="d3" rows="3" placeholder="" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label">▼ 経験・スキル・仕事<span class="q-hint">例：大企業で10年勤務・資格〇個保有・副業で月〇万達成</span></label><textarea id="d4" rows="3" placeholder="" oninput="triggerSave()"></textarea></div>
+
+    <div class="concept-box">
+      <p>競合が「○○」をやっている中で、私は「○○」という切り口で発信する。を考えてみましょう。</p>
+      <div class="q-block"><label class="q-label">差別化コンセプト（1文で）</label><textarea id="concept" rows="2" placeholder="例：痩せるレシピは多いが、夫を一緒に痩せさせるレシピアカウントはまだ少ない" oninput="triggerSave()"></textarea></div>
+    </div>
+
+    <button class="btn-back" onclick="goTab(1)">← PART 1に戻る</button>
+    <button class="btn-next" onclick="goTab(3)">PART 3へ進む →</button>
+  </div>
+
+  <!-- PART 3 -->
+  <div id="part3" class="hidden">
+    <div class="part-title">
+      <span class="part-badge">PART 3</span>
+      <h2 class="serif">ポジションを確立する</h2>
+    </div>
+
+    <div class="step-header">ターゲット設定　具体的な1人をイメージして書く</div>
+
+    <div class="q-block"><label class="q-label">性別・年齢・居住地</label><textarea id="t1" rows="2" placeholder="例：女性・35歳・東京都内在住" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label">職業・年収・家族構成</label><textarea id="t2" rows="2" placeholder="例：パート勤務・年収150万・夫と子供2人" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label">日常の生活・趣味・興味関心</label><textarea id="t3" rows="3" placeholder="例：朝から夕方までパート。帰宅後は家事と育児。Instagramでレシピやダイエット情報を見るのが好き" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label">抱えている悩み（具体的に）</label><textarea id="t4" rows="4" placeholder="例：産後から体型が戻らない。夫との会話が減った。自分のために時間を使えていない気がする" oninput="triggerSave()"></textarea></div>
+
+    <div class="step-header">プロフィール名の方向性（参考）</div>
+    <div class="q-block"><label class="q-label">自分の個性を一言で言うと？</label><textarea id="p1" rows="2" placeholder="例：元ぽっちゃり・3児ママ・超ズボラ" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label">権威性・実績（資格・数字・経験）</label><textarea id="p2" rows="2" placeholder="例：1ヶ月半でマイナス5kg・ファスティング指導士・50人指導" oninput="triggerSave()"></textarea></div>
+    <div class="q-block"><label class="q-label">キャッチコピー案（思いつくまま3つ）</label><textarea id="p3" rows="3" placeholder="例：①3児ママがマイナス5kgした痩せレシピ / ②ズボラでもできる腸活 / ③夫婦で痩せる習慣" oninput="triggerSave()"></textarea></div>
+
+    <div class="step-header">ポジションまとめ（完成形）</div>
+    <div class="position-box">
+      <h3>私のポジション</h3>
+      <div class="q-block" style="margin-bottom:0"><textarea id="pos_final" rows="5" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:10px;" placeholder="私は【　　】に悩む【　　】に対して、【　　】という方法で【　　】を実現するサポートをします。私だけが提供できる強みは【　　】です。" oninput="triggerSave()"></textarea></div>
+    </div>
+
+    <button class="btn-back" onclick="goTab(2)">← PART 2に戻る</button>
+    <button class="btn-ai" onclick="goToChat()">✦ AIぬんと初期設計を相談する</button>
+    <p style="font-size:11px;color:var(--text-mute);text-align:center;margin-top:10px">シートが途中でもAI相談できます。一緒に深掘りしましょう。</p>
+  </div>
+</div>
+</div>
+
+<!-- ========== SCREEN: AI CHAT ========== -->
+<div id="scr-chat" class="hidden">
+<div class="app">
+  <div class="chat-hdr">
+    <span class="eyebrow serif">AI CONSULTATION</span>
+    <h2>AIぬんと初期設計を相談する</h2>
+  </div>
+
+  <div class="chat-context" id="chat-context-preview"></div>
+
+  <div class="chat-messages" id="chat-messages"></div>
+
+  <div class="chat-input-row">
+    <textarea id="chat-input" placeholder="メッセージを入力..." oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'" rows="1"></textarea>
+    <button class="btn-send" id="send-btn" onclick="sendMessage()">↑</button>
+  </div>
+
+  <button class="btn-back-sheet" onclick="backToSheet()">← シートに戻る</button>
+</div>
+</div>
+
+<script>
+// ========== CONFIG ==========
+// ★ Supabaseプロジェクトの設定をここに入れる（セットアップ手順を参照）
+const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// ========== STATE ==========
+let currentUser = null;
+let saveTimer = null;
+let chatHistory = [];
+const FIELD_IDS = ['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10','q11','q12','q13','q14','q15','s3_1','s3_2','s3_3','d1','d2','d3','d4','concept','t1','t2','t3','t4','p1','p2','p3','pos_final'];
+const FIELD_LABELS = {
+  q1:'人よりうまくできること',q2:'人に驚かれること',q3:'放っておけない状態',q4:'イラッとする特徴',
+  q5:'熱が入るテーマ',q6:'なぜ悩むの？と思うこと',q7:'譲れない価値観',q8:'周りにこうなってほしい理想',
+  q9:'一番好きな自分の瞬間',q10:'変えられる人の未来',q11:'一番苦しかった悩み',q12:'言ってほしかった言葉',
+  q13:'当時の自分へかける言葉',q14:'ターニングポイント',q15:'経験から得た答え',
+  s3_1:'周りから言われること',s3_2:'大切にしている価値観',s3_3:'無意識にできていること・強み',
+  d1:'環境の特徴',d2:'外見・体型',d3:'人間関係・家族',d4:'経験・スキル',
+  concept:'差別化コンセプト',t1:'ターゲットの基本情報',t2:'職業・家族構成',t3:'日常・趣味',t4:'抱えている悩み',
+  p1:'自分の個性',p2:'権威性・実績',p3:'キャッチコピー案',pos_final:'ポジションまとめ'
+};
+
+// ========== AUTH ==========
+async function loginGoogle() {
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: { redirectTo: window.location.href }
+  });
+  if (error) alert('ログインに失敗しました: ' + error.message);
+}
+
+async function logout() {
+  await supabase.auth.signOut();
+  show('scr-login');
+}
+
+// ========== INIT ==========
+async function init() {
+  show('scr-loading');
+  const { data: { session } } = await supabase.auth.getSession();
+  if (session) {
+    currentUser = session.user;
+    await loadAnswers();
+    document.getElementById('user-name-display').textContent = currentUser.email;
+    show('scr-sheet');
+    goTab(1);
+  } else {
+    show('scr-login');
+  }
+}
+
+supabase.auth.onAuthStateChange(async (event, session) => {
+  if (event === 'SIGNED_IN' && session) {
+    currentUser = session.user;
+    await loadAnswers();
+    document.getElementById('user-name-display').textContent = currentUser.email;
+    show('scr-sheet');
+    goTab(1);
+  }
+});
+
+// ========== SAVE / LOAD ==========
+function triggerSave() {
+  setSaveStatus('saving');
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveAnswers, 1000);
+}
+
+async function saveAnswers() {
+  if (!currentUser) return;
+  const answers = {};
+  FIELD_IDS.forEach(id => { answers[id] = document.getElementById(id)?.value || ''; });
+
+  const { error } = await supabase.from('worksheet_answers').upsert({
+    user_id: currentUser.id,
+    answers,
+    updated_at: new Date().toISOString()
+  }, { onConflict: 'user_id' });
+
+  setSaveStatus(error ? 'error' : 'saved');
+}
+
+async function loadAnswers() {
+  if (!currentUser) return;
+  const { data } = await supabase.from('worksheet_answers').select('answers').eq('user_id', currentUser.id).single();
+  if (data?.answers) {
+    FIELD_IDS.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && data.answers[id]) el.value = data.answers[id];
+    });
+  }
+}
+
+function setSaveStatus(state) {
+  const dot = document.getElementById('save-dot');
+  const label = document.getElementById('save-label');
+  if (state === 'saving') { dot.className = 'save-dot saving'; label.textContent = '保存中...'; }
+  else if (state === 'saved') { dot.className = 'save-dot'; dot.style.background = 'var(--success)'; label.textContent = '保存済み'; }
+  else { dot.className = 'save-dot'; dot.style.background = '#c84b2f'; label.textContent = 'エラー'; }
+}
+
+// ========== NAVIGATION ==========
+function show(id) {
+  ['scr-login','scr-loading','scr-sheet','scr-chat'].forEach(s => document.getElementById(s).classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+}
+
+function goTab(n) {
+  ['part1','part2','part3'].forEach((p, i) => {
+    document.getElementById(p).classList.toggle('hidden', i + 1 !== n);
+    const tab = document.getElementById('tab' + (i+1));
+    tab.classList.remove('active','done');
+    if (i + 1 === n) tab.classList.add('active');
+    else if (i + 1 < n) tab.classList.add('done');
+  });
+  document.getElementById('tab4').classList.remove('active');
+  document.getElementById('scr-sheet').scrollTop = 0;
+  window.scrollTo(0, 0);
+}
+
+function goToChat() {
+  const answers = {};
+  FIELD_IDS.forEach(id => { answers[id] = document.getElementById(id)?.value || ''; });
+  buildChatContext(answers);
+  chatHistory = [];
+  document.getElementById('chat-messages').innerHTML = '';
+  ['tab1','tab2','tab3'].forEach(t => { document.getElementById(t).classList.remove('active'); document.getElementById(t).classList.add('done'); });
+  document.getElementById('tab4').classList.add('active');
+  show('scr-chat');
+  addAIMessage(getWelcomeMessage(answers));
+}
+
+function backToSheet() {
+  show('scr-sheet');
+  ['tab1','tab2','tab3'].forEach(t => document.getElementById(t).classList.remove('active'));
+  document.getElementById('tab3').classList.add('active');
+  document.getElementById('tab4').classList.remove('active');
+  goTab(3);
+}
+
+// ========== CHAT CONTEXT ==========
+function buildChatContext(answers) {
+  const filled = FIELD_IDS.filter(id => answers[id] && answers[id].trim());
+  const preview = filled.slice(0, 4).map(id => `<strong>${FIELD_LABELS[id]}：</strong>${answers[id].substring(0,40)}${answers[id].length > 40 ? '...' : ''}`).join('<br>');
+  const count = filled.length;
+  document.getElementById('chat-context-preview').innerHTML =
+    `シートの回答 <strong>${count}/${FIELD_IDS.length}項目</strong> を読み込みました。<br>${preview}${count > 4 ? `<br>...他${count - 4}項目` : ''}`;
+}
+
+function getWelcomeMessage(answers) {
+  const name = currentUser?.email?.split('@')[0] || '';
+  const hasConcept = answers.concept?.trim();
+  const hasExperience = answers.q11?.trim();
+  let msg = 'こんにちは！シートの内容を読み込みました。\n\n';
+  if (hasConcept) msg += `差別化コンセプトとして「${answers.concept.substring(0, 40)}...」と書いてくれましたね。これをベースに一緒に深掘りしていきましょう！\n\n`;
+  else if (hasExperience) msg += `「${answers.q11.substring(0, 40)}...」という経験、読んでとても響きました。\n\n`;
+  msg += 'まず最初に聞かせてください。\n\n**発信の方向性として、どちらのイメージに近いですか？**\n\nA）自分自身の変化の過程を見せていく（プロセス型）\nB）自分が持っているノウハウや知識を届けていく（情報発信型）\n\nどちらでも正解はないので、今の直感で教えてください！';
+  return msg;
+}
+
+function buildSystemPrompt(answers) {
+  const answerText = FIELD_IDS
+    .filter(id => answers[id] && answers[id].trim())
+    .map(id => `【${FIELD_LABELS[id]}】\n${answers[id]}`)
+    .join('\n\n');
+
+  return `あなたはダイエットコーチ・講師養成講座主宰の「ぬん」の知識を持つInstagram初期設計AIアシスタントです。
+
+【あなたの役割】
+ユーザーが書いた「強み発見シート」の回答をもとに、どんなInstagramアカウントにするかを一緒に考えます。最終的に以下を決めることがゴールです：
+1. 発信の方向性（プロセスエコノミー型 or 情報発信型）
+2. 小ジャンル（発信の軸）
+3. 差別化コンセプト（1文）
+4. ターゲット（具体的な1人）
+5. キャラクター設定の方向性
+
+【ぬんのメソッド・知識】
+
+■ジャンル選定
+- 大ジャンルだけで発信するのは危険。必ず「大→中→小ジャンル」まで絞り込む
+- 大ジャンルが同じでも、中・小で差別化できる
+- プロセスエコノミー型：今の状態からゴールまでの過程を発信する。「応援」要素が強く出る
+- 情報発信型：自分が持っている知識・ノウハウを届ける。「憧れ」「共感」要素が出やすい
+- 2つを組み合わせることも可能
+
+■差別化の考え方
+- 「すでにいるアカウント」と「まだいないアカウント」を明確にする
+- 数字で勝負するのではなく「ベクトルを変える」「言葉の表現を変える」
+- ネガティブな経験・弱みこそが唯一無二の差別化になる
+- 例：「痩せるレシピ」は多いが「夫を一緒に痩せさせるレシピ」はまだ少ない
+
+■ファン化の3要素（アカウント設計の核）
+- 憧れ：顔がいい・センスがいい・肩書きがある・ワードセンスが抜群
+- 共感：親しみやすい・同じ悩みを持つ・笑いの壺が一緒
+- 応援：妹・弟感がある・頑張っている過程を見せている・アドバイスしたくなる
+- 3要素の割合を考えてアカウントの方向性を決める
+
+■キャラクター設定
+- キャラを1行で表現する（プロフィールには書かない・自分の軸として持つ）
+- 「やること」より「やらないこと」を先に決める（やらないことの方が多くなるのが正常）
+- キャラは口で言わず、日々の言動・行動・雰囲気で示す
+- 「明るい」「優しい」などをプロフィールに自分で書くのはNG
+
+■プロセス型の注意点
+- 最初の投稿と現在のストーリーで人格がずれると解釈の違いが起きる
+- 「憧れで売りたい」と思い始めて偉そうになると危険
+- 初期は「応援」要素を意識的に強くする
+
+■プロフィール名の考え方
+- 「名前のキャッチコピー」として機能させる
+- 個性・権威性・提供できる情報の3要素を組み合わせる
+- ネガティブな個性も使える（例：ズボラ・元ぽっちゃり・産後太り）
+- 数字で表現できる情報は入れると強い（例：-5kg・1ヶ月半・50人指導）
+
+【回答スタイル】
+- 友達に話すようなカジュアルなトーン（です・ます調でOK、でも堅くなりすぎない）
+- 結論から先に言う
+- 1回の返答は短め（スマホで読みやすく、長くても300文字以内）
+- ユーザーの言葉を受け止めてから深掘りする質問をする
+- マークダウンの**太字**を使って大事なポイントを目立たせる
+- 最終的に「コンセプト1文」まで一緒にたどり着く
+
+【ユーザーのシート回答】
+${answerText || '（まだ記入されていません。会話の中で聞きながら進めてください）'}`;
+}
+
+// ========== CHAT ==========
+function addAIMessage(text) {
+  const div = document.createElement('div');
+  div.className = 'msg ai';
+  div.innerHTML = formatMsg(text);
+  document.getElementById('chat-messages').appendChild(div);
+  div.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  chatHistory.push({ role: 'assistant', content: text });
+}
+
+function addUserMessage(text) {
+  const div = document.createElement('div');
+  div.className = 'msg user';
+  div.textContent = text;
+  document.getElementById('chat-messages').appendChild(div);
+  div.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  chatHistory.push({ role: 'user', content: text });
+}
+
+function addTyping() {
+  const div = document.createElement('div');
+  div.className = 'msg ai typing';
+  div.id = 'typing-indicator';
+  div.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+  document.getElementById('chat-messages').appendChild(div);
+  div.scrollIntoView({ behavior: 'smooth', block: 'end' });
+}
+
+function removeTyping() {
+  const el = document.getElementById('typing-indicator');
+  if (el) el.remove();
+}
+
+function formatMsg(text) {
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n/g, '<br>');
+}
+
+async function sendMessage() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text) return;
+
+  input.value = '';
+  input.style.height = 'auto';
+  addUserMessage(text);
+
+  const btn = document.getElementById('send-btn');
+  btn.disabled = true;
+  addTyping();
+
+  const answers = {};
+  FIELD_IDS.forEach(id => { answers[id] = document.getElementById(id)?.value || ''; });
+
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system: buildSystemPrompt(answers),
+        messages: chatHistory.filter(m => m.role !== 'assistant' || chatHistory.indexOf(m) > 0)
+          .map(m => ({ role: m.role, content: m.content }))
+      })
+    });
+    const data = await res.json();
+    removeTyping();
+    const reply = data?.content?.[0]?.text || 'エラーが発生しました。もう一度お試しください。';
+    addAIMessage(reply);
+  } catch (e) {
+    removeTyping();
+    addAIMessage('通信エラーが発生しました。もう一度お試しください。');
+  } finally {
+    btn.disabled = false;
+    input.focus();
+  }
+}
+
+// Enter key
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('chat-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+  });
+  init();
+});
+</script>
+</body>
+</html>
