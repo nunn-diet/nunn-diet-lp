@@ -408,52 +408,79 @@ function buildWelcome(answers) {
   return msg;
 }
 
-const DEMO_RESPONSES = [
-  (u, a) => {
-    const lower = u.toLowerCase();
-    if (lower.includes('a') || lower.includes('プロセス') || lower.includes('過程')) {
-      return 'プロセス型ですね！\n\n**プロセス型の強みは「応援」してもらいやすいこと**です。\n今の自分を見せることで「私も頑張ろう」と思わせられます。\n\n次の質問です。\n\n**一番ターゲットにしたいのはどんな人ですか？**\n「過去の自分」みたいな存在をイメージして、具体的に教えてください。';
-    }
-    if (lower.includes('b') || lower.includes('情報') || lower.includes('ノウハウ')) {
-      return '情報発信型ですね！\n\n**情報発信型は「憧れ」「信頼」を作りやすい**のが強みです。\nあなたの知識・実績を届けていくスタイルです。\n\n次の質問です。\n\n**一番ターゲットにしたいのはどんな人ですか？**\n「過去の自分」みたいな存在をイメージして、具体的に教えてください。';
-    }
-    return 'なるほど！その感覚大事にしてください。\n\n**次の質問です。**\n\nターゲットはどんな人をイメージしていますか？「過去の自分」みたいな人をイメージすると決まりやすいです。';
-  },
-  (u, a) => {
-    const concept = a.concept?.trim();
-    const diff = a.d1?.trim() || a.d2?.trim() || a.d3?.trim();
-    let res = 'ありがとうございます！\n\n';
-    if (concept) {
-      res += `シートに書いてくれた「${concept.substring(0,40)}...」という差別化コンセプトと組み合わせると、**かなりピンポイントなポジション**が見えてきます。\n\n`;
-    }
-    res += `そのターゲットが**「なぜ今まで痩せられなかったのか」**を一言で言うとどうなりますか？\n\nここが明確になると、コンセプトがグッと刺さるようになります。`;
-    return res;
-  },
-  (u, a) => {
-    return 'その視点、すごく大事です！\n\n**「〇〇なのに△△できない」という構造**が出てきましたね。\nこれはそのままコンセプトの核になります。\n\n整理すると：\n・ターゲットの状況：【今の状況】\n・ターゲットの悩み：【悩み】\n・あなたが提供できるもの：【解決策】\n\n**このコンセプトをプロフィール名に凝縮するとしたら、どんな言葉が浮かびますか？**\n思いつくままで大丈夫です！';
-  },
-  (u, a) => {
-    return `いいですね！\n\nそれを軸にすると、プロフィール名の方向性として：\n\n① **個性＋ジャンル型**\n「元○○が教える△△」\n\n② **ターゲット＋結果型**\n「○○のための△△メソッド」\n\n③ **ストーリー型**\n「○○から△△になった□□が教えること」\n\nどれかピンと来るものありますか？\nもしくは「もっとこういう感じにしたい」というイメージがあれば教えてください！`;
-  },
-  (u, a) => {
-    return '方向性が見えてきましたね！\n\n**まとめると：**\n\n✓ 発信スタイル：あなたらしいアプローチ\n✓ ターゲット：具体的な1人\n✓ 差別化：ほかにはない切り口\n\nあとは**「やらないことを先に決める」**のが大事です。\n\n競合がやっていることの中で、「私はこれはやらない」と決められることはありますか？\nキャラの輪郭がくっきりしてきます。';
-  },
-  (u, a) => {
-    const t1 = a.t1?.trim();
-    const concept = a.concept?.trim();
-    const p1 = a.p1?.trim();
-    const p2 = a.p2?.trim();
-    const q5 = a.q5?.trim();
+function buildSystemPrompt(answers) {
+  const fields = {
+    'q1 何となく人よりうまくできてしまうこと': answers.q1,
+    'q2 子どもの頃から得意だったこと': answers.q2,
+    'q3 人に褒められること・感謝されること': answers.q3,
+    'q4 お金を払ってでも解決したかった悩み': answers.q4,
+    'q5 情熱を持てるジャンル・テーマ': answers.q5,
+    'q6 人生で一番力を入れたこと': answers.q6,
+    'q7 自分が大切にしている価値観': answers.q7,
+    'q8 世界を変えるとしたら何を変えたいか': answers.q8,
+    'q9 一番好きな自分の瞬間': answers.q9,
+    'q10 変えられる人の未来': answers.q10,
+    'q11 一番苦しかった悩み': answers.q11,
+    'q12 言ってほしかった言葉': answers.q12,
+    'd1 他の人と違う強み1': answers.d1,
+    'd2 他の人と違う強み2': answers.d2,
+    'd3 他の人と違う強み3': answers.d3,
+    'p1 自己紹介・実績': answers.p1,
+    'p2 具体的な実績・数字': answers.p2,
+    'ポジションまとめ': answers.position,
+    '差別化コンセプト': answers.concept,
+    'ターゲット基本情報': answers.t1,
+    'ターゲット職業・家族構成': answers.t2,
+    'ターゲット日常・趣味': answers.t3,
+    'ターゲットの悩み': answers.t4,
+    'ターゲットが試したこと': answers.t5,
+  };
+  let sheetSummary = '';
+  Object.entries(fields).forEach(([k, v]) => {
+    if (v && v.trim()) sheetSummary += `【${k}】\n${v.trim()}\n\n`;
+  });
 
-    const genre = q5 ? q5.split(/[、,，]/)[0].trim() : 'あなたのジャンル';
-    const diff = p1 || '元○○';
-    const jisseki = p2 ? p2.substring(0, 20) : '○○達成';
+  return `あなたは「ぬん」というInstagramアカウント設計の専門家AIです。ダイエットコーチとして50人以上の指導実績があり、発信者・個人事業主のアカウント初期設計を専門にサポートしています。
 
-    return `「やらないこと」が決まると、ブレないキャラになります！\n\n**シートの内容をもとに、アカウント名の候補を3つ出しますね。**\n\n──────────────────\n\n**① ストーリー型**\n「${diff}が${genre}で人生変えた話」\n→ 共感・応援を集めやすいプロセス発信スタイル\n\n**② 実績訴求型**\n「${jisseki}した${genre}コーチのぬん」\n→ 権威性を前に出して信頼を先に作るスタイル\n\n**③ ターゲット呼びかけ型**\n「${genre}を変えたい人へ｜ぬん」\n→ 見た瞬間に「私のことだ」と思わせるスタイル\n\n──────────────────\n\nどれが一番「自分らしい」と感じましたか？\nもしくは「こういう雰囲気にしたい」というイメージがあれば、もう少し一緒に絞りましょう！`;
-  }
-];
+今、ユーザーが記入した「強み発見シート」の内容を読み込んでいます。この内容をもとに、ユーザーのアカウントの方向性を一緒に見つけていくのがあなたの役割です。
 
-let responseIndex = 0;
+---
+【シートの回答内容】
+${sheetSummary || '（まだ記入がありません）'}
+---
+
+## 会話のスタンス
+- カジュアルで親しみやすい口調（でもプロとして頼れる存在）
+- ユーザーの言葉を受け止めてから、一歩深く掘り下げる
+- 質問は一度に一つだけ。複数投げかけない
+- ユーザーが何かを聞いてきたら、必ずその質問に答えてから次に進む
+- 案や候補を求められたら、シートの内容を使って具体的に出す
+- 「アカウント名を決める」よりも「アカウントの方向性を見つける」のがゴール
+
+## 会話のゴール
+最終的に以下を明確にする：
+1. 発信スタイル（プロセス型 or 情報発信型 or 両方）
+2. ターゲットとなる具体的な1人
+3. 自分だけの差別化ポイント
+4. アカウントの方向性の候補（複数）
+
+## 最後の締め
+方向性が出てきたら、以下の内容で締めてください：
+
+「ここまでで、[ユーザーの名前や発信者としてのイメージ]のアカウントの方向性が見えてきました。
+
+**次のステップは、所属に合わせて進めてください。**
+
+📌 **アカデミー生の方**
+この方向性をベースに、個別セッションまたはグルコン（グループコンサル）で講師に相談してください。アカデミー生用のモデリング分析シートもご活用ください。
+
+📌 **まだ入会していない方**
+この方向性でモデリング先を探し、アカウントの方向性を固めていってください。
+
+─────────────────
+
+ここまで進めてくださって、本当にありがとうございました。アカウントの初期設計はとても大事な土台です。もし「しっくりこないな」と感じたら、もう一度やり直してみてください。心から納得できるアカウントを見つけていきましょう。本当にありがとうございました。」`;
+}
 
 async function sendMessage() {
   if (isTyping) return;
@@ -470,7 +497,6 @@ async function sendMessage() {
   isTyping = true;
   document.getElementById('send-btn').disabled = true;
 
-  // typing indicator
   const typingEl = document.createElement('div');
   typingEl.className = 'msg ai';
   typingEl.id = 'typing';
@@ -479,18 +505,27 @@ async function sendMessage() {
   typingEl.scrollIntoView({behavior:'smooth',block:'end'});
 
   const answers = getAnswers();
-  const delay = 800 + Math.random() * 700;
+  let reply;
 
-  await new Promise(r => setTimeout(r, delay));
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system: buildSystemPrompt(answers),
+        messages: chatHistory.map(m => ({ role: m.role === 'ai' ? 'assistant' : m.role, content: m.content }))
+      })
+    });
+    if (!res.ok) throw new Error('API error');
+    const data = await res.json();
+    reply = data.content?.[0]?.text || 'うまく受け取れませんでした。もう一度送ってみてください。';
+  } catch (e) {
+    reply = '⚠️ AIとの接続にエラーが発生しました。\n\nVercelのURLから開くと正常に動作します。\n（ローカルプレビューではAI機能は使えません）';
+  }
 
   typingEl.remove();
-
-  const responseFn = DEMO_RESPONSES[Math.min(responseIndex, DEMO_RESPONSES.length - 1)];
-  const reply = responseFn(text, answers);
-  responseIndex++;
-
   typeMessage(reply, 'ai');
-  chatHistory.push({ role: 'assistant', content: reply });
+  chatHistory.push({ role: 'ai', content: reply });
 }
 
 function addMsg(text, role) {
