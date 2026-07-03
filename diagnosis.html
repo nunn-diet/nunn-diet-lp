@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>理想のあなたを目指すダイエットタイプ診断</title>
+<title>あなたに合ったダイエット法が見つかる診断｜Nun's Diet Diagnosis</title>
 <style>
   :root {
     --bg:           #F8F2EA;
@@ -114,31 +114,83 @@
     line-height: 1.9;
   }
 
-  /* ====== START 画面（新デザイン） ====== */
+  /* ====== タイプ結果ヒーロー画像 ====== */
+  .type-hero {
+    margin: 0 0 14px;
+    padding: 0;
+    line-height: 0;
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .type-hero img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* ====== ファーストビュー画像 ====== */
+  .hero-cover {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .hero-cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* ====== START 画面（Nun's Diet Diagnosis 版） ====== */
   .new-start {
     position: relative;
-    background: linear-gradient(135deg, #FDF6EE 0%, #FBEEE3 100%);
+    background:
+      radial-gradient(ellipse at 25% 35%, rgba(252,224,228,0.65) 0%, transparent 55%),
+      radial-gradient(ellipse at 75% 65%, rgba(252,224,228,0.55) 0%, transparent 60%),
+      linear-gradient(160deg, #FDF6F0 0%, #FBE9E0 100%);
     padding: 0;
     margin-bottom: 0;
     overflow: hidden;
-    border: 1px solid var(--line);
+    border: 1.5px solid #E5C8B3;
+    box-shadow: inset 0 0 0 4px #FBEDE3, inset 0 0 0 5px #E5C8B3;
+  }
+  /* キラキラ点滅 */
+  .new-start::before,
+  .new-start::after {
+    content: "✦";
+    position: absolute;
+    color: #C9A267;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .new-start::before { top: 90px; left: 28px; font-size: 14px; }
+  .new-start::after  { top: 200px; left: 200px; font-size: 11px; }
+  .sparkle-x {
+    position: absolute;
+    color: #C9A267;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0.45;
   }
   .hero-img-wrap {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 48%;
-    height: 54%;
+    top: 16px;
+    right: 12px;
+    width: 44%;
+    height: 70%;
     overflow: hidden;
-    border-bottom-left-radius: 100% 80%;
+    border-radius: 16px;
     background: #F8E9DD;
     z-index: 1;
+    box-shadow: 0 6px 24px rgba(184, 110, 112, 0.18);
   }
   .hero-img-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 30%;
+    object-position: center 25%;
   }
   .botanical {
     position: absolute;
@@ -147,53 +199,196 @@
     color: #C9817F;
     pointer-events: none;
   }
-  .botanical.tr { top: 18px; right: 24px; width: 110px; height: 80px; }
-  .botanical.br { bottom: 12px; right: 14px; width: 110px; height: 110px; }
+  .botanical.tr { top: 16px; right: 10px; width: 110px; height: 80px; }
+  .botanical.br { bottom: 12px; right: 10px; width: 110px; height: 110px; }
+  .botanical.tl { top: 14px; left: 14px; width: 90px; height: 100px; opacity: 0.45; }
+
+  /* ピンク丸バッジ「1週間プラン付き」 */
+  .bonus-badge {
+    position: absolute;
+    z-index: 4;
+    bottom: 28%;
+    right: 6%;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #F2B5AF 0%, #E89894 60%, #D87A77 100%);
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow:
+      0 4px 14px rgba(184, 110, 112, 0.35),
+      0 0 0 6px rgba(255, 255, 255, 0.65),
+      0 0 0 8px rgba(216, 122, 119, 0.3);
+    font-family: "Hiragino Mincho ProN", serif;
+    line-height: 1.2;
+    transform: rotate(-6deg);
+  }
+  .bonus-badge .crown {
+    font-size: 16px;
+    color: #FCE2A0;
+    margin-bottom: 2px;
+  }
+  .bonus-badge .b-top {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    margin-bottom: 2px;
+    font-weight: 500;
+  }
+  .bonus-badge .b-main {
+    font-size: 26px;
+    font-weight: 700;
+    color: #FCE2A0;
+    line-height: 1;
+  }
+  .bonus-badge .b-bottom {
+    font-size: 12px;
+    margin-top: 4px;
+    font-weight: 600;
+  }
+  .bonus-badge::before {
+    content: "♡";
+    position: absolute;
+    bottom: -6px;
+    color: #D87A77;
+    font-size: 14px;
+  }
   .hero-content {
     position: relative;
     z-index: 2;
-    padding: 44px 26px 32px;
-  }
-  .hero-script {
-    font-family: "Snell Roundhand","Apple Chancery","Brush Script MT","Lucida Handwriting",cursive;
-    color: #D8A6A4;
-    font-size: 26px;
-    font-style: italic;
-    margin-bottom: 16px;
-    letter-spacing: 0.02em;
-    line-height: 1.1;
-  }
-  .hero-sub-text {
-    color: #5C4738;
-    font-size: 15px;
-    line-height: 1.8;
-    margin-bottom: 36px;
-    font-weight: 500;
+    padding: 38px 24px 24px;
+    min-height: 460px;
   }
   .hero-main-title {
     font-family: "Hiragino Mincho ProN","Yu Mincho",serif;
     font-weight: 700;
-    font-size: 38px;
+    font-size: 36px;
     color: #3F2E26;
-    line-height: 1.5;
+    line-height: 1.42;
     letter-spacing: 0.02em;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
+    max-width: 56%;
   }
-  .hero-main-title .row1 { display: block; margin-bottom: 8px; }
-  .hero-main-title .row2 { display: block; white-space: nowrap; }
-  .hero-main-title .highlight {
-    background: #EFD5D0;
-    color: #A85D62;
-    padding: 4px 18px 6px;
+  .hero-main-title .line {
+    display: block;
+  }
+  .hero-main-title .pink {
+    color: #C9817F;
+    font-size: 1.1em;
+  }
+  .hero-main-title .accent-line {
     display: inline-block;
-    font-weight: 700;
+    height: 2px;
+    width: 18px;
+    background: #C9817F;
+    vertical-align: middle;
+    margin: 0 6px 6px;
   }
-  .hero-lead-new {
-    color: #5C4738;
-    font-size: 15px;
-    line-height: 2;
-    margin-bottom: 38px;
+  .hero-sub-line {
+    color: #6B5448;
+    font-size: 16px;
     font-weight: 500;
+    margin-bottom: 24px;
+    font-family: "Hiragino Mincho ProN", serif;
+    letter-spacing: 0.04em;
+    max-width: 56%;
+  }
+  .hero-sub-line .em {
+    color: #C9817F;
+    font-weight: 700;
+    font-size: 19px;
+  }
+  .hero-sub-line .dash {
+    color: #C9817F;
+    margin: 0 6px;
+  }
+  /* タイプ診断クリップボードアイコン */
+  .clipboard-deco {
+    position: absolute;
+    z-index: 4;
+    left: 26px;
+    bottom: 130px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 6px 12px 6px 6px;
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 8px rgba(184, 110, 112, 0.15);
+  }
+  .clipboard-deco .cb-icon {
+    width: 32px;
+    height: 32px;
+    background: #FBE5D6;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C9817F;
+    font-size: 16px;
+    border: 1.5px solid #E5B8A8;
+  }
+  .clipboard-deco .cb-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #6B5448;
+  }
+  /* ブランド名 Nun's Diet Diagnosis */
+  .brand-cursive {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    bottom: 76px;
+    transform: translateX(-50%);
+    font-family: "Snell Roundhand","Apple Chancery","Brush Script MT","Lucida Handwriting",cursive;
+    font-style: italic;
+    font-size: 26px;
+    color: #B89368;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  /* 監修バナー */
+  .supervision-banner {
+    position: relative;
+    background: linear-gradient(90deg, #F5C5C0 0%, #EFC1B8 50%, #F5C5C0 100%);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    border-top: 1px solid rgba(184, 110, 112, 0.25);
+    z-index: 5;
+  }
+  .supervision-banner::before,
+  .supervision-banner::after {
+    content: "❀";
+    color: #C9817F;
+    font-size: 14px;
+    opacity: 0.7;
+  }
+  .super-tag {
+    background: #FBF1EC;
+    color: #C9817F;
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    border: 1px solid rgba(201,129,127,0.3);
+  }
+  .super-divider {
+    width: 1px;
+    height: 14px;
+    background: rgba(63,46,38,0.4);
+  }
+  .super-tagline {
+    color: #5C4738;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
   }
   .hero-features {
     display: flex;
@@ -879,51 +1074,93 @@
     border-top: 1px dashed rgba(229,194,145,0.3);
   }
 
-  /* ====== 個別相談CTA ====== */
+  /* ====== 個別相談CTA（強調版） ====== */
   .cta-card {
-    background: linear-gradient(180deg, #FBF6EE 0%, #F5E8D6 100%);
-    border: 1px solid #D8CCB0;
-    padding: 28px 22px;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255,255,255,0.6) 0%, transparent 50%),
+      linear-gradient(135deg, #F5C5C0 0%, #E5A5A0 50%, #D08D8B 100%);
+    border: none;
+    padding: 36px 24px 32px;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 24px;
+    position: relative;
+    box-shadow:
+      0 10px 32px rgba(184, 110, 112, 0.32),
+      0 4px 10px rgba(184, 110, 112, 0.18),
+      inset 0 0 0 4px rgba(255,255,255,0.6),
+      inset 0 0 0 5px rgba(184,110,112,0.5);
+  }
+  .cta-card::before {
+    content: "✦  SPECIAL OFFER  ✦";
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4A3329;
+    color: #FCD89C;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    padding: 5px 18px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  .cta-card::after {
+    content: "❀";
+    position: absolute;
+    bottom: 10px;
+    right: 18px;
+    color: rgba(255,255,255,0.4);
+    font-size: 26px;
   }
   .cta-card h2 {
-    color: var(--text);
-    font-size: 22px;
-    margin-bottom: 8px;
+    color: #FFF;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    margin-top: 10px;
+    line-height: 1.4;
+    text-shadow: 0 2px 4px rgba(168, 93, 98, 0.4);
+    letter-spacing: 0.04em;
+  }
+  .cta-card h2 span {
+    color: #FCE2A0 !important;
+    text-shadow: 0 2px 4px rgba(168, 93, 98, 0.5);
   }
   .cta-card .free {
     display: inline-block;
-    background: #fff;
+    background: #FFF;
     color: var(--rose-deep);
-    padding: 4px 14px;
-    font-size: 12px;
+    padding: 7px 20px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.15em;
-    margin-bottom: 16px;
-    border: 1px solid var(--rose);
+    letter-spacing: 0.18em;
+    margin-bottom: 22px;
+    border: none;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
   }
   .cta-list {
-    background: #fff;
-    padding: 16px 18px;
-    margin-bottom: 20px;
+    background: rgba(255,255,255,0.95);
+    padding: 18px 20px;
+    margin-bottom: 22px;
     text-align: left;
-    border: 1px solid var(--line);
+    border: none;
+    box-shadow: 0 4px 14px rgba(168, 93, 98, 0.18);
   }
   .cta-list div {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--text);
-    padding: 5px 0;
-    padding-left: 22px;
+    padding: 6px 0;
+    padding-left: 26px;
     position: relative;
+    font-weight: 500;
   }
   .cta-list div::before {
     content: "♥";
     position: absolute;
     left: 0;
-    color: var(--rose);
-    font-size: 12px;
-    top: 6px;
+    color: var(--rose-deep);
+    font-size: 14px;
+    top: 7px;
   }
 
   /* ===== LINEキラキラ立体ボタン (楕円型) ===== */
@@ -978,6 +1215,24 @@
       0 1px 0 rgba(255,255,255,0.4) inset,
       0 -1px 0 rgba(0,0,0,0.15) inset,
       0 3px 8px rgba(6, 199, 85, 0.4);
+  }
+  .line-btn-top {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    margin-bottom: 4px;
+    color: #FCE9A8;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    position: relative;
+    z-index: 2;
+  }
+  .line-btn-main {
+    display: block;
+    font-size: 17px;
+    line-height: 1.3;
+    position: relative;
+    z-index: 2;
   }
   /* キラキラ shimmer */
   .line-btn::before {
@@ -1237,68 +1492,8 @@
 
   <!-- ============ START ============ -->
   <div id="screen-start" class="screen">
-    <div class="new-start">
-      <!-- 右上の女性イラスト（曲線カット） -->
-      <div class="hero-img-wrap">
-        <img src="illustrations/05_woman_back_cup_leaves.png" alt="">
-      </div>
-
-      <!-- 右上の植物ラインアート装飾 -->
-      <svg class="botanical tr" viewBox="0 0 110 80" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
-        <path d="M55 5 Q70 25 80 50 Q85 65 75 75"/>
-        <path d="M55 5 Q60 18 55 30"/>
-        <ellipse cx="68" cy="22" rx="6" ry="3" transform="rotate(35 68 22)"/>
-        <ellipse cx="78" cy="38" rx="7" ry="3" transform="rotate(45 78 38)"/>
-        <ellipse cx="84" cy="55" rx="6" ry="3" transform="rotate(55 84 55)"/>
-        <ellipse cx="50" cy="18" rx="5" ry="2.5" transform="rotate(-30 50 18)"/>
-        <ellipse cx="46" cy="28" rx="5" ry="2.5" transform="rotate(-40 46 28)"/>
-      </svg>
-
-      <!-- 右下の植物ラインアート装飾 -->
-      <svg class="botanical br" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
-        <path d="M55 105 Q58 70 65 30 Q68 15 75 5"/>
-        <path d="M55 105 Q45 80 38 55"/>
-        <ellipse cx="62" cy="60" rx="5" ry="2.5" transform="rotate(70 62 60)"/>
-        <ellipse cx="58" cy="40" rx="5" ry="2.5" transform="rotate(70 58 40)"/>
-        <ellipse cx="66" cy="22" rx="5" ry="2.5" transform="rotate(60 66 22)"/>
-        <ellipse cx="46" cy="78" rx="5" ry="2.5" transform="rotate(120 46 78)"/>
-        <ellipse cx="42" cy="62" rx="4" ry="2" transform="rotate(120 42 62)"/>
-        <circle cx="76" cy="10" r="3"/>
-      </svg>
-
-      <!-- テキストコンテンツ -->
-      <div class="hero-content">
-        <div class="hero-script">Diet type diagnosis</div>
-        <div class="hero-sub-text">理想のあなたを目指す<br>ダイエット診断</div>
-
-        <h1 class="hero-main-title">
-          <span class="row1">あなたに合った</span>
-          <span class="row2">道のりが、<span class="highlight">わかる</span></span>
-        </h1>
-
-        <p class="hero-lead-new">11の質問で、<br>あなたにぴったりのタイプを<br>お届けします</p>
-
-        <div class="hero-features">
-          <div class="feat">
-            <div class="feat-icon">
-              <svg viewBox="0 0 32 32"><rect x="9" y="6" width="14" height="22" rx="1.5"/><path d="M12 4h8v4h-8z"/><path d="M12 14h8M12 19h8M12 24h5"/></svg>
-            </div>
-            <div class="feat-label">簡単診断<br>11の質問</div>
-          </div>
-          <div class="feat">
-            <div class="feat-icon">
-              <svg viewBox="0 0 32 32"><path d="M16 26 C8 20 4 14 6 9 C8 5 13 5 16 9 C19 5 24 5 26 9 C28 14 24 20 16 26 Z"/></svg>
-            </div>
-            <div class="feat-label">今のあなたが<br>わかる</div>
-          </div>
-          <div class="feat">
-            <div class="feat-icon">
-              <svg viewBox="0 0 32 32"><path d="M8 26 Q14 16 26 6 Q25 18 18 24 Q14 27 8 26 Z"/><path d="M8 26 Q14 22 22 14"/></svg>
-            </div>
-            <div class="feat-label">理想への<br>ヒントに</div>
-          </div>
-        </div>
-      </div>
+    <div class="hero-cover">
+      <img src="illustrations/hero_cover.png" alt="あなたに合ったダイエット法が見つかる診断 ／ Nun's Diet Diagnosis">
     </div>
 
     <!-- 下部のCTAバナー -->
@@ -1312,7 +1507,7 @@
         <div class="cta-circle-badge">
           <span>完全無料</span>
           <span>所要時間</span>
-          <span class="num">約3分</span>
+          <span class="num">約5分</span>
         </div>
       </div>
       <div class="cta-cursive-end">Let's begin!</div>
@@ -1427,15 +1622,7 @@
       </div>
 
       <div class="q">
-        <div class="qhead"><div class="qnum">Q9</div><div class="qtitle">ストレスとの付き合い方は？</div></div>
-        <div class="options">
-          <label class="opt" onclick="selectOpt(this,'q3','A')"><input type="radio" name="q3">A. うまく発散できている</label>
-          <label class="opt" onclick="selectOpt(this,'q3','B')"><input type="radio" name="q3">B. つい食べてしまう／ためこむ</label>
-        </div>
-      </div>
-
-      <div class="q">
-        <div class="qhead"><div class="qnum">Q10</div><div class="qtitle">食事の傾向は？<span style="font-size:11px;color:var(--muted);font-weight:400;">（複数選択OK）</span></div></div>
+        <div class="qhead"><div class="qnum">Q9</div><div class="qtitle">食事の傾向は？<span style="font-size:11px;color:var(--muted);font-weight:400;">（複数選択OK）</span></div></div>
         <div class="options">
           <label class="opt" onclick="toggleMulti(this,'foodTags','balanced')">バランスを意識している</label>
           <label class="opt" onclick="toggleMulti(this,'foodTags','sweet')">甘いもの・お菓子が多め</label>
@@ -1445,7 +1632,7 @@
       </div>
 
       <div class="q">
-        <div class="qhead"><div class="qnum">Q11</div><div class="qtitle">一番気になる悩みは？</div></div>
+        <div class="qhead"><div class="qnum">Q10</div><div class="qtitle">一番気になる悩みは？</div></div>
         <div class="options">
           <label class="opt" onclick="selectOpt(this,'concern','belly')"><input type="radio" name="concern">お腹まわり・ぽっこりお腹</label>
           <label class="opt" onclick="selectOpt(this,'concern','lower')"><input type="radio" name="concern">下半身・太もも</label>
@@ -1466,8 +1653,11 @@
   <div id="screen-result" class="screen" style="display:none;">
     <div style="text-align:center;"><span class="ribbon">あなたの診断結果</span></div>
 
-    <div class="result-hero">
-      <div class="small">あなたのタイプは</div>
+    <div class="type-hero">
+      <img id="r-type-image" src="" alt="">
+    </div>
+
+    <div class="result-hero" style="display:none;">
       <div class="code" id="r-code">T?</div>
       <div class="typename" id="r-name">タイプ名</div>
       <div class="badges" id="r-badges"></div>
@@ -1478,11 +1668,6 @@
     <div class="goal-card">
       <div class="ttl">YOUR GOAL</div>
       <div class="body" id="r-goal-text"></div>
-    </div>
-
-    <div class="section">
-      <h3>あなたの特徴</h3>
-      <ul id="r-features"></ul>
     </div>
 
     <div class="section concern">
@@ -1536,8 +1721,9 @@
         <div class="row"><span class="step">3</span><span>日程確定後、<strong>このコードをLINEで送信</strong> してください</span></div>
       </div>
 
-      <a class="line-btn" href="https://liff.line.me/2006979316-KnVN3g2V?calendar_salon_id=9208&ts=1778476612" target="_blank" rel="noopener">
-        <span class="sp">✦</span>LINEで個別相談を予約する<span class="sp">✦</span>
+      <a class="line-btn" href="https://liff.line.me/2006979316-KnVN3g2V?calendar_salon_id=9208&ts=1778476612" target="_blank" rel="noopener" onclick="submitDiagnosisToSheet()">
+        <span class="line-btn-top">ママサポ限定</span>
+        <span class="line-btn-main"><span class="sp">✦</span>押し売りなしの無料ダイエット相談こちら<span class="sp">✦</span></span>
       </a>
     </div>
 
@@ -1550,7 +1736,7 @@
 // ============ 16タイプデータ ============
 const TYPES = [
   // index = 性格(計画0/ノリ1)*8 + 時間(あり0/なし1)*4 + 体型(標準0/+5超1)*2 + 運動(○0/×1)
-  { code: "T1", name: "コツコツ アクティブ タイプ", axes: ["コツコツ派","時間に余裕あり","標準体型","運動 ◯"],
+  { code: "T1", name: "コツコツアクティブ タイプ", axes: ["コツコツ派","時間に余裕あり","標準体型","運動 ◯"],
     features: ["決めたことを続けるのが得意","体を動かす時間を持てている","小さな調整で大きく変わる位置にいる"],
     methods: ["タンパク質量を意識して整える","食事の質を一段アップする","ベースを保ちながら微調整"],
     question: "今、体重1kgあたり何gのタンパク質を摂れていますか？" },
@@ -1558,39 +1744,39 @@ const TYPES = [
     features: ["頭で理解してから動きたい","運動より食生活の見直し派","数字や情報で納得したい"],
     methods: ["軽い習慣化（1日10分から）","食事の質を学んで整える","16時間断食からスタート"],
     question: "「太らない食べ順」って、意識したことありますか？" },
-  { code: "T3", name: "アクティブ 努力家 タイプ", axes: ["コツコツ派","時間に余裕あり","+5kg超","運動 ◯"],
+  { code: "T3", name: "アクティブ努力家 タイプ", axes: ["コツコツ派","時間に余裕あり","+5kg超","運動 ◯"],
     features: ["運動を取り入れて頑張っている","結果につながりにくいと感じる","食事面に伸びしろがあるかも"],
     methods: ["まず体の中をリセットする","栄養吸収力を取り戻す","運動効率を倍にする食事改善"],
     question: "頑張っているのに痩せない… 原因が「腸」かもと考えたことは？" },
-  { code: "T4", name: "コツコツ 準備派 タイプ", axes: ["コツコツ派","時間に余裕あり","+5kg超","運動 ×"],
+  { code: "T4", name: "コツコツ準備派 タイプ", axes: ["コツコツ派","時間に余裕あり","+5kg超","運動 ×"],
     features: ["変わる気持ちは整っている","計画的に進めたいタイプ","あとは正しい順序を知るだけ"],
     methods: ["体をリセットするファスティング","段階的な食事の置き換え","計画表で進捗を可視化"],
     question: "「自分に必要な栄養素」って、把握できていますか？" },
-  { code: "T5", name: "効率派 アクティブ タイプ", axes: ["コツコツ派","時間がない","標準体型","運動 ◯"],
+  { code: "T5", name: "効率派アクティブ タイプ", axes: ["コツコツ派","時間がない","標準体型","運動 ◯"],
     features: ["忙しい中でも動く時間を作れる","効率の良い方法を求めている","ベースは整っている"],
     methods: ["朝のドリンク置き換え（16時間断食）","運動前後の食事最適化","1日5分の意識改革"],
     question: "運動前のエネルギー補給、何が正解かご存知ですか？" },
-  { code: "T6", name: "コツコツ 忙しめ タイプ", axes: ["コツコツ派","時間がない","標準体型","運動 ×"],
+  { code: "T6", name: "コツコツ忙しめ タイプ", axes: ["コツコツ派","時間がない","標準体型","運動 ×"],
     features: ["仕事や予定で時間に余裕がない","運動の時間はなかなか取れない","少しずつ体型変化を感じはじめ"],
     methods: ["スキマ時間のミニ習慣","コンビニ食の選び方","朝置き換えファスティング"],
     question: "「1食タンパク質20g」って、どんな食事か想像つきますか？" },
-  { code: "T7", name: "アクティブ 多忙 タイプ", axes: ["コツコツ派","時間がない","+5kg超","運動 ◯"],
+  { code: "T7", name: "アクティブ多忙 タイプ", axes: ["コツコツ派","時間がない","+5kg超","運動 ◯"],
     features: ["時間がない中で運動も継続","気合で乗り切ってきた","食生活に整え代があるかも"],
     methods: ["まず内臓を休ませる短期集中","頑張りを結果につなげる食事","5日間 脂肪燃焼コース"],
     question: "「頑張っているのに痩せない」原因、考えたことありますか？" },
-  { code: "T8", name: "忙しい毎日 タイプ", axes: ["コツコツ派","時間がない","+5kg超","運動 ×"],
+  { code: "T8", name: "忙しいママ タイプ", axes: ["コツコツ派","時間がない","+5kg超","運動 ×"],
     features: ["毎日のタスクで余裕がない","運動の時間は取りにくい","まず体を整えるところから"],
     methods: ["まずは1日のリセット食","ワンデイファスティング","頑張らないダイエット設計"],
     question: "「疲れた時に甘いもの」が止められない理由、知っていますか？" },
-  { code: "T9", name: "楽しく動く タイプ", axes: ["マイペース派","時間に余裕あり","標準体型","運動 ◯"],
+  { code: "T9", name: "楽しく動ける タイプ", axes: ["マイペース派","時間に余裕あり","標準体型","運動 ◯"],
     features: ["楽しいと続けられる","体型は標準キープできている","もう一段 上を狙える余地"],
     methods: ["ゲーム感覚の習慣化","短期ファスティングでメリハリ","目に見える変化づくり"],
     question: "「楽しく続ける」工夫、ダイエットでもできるって知ってますか？" },
-  { code: "T10", name: "気まま マイペース タイプ", axes: ["マイペース派","時間に余裕あり","標準体型","運動 ×"],
+  { code: "T10", name: "気ままマイペース タイプ", axes: ["マイペース派","時間に余裕あり","標準体型","運動 ×"],
     features: ["時間はあるが続かないことも","気分に波がある","標準体型は維持できている"],
     methods: ["小さな宣言で意識づけ","気分が乗る日に集中","短期ゴール設定"],
     question: "「3日坊主」になる本当の理由、考えたことありますか？" },
-  { code: "T11", name: "アクティブ 気まま タイプ", axes: ["マイペース派","時間に余裕あり","+5kg超","運動 ◯"],
+  { code: "T11", name: "アクティブ気まま タイプ", axes: ["マイペース派","時間に余裕あり","+5kg超","運動 ◯"],
     features: ["体を動かすのは好き","食事面でつい気が緩む","食事と運動のバランスがカギ"],
     methods: ["食事は仕組み化で乗り切る","短期集中で結果を体感","成功体験を次につなげる"],
     question: "運動してるのに痩せない時、まず見直すべきは何かご存知ですか？" },
@@ -1598,7 +1784,7 @@ const TYPES = [
     features: ["これまで色々試してきた","続けることに難しさを感じる","正しい順序が分かれば変われる"],
     methods: ["まず体の声を聞くリセット","リバウンドしない食事の知識","リバウンドの仕組みを理解する"],
     question: "「リバウンドしない体質」って、作れるって知っていますか？" },
-  { code: "T13", name: "勢い マイペース タイプ", axes: ["マイペース派","時間がない","標準体型","運動 ◯"],
+  { code: "T13", name: "勢いマイペース タイプ", axes: ["マイペース派","時間がない","標準体型","運動 ◯"],
     features: ["忙しいけど勢いで動ける","短期集中が得意","ベースは整っている"],
     methods: ["短期集中型ファスティング","勢いを活かす1週間プラン","目標体重の数値化"],
     question: "「短期集中で結果を出す」最適なやり方、知ってますか？" },
@@ -1606,11 +1792,11 @@ const TYPES = [
     features: ["気持ちと食欲が連動しがち","気づくと食べていることがある","ベースは保てている"],
     methods: ["甘い欲求を消す栄養補給","ストレス源を別で発散","食べ過ぎる前のリセット"],
     question: "「甘いものが欲しい＝栄養不足のサイン」って、知ってましたか？" },
-  { code: "T15", name: "頑張り屋 リセット タイプ", axes: ["マイペース派","時間がない","+5kg超","運動 ◯"],
+  { code: "T15", name: "頑張り屋リセット タイプ", axes: ["マイペース派","時間がない","+5kg超","運動 ◯"],
     features: ["時間ない中で運動も継続","気持ちと食欲が連動しやすい","頑張りを結果に変える余地"],
     methods: ["まずストレスケアから","栄養を入れる→欲求を消す","5日間 脂肪燃焼で結果体感"],
     question: "「頑張れば頑張るほど太る」その理由、考えたことありますか？" },
-  { code: "T16", name: "お疲れ リセット タイプ", axes: ["マイペース派","時間がない","+5kg超","運動 ×"],
+  { code: "T16", name: "お疲れリセット タイプ", axes: ["マイペース派","時間がない","+5kg超","運動 ×"],
     features: ["心も体もペースが落ちている","全部を頑張るのは難しい","変わりたい気持ちはある"],
     methods: ["まず体を休ませるリセット","頑張らないファスティング","小さな一歩から始める"],
     question: "「疲れすぎて何もしたくない」自分を責めていませんか？" },
@@ -1633,7 +1819,7 @@ const state = {
   birthYear: null, birthMonth: null, birthDay: null,
   exercise: null,
   goalWeight: null, satisfied: false, goal: null,
-  q1: null, q2: null, q3: null, foodTags: [],
+  q1: null, q2: null, foodTags: [],
   concern: null,
   diagnosisId: null,
 };
@@ -1967,6 +2153,83 @@ async function downloadWallpaper() {
   }
 }
 
+// ============ Google Form 自動送信（裏側・ユーザー不可視） ============
+const FORM_RESPONSE_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSf863R38IUrTL1n_Na_Bhg6qAx1e_-WUwmGY5Dsqz_JSGcTKA/formResponse';
+const FORM_FIELDS = {
+  diagnosisId: 'entry.499096064',  // 診断ID
+  typeCode:    'entry.991635178',  // 診断タイプ
+  typeName:    'entry.171349958',  // タイプ名
+  age:         'entry.1939352390', // 年齢
+  height:      'entry.1810744906', // 身長
+  weight:      'entry.1348042288', // 現在体重
+  bmi:         'entry.505914430',  // BMI
+  goalWeight:  'entry.1930593583', // 目指す体重
+  goal:        'entry.774426692',  // 理想の方向性
+  exercise:    'entry.518463381',  // 運動量
+  q1:          'entry.1473323074', // 性格傾向
+  q2:          'entry.1851614881', // 時間の余裕
+  foodTags:    'entry.1465173647', // 食事の傾向
+  concern:     'entry.777459782',  // 気になる悩み
+};
+
+function submitDiagnosisToSheet() {
+  try {
+    if (!state.height || !state.weight) return;
+    const heightM = state.height / 100;
+    const bmi = (state.weight / (heightM * heightM)).toFixed(1);
+    const today = new Date();
+    let age = today.getFullYear() - state.birthYear;
+    const md = (today.getMonth() + 1) * 100 + today.getDate();
+    const bmd = state.birthMonth * 100 + state.birthDay;
+    if (md < bmd) age--;
+
+    const goalLabels = {
+      'lose-big': '大幅に体重を落としたい',
+      'tone':     '少し引き締めたい',
+      'maintain': '今をキープしたい',
+      'habit':    '食事や生活習慣を整えたい',
+    };
+    const exLabels = ['ほぼしていない', '週1〜2回', '週3〜4回', '週5回以上'];
+    const q1Labels = { A: 'コツコツ計画派', B: 'ノリで動く派' };
+    const q2Labels = { A: '時間に余裕あり', B: '時間がない' };
+    const foodMap = {
+      balanced: 'バランス意識', sweet: '甘いもの好き',
+      oily: '油っぽい好き', salty: 'しょっぱい・濃い味好き',
+    };
+    const concernMap = {
+      belly: 'お腹まわり', lower: '下半身・太もも',
+      face: '顔まわり・むくみ', weight: '体重そのもの',
+      energy: '代謝・疲れやすさ', skin: '肌・髪の調子',
+      none: '特に大きな悩みなし',
+    };
+
+    const fd = new FormData();
+    fd.append(FORM_FIELDS.diagnosisId, state.diagnosisId || '');
+    fd.append(FORM_FIELDS.typeCode,    currentType ? currentType.code : '');
+    fd.append(FORM_FIELDS.typeName,    currentType ? currentType.name : '');
+    fd.append(FORM_FIELDS.age,         String(age));
+    fd.append(FORM_FIELDS.height,      String(state.height));
+    fd.append(FORM_FIELDS.weight,      String(state.weight));
+    fd.append(FORM_FIELDS.bmi,         bmi);
+    fd.append(FORM_FIELDS.goalWeight,  state.satisfied ? '現状維持' : String(state.goalWeight || ''));
+    fd.append(FORM_FIELDS.goal,        goalLabels[state.goal] || '');
+    fd.append(FORM_FIELDS.exercise,    exLabels[parseInt(state.exercise)] || '');
+    fd.append(FORM_FIELDS.q1,          q1Labels[state.q1] || '');
+    fd.append(FORM_FIELDS.q2,          q2Labels[state.q2] || '');
+    fd.append(FORM_FIELDS.foodTags,    (state.foodTags || []).map(t => foodMap[t]).filter(Boolean).join('・'));
+    fd.append(FORM_FIELDS.concern,     concernMap[state.concern] || '');
+
+    // sendBeacon = ページ離脱しても確実に送信完了する fire-and-forget API
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(FORM_RESPONSE_URL, fd);
+    } else {
+      fetch(FORM_RESPONSE_URL, { method: 'POST', body: fd, mode: 'no-cors' });
+    }
+  } catch (e) {
+    // 失敗してもユーザー体験は止めない（黙って失敗）
+  }
+}
+
 // 診断ID生成（紛らわしい文字 0/O/1/I/L を除外）
 function generateDiagnosisId() {
   const chars = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
@@ -2077,7 +2340,7 @@ function toStep3() {
 }
 
 function calculate() {
-  if (!state.q1 || !state.q2 || !state.q3 || state.foodTags.length === 0 || !state.concern) {
+  if (!state.q1 || !state.q2 || state.foodTags.length === 0 || !state.concern) {
     document.getElementById('err3').style.display = 'block'; return;
   }
   document.getElementById('err3').style.display = 'none';
@@ -2103,6 +2366,10 @@ function calculate() {
 
   const bmi = (state.weight / (heightM * heightM)).toFixed(1);
   const exLbl = ["ほぼしていない","週1〜2回","週3〜4回","週5回以上"][parseInt(state.exercise)];
+
+  // タイプ画像（ファーストビュー）
+  document.getElementById('r-type-image').src = `illustrations/types/type_${type.code}.png`;
+  document.getElementById('r-type-image').alt = `${type.code} ${type.name}`;
 
   // タイプ表示
   document.getElementById('r-code').textContent = type.code;
@@ -2135,9 +2402,6 @@ function calculate() {
   }
   document.getElementById('r-goal-text').innerHTML = goalText;
 
-  // 特徴
-  const fl = document.getElementById('r-features'); fl.innerHTML = '';
-  type.features.forEach(f => { const li = document.createElement('li'); li.textContent = f; fl.appendChild(li); });
 
   // 悩み
   const con = CONCERNS[state.concern];

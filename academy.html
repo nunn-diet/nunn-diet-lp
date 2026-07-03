@@ -3,475 +3,538 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ぬんダイエット講師起業アカデミー｜ゼロから月収50万 × 「ありがとう」が止まらないぬん式メソッド</title>
+<title>ぬん式ダイエット講師起業アカデミー｜ロードマップ相談会</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --bg: #F4E6E2;
+    --cream: #FBF6F1;
+    --white: #FFFFFF;
+    --warm-beige: #E8D5C8;
+    --soft-rose: #DDB8B6;
+    --mauve: #B89BA0;
+    --accent: #9E5A60;
+    --accent-deep: #6F3C42;
+    --champagne: #E6D2B5;
+    --gold: #C9A878;
+    --terracotta: #B86A4F;
+    --text-dark: #3A2828;
+    --text: #5A4538;
+    --text-mid: #8A7569;
+    --text-light: #B8A296;
+    --border: #E8D8D2;
+    --success: #7BA88C;
+    --success-deep: #4F7860;
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: "Noto Sans JP", sans-serif;
-    color: #3a2e2a;
-    background: #fdf8f1;
-    line-height: 1.9;
-    font-size: 15px;
+    font-family: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+    color: var(--text-dark); background: var(--cream);
+    line-height: 1.95; font-size: 15px;
     padding-bottom: 140px;
+    -webkit-font-smoothing: antialiased;
   }
   img { max-width: 100%; display: block; }
   a { color: inherit; text-decoration: none; }
-  .wrap { max-width: 600px; margin: 0 auto; background: #fffdf9; box-shadow: 0 0 40px rgba(0,0,0,0.04); overflow: hidden; }
+  .serif { font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', serif; }
+  .wrap { max-width: 620px; margin: 0 auto; background: var(--white); box-shadow: 0 0 60px rgba(120,80,50,0.06); }
 
-  /* CTA pill — LINE green, used everywhere */
+  /* ---------- CTA ---------- */
   .cta-btn {
     position: relative; display: block; width: 100%; max-width: 480px;
-    margin: 24px auto; padding: 20px 18px;
-    background: linear-gradient(135deg, #4ac05c 0%, #06c755 100%);
+    margin: 0 auto; padding: 20px 20px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
     color: #fff !important; font-weight: 700; font-size: 17px;
-    border-radius: 999px; text-align: center;
-    box-shadow: 0 8px 0 rgba(4,138,60,.35), 0 14px 28px rgba(6,199,85,.32),
-                inset 0 2px 0 rgba(255,255,255,.45), inset 0 -3px 0 rgba(0,0,0,.10);
-    text-decoration: none !important;
-    transition: transform .15s ease, box-shadow .15s ease;
+    border-radius: 999px; text-align: center; text-decoration: none !important;
+    letter-spacing: 0.03em;
+    box-shadow: 0 8px 0 rgba(70,30,40,0.25), 0 14px 28px rgba(158,90,96,0.32),
+                inset 0 2px 0 rgba(255,255,255,0.25), inset 0 -3px 0 rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     overflow: hidden; isolation: isolate;
-    animation: ctaWobble 2.8s ease-in-out infinite;
-    letter-spacing: 0.02em;
   }
-  .cta-btn:hover { transform: translateY(-3px); }
-  .cta-btn:active { transform: translateY(3px); box-shadow: 0 3px 0 rgba(4,138,60,.35), 0 6px 14px rgba(6,199,85,.3); }
-  .cta-btn .sub { display: block; font-size: 12px; font-weight: 500; margin-top: 4px; letter-spacing: 0.1em; opacity: 0.95; }
+  .cta-btn:hover { transform: translateY(-2px); }
+  .cta-btn:active { transform: translateY(3px); box-shadow: 0 3px 0 rgba(70,30,40,0.25), 0 6px 14px rgba(158,90,96,0.3); }
   .cta-btn::before {
     content: ""; position: absolute; top: 0; left: -60%; width: 50%; height: 100%;
-    background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,.55) 50%, transparent 100%);
-    transform: skewX(-20deg); animation: ctaShine 3.2s ease-in-out infinite;
+    background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+    transform: skewX(-20deg); animation: shine 3.5s ease-in-out infinite;
     pointer-events: none;
   }
-  .cta-btn::after { content: " →"; display: inline-block; margin-left: 4px; animation: ctaArrow 1.2s ease-in-out infinite; }
-  @keyframes ctaShine { 0% { left: -60%; } 60% { left: 120%; } 100% { left: 120%; } }
-  @keyframes ctaWobble { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-2px) scale(1.012); } }
-  @keyframes ctaArrow { 0%,100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
-  .cta-wrap { padding: 30px 24px; text-align: center; }
-  .cta-note { font-size: 12px; color: #8a7569; margin-top: 10px; }
+  .cta-btn .sub { display: block; font-size: 11.5px; font-weight: 500; margin-top: 3px; opacity: 0.9; letter-spacing: 0.05em; }
+  @keyframes shine { 0% { left: -60%; } 55% { left: 120%; } 100% { left: 120%; } }
+  .cta-wrap { padding: 44px 24px; text-align: center; background: var(--cream); }
+  .cta-note { font-size: 12px; color: var(--text-mid); margin-top: 14px; letter-spacing: 0.05em; }
+  .cta-lead {
+    font-size: 15px; color: var(--text); margin-bottom: 20px; line-height: 2;
+    max-width: 480px; margin-left: auto; margin-right: auto;
+  }
 
-  /* ===== FV ===== */
+  /* ---------- FV ---------- */
   .fv {
-    position: relative; padding: 50px 24px 36px;
-    background: linear-gradient(165deg, #fef3e6 0%, #f8e3d1 100%);
-    text-align: center; overflow: hidden;
+    background: linear-gradient(160deg, var(--bg) 0%, var(--cream) 100%);
+    padding: 0;
   }
-  .fv::before, .fv::after {
-    content: ""; position: absolute; border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,255,255,0.7), transparent 70%);
-    pointer-events: none;
+  .fv-image { display: block; width: 100%; height: auto; }
+  .fv-underline {
+    text-align: center; padding: 32px 24px 8px;
+    background: var(--white);
   }
-  .fv::before { width: 220px; height: 220px; top: -40px; right: -50px; }
-  .fv::after { width: 180px; height: 180px; bottom: -30px; left: -40px; background: radial-gradient(circle, rgba(232,184,154,0.4), transparent 70%); }
-  .fv-tag {
+  .fv-underline .kicker {
     display: inline-block; font-size: 11px; letter-spacing: 0.3em;
-    color: #b8764d; padding: 6px 18px; border: 1px solid #d4a37c;
-    margin-bottom: 22px; font-family: "Playfair Display", serif;
-    position: relative; z-index: 2;
+    color: var(--accent-deep); font-family: 'Playfair Display', serif;
+    font-style: italic; margin-bottom: 14px;
+    padding: 0 20px; position: relative;
   }
-  .fv h1 {
-    font-family: "Noto Serif JP", serif;
-    font-size: 26px; font-weight: 600; line-height: 1.55;
-    color: #3a2e2a; margin-bottom: 18px; letter-spacing: 0.02em;
-    position: relative; z-index: 2;
+  .fv-underline .kicker::before, .fv-underline .kicker::after {
+    content: ""; position: absolute; top: 50%; width: 30px; height: 1px;
+    background: var(--gold);
   }
-  .fv h1 .nunn-brand { color: #b8764d; font-style: italic; }
-  .fv .sub-headline {
-    font-size: 14px; line-height: 2; color: #5a4538; margin-bottom: 28px;
-    position: relative; z-index: 2;
+  .fv-underline .kicker::before { left: -30px; }
+  .fv-underline .kicker::after { right: -30px; }
+  .fv-underline .headline {
+    font-size: 20px; font-weight: 600; color: var(--accent-deep);
+    line-height: 1.7; letter-spacing: 0.03em;
   }
-  .fv .sub-headline .num {
-    font-family: "Playfair Display", serif;
-    font-size: 22px; font-weight: 700; color: #b8764d;
-    margin: 0 2px;
+  .fv-underline .headline .em {
+    background: linear-gradient(transparent 60%, rgba(255,210,180,0.55) 60%);
+    padding: 0 3px;
   }
-  .fv .sub-headline .accent {
-    background: linear-gradient(transparent 60%, rgba(244,217,168,0.7) 60%);
-    font-weight: 700; padding: 0 3px;
-  }
-  .fv .hero-image {
-    margin: 0 -24px 20px; position: relative; z-index: 1;
-  }
-  .fv .hero-image img {
-    width: 100%; height: auto;
-  }
-  .fv .badges-row {
-    display: flex; justify-content: center; gap: 10px; margin: 22px 0;
-    flex-wrap: wrap; position: relative; z-index: 2;
-  }
-  .fv .badge {
-    background: #fff; color: #b8764d; font-size: 11px; font-weight: 600;
-    padding: 8px 14px; border-radius: 999px;
-    border: 1.5px solid #f4d9a8; box-shadow: 0 4px 10px rgba(184,118,77,0.1);
-    display: flex; align-items: center; gap: 5px;
-  }
-  .fv .badge::before { content: "✓"; color: #06c755; font-weight: 700; }
 
-  /* ===== セクション共通 ===== */
-  section { padding: 56px 24px; }
-  .section-tag {
+  /* ---------- 共通 ---------- */
+  section { padding: 64px 24px; }
+  .sec-tag {
     display: block; text-align: center; font-size: 11px; letter-spacing: 0.35em;
-    color: #b8764d; margin-bottom: 12px; font-family: "Playfair Display", serif;
+    color: var(--accent); margin-bottom: 14px; font-family: 'Playfair Display', serif;
   }
-  .section-title {
-    text-align: center; font-family: "Noto Serif JP", serif;
-    font-size: 24px; font-weight: 600; line-height: 1.6;
-    color: #3a2e2a; margin-bottom: 36px;
+  .sec-title {
+    text-align: center; font-family: 'Noto Serif JP', serif;
+    font-size: 26px; font-weight: 600; line-height: 1.6;
+    color: var(--accent-deep); margin-bottom: 42px; letter-spacing: 0.02em;
   }
-  .section-title .em { color: #b8764d; }
-  .section-title .hl {
-    background: linear-gradient(transparent 60%, rgba(244,217,168,0.7) 60%);
-    padding: 0 4px;
+  .sec-title .em { color: var(--accent); }
+  .sec-title .line {
+    display: inline-block; padding-bottom: 8px;
+    background: linear-gradient(to right, var(--accent-deep), var(--accent));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; color: transparent;
+  }
+  .sec-lead {
+    text-align: center; font-size: 15px; line-height: 2;
+    color: var(--text); max-width: 480px; margin: -20px auto 32px;
   }
 
-  /* ===== ターゲット明確化 ===== */
-  .target { background: #fef3e6; }
+  /* ---------- ターゲット ---------- */
+  .target { background: var(--bg); }
   .target ul { list-style: none; max-width: 460px; margin: 0 auto; }
   .target li {
-    padding: 16px 18px 16px 50px; margin-bottom: 12px;
-    background: #fff; position: relative;
-    font-size: 15px; color: #3a2e2a; box-shadow: 0 2px 8px rgba(120,80,50,0.06);
-    line-height: 1.7;
+    padding: 18px 20px 18px 56px; margin-bottom: 12px;
+    background: var(--white); position: relative;
+    font-size: 15px; color: var(--text-dark); line-height: 1.7;
+    box-shadow: 0 3px 10px rgba(120,80,50,0.05);
+    border-radius: 6px;
   }
   .target li::before {
-    content: "✓"; position: absolute; left: 20px; top: 16px;
-    color: #b8764d; font-size: 18px; font-weight: 700;
+    content: "✓"; position: absolute; left: 20px; top: 18px;
+    width: 24px; height: 24px; background: var(--accent);
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; border-radius: 50%;
   }
   .target .closing {
     text-align: center; font-size: 16px; line-height: 2;
-    color: #5a4538; margin-top: 28px;
-  }
-  .target .closing strong { color: #b8764d; font-weight: 700; }
-
-  /* ===== 実績インパクト ===== */
-  .results-block {
-    background: linear-gradient(180deg, #fffdf9 0%, #f8eedf 100%);
-    text-align: center;
-  }
-  .achievement-cards {
-    display: grid; gap: 18px; max-width: 520px; margin: 0 auto 28px;
-  }
-  .achievement-card {
-    background: #fff; padding: 28px 22px;
-    border-left: 4px solid #b8764d; text-align: left;
-    box-shadow: 0 6px 18px rgba(120,80,50,0.08);
-  }
-  .achievement-card .label {
-    font-size: 11px; letter-spacing: 0.25em; color: #b8764d;
-    font-family: "Playfair Display", serif; margin-bottom: 8px;
-  }
-  .achievement-card .big-num {
-    font-family: "Playfair Display", serif;
-    font-size: 42px; font-weight: 700; color: #b8764d; line-height: 1;
-    margin-bottom: 6px;
-  }
-  .achievement-card .big-num small { font-size: 18px; margin-left: 2px; }
-  .achievement-card .desc {
-    font-size: 14px; color: #5a4538; line-height: 1.8; margin-top: 8px;
-  }
-  .achievement-card .desc strong { color: #b8764d; }
-
-  /* ===== お悩み共感 ===== */
-  .worry { background: #fdf6ec; }
-  .worry-list { max-width: 460px; margin: 0 auto; }
-  .worry-list li {
-    list-style: none; padding: 18px 20px 18px 56px;
-    margin-bottom: 12px; background: #fff;
-    position: relative; font-size: 15px; line-height: 1.7;
-    box-shadow: 0 2px 8px rgba(120,80,50,0.06);
-  }
-  .worry-list li::before {
-    content: "✕"; position: absolute; left: 22px; top: 19px;
-    color: #d97757; font-size: 18px; font-weight: 700;
-  }
-  .worry .turning {
-    margin-top: 36px; padding: 28px 22px; background: #fff;
-    border: 2px dashed #d4a37c; text-align: center;
+    color: var(--accent-deep); margin-top: 32px; font-weight: 600;
     max-width: 460px; margin-left: auto; margin-right: auto;
   }
-  .worry .turning p {
-    font-size: 16px; font-weight: 600; color: #3a2e2a; line-height: 1.8;
-  }
-  .worry .turning p .em { color: #b8764d; }
 
-  /* ===== ぬん式メソッドの特徴 ===== */
-  .features { background: #fffdf9; }
-  .feature-card {
-    background: #fff; padding: 28px 24px; margin-bottom: 18px;
-    border: 1px solid #ead9c5; max-width: 520px;
-    margin-left: auto; margin-right: auto;
-    box-shadow: 0 4px 14px rgba(120,80,50,0.06);
+  /* ---------- 実績 ---------- */
+  .achievement { background: var(--white); }
+  .ach-card {
+    background: var(--cream); padding: 32px 26px; margin-bottom: 18px;
+    max-width: 520px; margin-left: auto; margin-right: auto;
+    border-radius: 8px; border-left: 4px solid var(--accent);
+    box-shadow: 0 6px 18px rgba(120,80,50,0.06);
   }
-  .feature-card .fnum {
-    font-family: "Playfair Display", serif; font-style: italic;
-    color: #b8764d; font-size: 28px; font-weight: 500; line-height: 1; margin-bottom: 10px;
+  .ach-card .a-tag {
+    display: inline-block; font-size: 10px; letter-spacing: 0.3em;
+    color: var(--white); background: var(--accent-deep);
+    padding: 5px 14px; font-family: 'Playfair Display', serif;
+    margin-bottom: 14px; font-weight: 600;
   }
-  .feature-card h3 {
-    font-family: "Noto Serif JP", serif; font-size: 19px;
-    font-weight: 600; color: #3a2e2a; margin-bottom: 12px; line-height: 1.5;
+  .ach-card .a-headline {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 20px; font-weight: 600; color: var(--accent-deep);
+    line-height: 1.55; margin-bottom: 14px;
   }
-  .feature-card h3 .hl {
-    background: linear-gradient(transparent 60%, rgba(244,217,168,0.7) 60%);
+  .ach-card .a-headline .big-num {
+    background: linear-gradient(90deg, #8a6a30, var(--gold));
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 30px; margin: 0 2px;
+  }
+  .ach-card .a-body { font-size: 14.5px; color: var(--text); line-height: 1.95; }
+  .ach-card .a-body strong { color: var(--accent-deep); font-weight: 700; }
+
+  /* ---------- Worry ---------- */
+  .worry { background: var(--bg); }
+  .worry-list { max-width: 460px; margin: 0 auto; }
+  .worry-list li {
+    list-style: none; padding: 18px 22px 18px 60px;
+    margin-bottom: 12px; background: var(--white); border-radius: 6px;
+    position: relative; font-size: 15px; line-height: 1.7;
+    color: var(--text-dark);
+    box-shadow: 0 3px 10px rgba(120,80,50,0.05);
+  }
+  .worry-list li::before {
+    content: ""; position: absolute; left: 22px; top: 22px;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--soft-rose);
+  }
+  .worry-list li::after {
+    content: "!"; position: absolute; left: 30px; top: 21px;
+    color: var(--accent-deep); font-weight: 700; font-size: 13px;
+    font-family: 'Playfair Display', serif; font-style: italic;
+  }
+  .worry .turning {
+    margin-top: 40px; padding: 32px 24px; background: var(--white);
+    border: 1.5px solid var(--gold); text-align: center;
+    max-width: 460px; margin-left: auto; margin-right: auto;
+    position: relative; border-radius: 6px;
+  }
+  .worry .turning::before, .worry .turning::after {
+    content: "❋"; color: var(--gold); font-size: 20px;
+    position: absolute; top: -12px; background: var(--bg);
+    padding: 0 8px;
+  }
+  .worry .turning::before { left: 40%; }
+  .worry .turning::after { right: 40%; }
+  .worry .turning p {
+    font-size: 16px; font-weight: 600; color: var(--accent-deep); line-height: 1.9;
+    font-family: 'Noto Serif JP', serif;
+  }
+  .worry .turning p .em {
+    background: linear-gradient(transparent 60%, rgba(255,210,180,0.55) 60%);
     padding: 0 3px;
   }
-  .feature-card p { font-size: 14.5px; color: #5a4538; line-height: 1.9; }
-  .feature-card p strong { color: #b8764d; font-weight: 600; }
 
-  /* ===== Zoomサポートギャラリー ===== */
-  .zoom-support { background: #fffdf9; }
-  .zoom-lead {
-    text-align: center; font-size: 15px; line-height: 2; color: #5a4538;
-    max-width: 480px; margin: 0 auto 32px;
+  /* ---------- ぬん式メソッド ---------- */
+  .method { background: var(--white); }
+  .method-card {
+    max-width: 540px; margin: 0 auto 20px;
+    background: var(--cream); padding: 32px 28px;
+    position: relative; border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(120,80,50,0.06);
   }
-  .zoom-lead strong { color: #b8764d; }
+  .method-card .num {
+    position: absolute; top: -18px; left: 26px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
+    color: var(--white); padding: 8px 16px;
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 16px; font-weight: 600; letter-spacing: 0.1em;
+    box-shadow: 0 4px 10px rgba(158,90,96,0.3);
+  }
+  .method-card h3 {
+    font-family: 'Noto Serif JP', serif; font-size: 19px;
+    font-weight: 600; color: var(--accent-deep);
+    margin: 12px 0 14px; line-height: 1.5;
+  }
+  .method-card h3 .hl {
+    background: linear-gradient(transparent 60%, rgba(230,210,181,0.7) 60%);
+    padding: 0 3px;
+  }
+  .method-card p { font-size: 14.5px; color: var(--text); line-height: 2; }
+  .method-card p strong { color: var(--accent-deep); font-weight: 700; }
+
+  /* ---------- Voice ---------- */
+  .voices { background: var(--bg); }
+  .voice-card {
+    background: var(--white); padding: 32px 26px; margin-bottom: 24px;
+    max-width: 540px; margin-left: auto; margin-right: auto;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(120,80,50,0.08);
+    position: relative;
+  }
+  .voice-card::before {
+    content: "\""; position: absolute; top: 8px; left: 18px;
+    font-size: 60px; color: var(--soft-rose); opacity: 0.5;
+    font-family: 'Playfair Display', serif; line-height: 1;
+  }
+  .voice-card .v-tag {
+    display: inline-block; font-size: 10px; letter-spacing: 0.3em;
+    color: var(--white); background: var(--accent-deep);
+    padding: 5px 14px; font-family: 'Playfair Display', serif;
+    margin-bottom: 14px; font-weight: 600; position: relative; z-index: 1;
+  }
+  .voice-card .v-headline {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 22px; font-weight: 700; color: var(--accent-deep);
+    line-height: 1.5; margin-bottom: 18px; position: relative; z-index: 1;
+  }
+  .voice-card .v-headline .big {
+    color: var(--terracotta); font-size: 26px;
+    background: linear-gradient(transparent 60%, rgba(230,210,181,0.6) 60%);
+    padding: 0 3px;
+  }
+  .voice-card .q-block { margin-bottom: 20px; }
+  .voice-card .q-label {
+    font-size: 11px; letter-spacing: 0.15em; color: var(--accent);
+    font-family: 'Playfair Display', serif; font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .voice-card .q-text {
+    font-size: 14.5px; color: var(--text); line-height: 2;
+  }
+  .voice-card .q-text .hl {
+    background: linear-gradient(transparent 60%, rgba(230,210,181,0.7) 60%);
+    font-weight: 600; padding: 0 2px;
+  }
+  .voice-card .v-meta {
+    font-size: 12px; color: var(--text-mid); padding-top: 14px;
+    margin-top: 14px; border-top: 1px dashed var(--border);
+    text-align: right;
+  }
+
+  /* ---------- Zoom ---------- */
+  .zoom-support { background: var(--white); }
   .zoom-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-    max-width: 540px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    max-width: 560px; margin: 0 auto;
   }
   .zoom-grid img {
     width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
-    box-shadow: 0 6px 16px rgba(120,80,50,0.12);
+    border-radius: 4px;
+    box-shadow: 0 4px 14px rgba(120,80,50,0.1);
   }
-  .zoom-grid .wide { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+  .zoom-grid .wide { grid-column: 1 / -1; }
   .zoom-caption {
-    text-align: center; margin-top: 18px; font-size: 13px; color: #8a7569;
-    line-height: 1.8;
+    text-align: center; margin-top: 22px; font-size: 13px; color: var(--text-mid);
+    line-height: 1.9;
   }
 
-  /* ===== お客様の声 ===== */
-  .voices { background: #fef3e6; }
-  .voice-card {
-    background: #fff; padding: 28px 24px; margin-bottom: 20px;
-    max-width: 520px; margin-left: auto; margin-right: auto;
-    border-left: 3px solid #d4a37c;
-    box-shadow: 0 4px 14px rgba(120,80,50,0.06);
-  }
-  .voice-card .v-tag {
-    display: inline-block; font-size: 11px; color: #fff;
-    background: #b8764d; padding: 4px 12px;
-    letter-spacing: 0.1em; margin-bottom: 14px;
-  }
-  .voice-card .v-num {
-    font-family: "Playfair Display", serif;
-    font-size: 28px; font-weight: 700; color: #b8764d;
-    margin-bottom: 8px; line-height: 1.2;
-  }
-  .voice-card .v-num small { font-size: 14px; font-weight: 500; color: #8a7569; }
-  .voice-card .v-text {
-    font-size: 14.5px; line-height: 2; color: #4a3329; margin-bottom: 14px;
-  }
-  .voice-card .v-text .hl {
-    background: linear-gradient(transparent 60%, rgba(244,217,168,0.7) 60%);
-    font-weight: 600;
-  }
-  .voice-card .v-meta {
-    font-size: 12px; color: #8a7569; padding-top: 12px;
-    border-top: 1px solid #ead9c5;
-  }
-
-  /* ===== 離脱ブロック ===== */
+  /* ---------- Stopper ---------- */
   .stopper {
-    background: #fff; padding: 40px 24px; margin: 0 auto;
-    border-top: 3px solid #d97757; border-bottom: 3px solid #d97757;
+    background: var(--accent-deep); color: var(--white);
+    padding: 48px 24px; text-align: center;
   }
-  .stopper-box {
-    max-width: 480px; margin: 0 auto;
-    background: #fff7f0; padding: 28px 22px;
-    border: 2px solid #d97757; text-align: center;
+  .stopper-inner { max-width: 480px; margin: 0 auto; }
+  .stopper .warning-mark {
+    font-size: 40px; color: var(--gold); margin-bottom: 14px;
   }
-  .stopper-box .alert {
-    font-size: 18px; font-weight: 700; color: #d97757;
-    margin-bottom: 16px; line-height: 1.5;
+  .stopper h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 22px; font-weight: 600; line-height: 1.6;
+    margin-bottom: 18px; color: var(--white);
   }
-  .stopper-box .alert::before, .stopper-box .alert::after {
-    content: "⚠️"; margin: 0 6px;
+  .stopper h3 .hl {
+    background: linear-gradient(transparent 60%, rgba(201,168,120,0.6) 60%);
+    padding: 0 3px;
   }
-  .stopper-box p { font-size: 14.5px; line-height: 1.95; color: #3a2e2a; }
-  .stopper-box p .em { color: #d97757; font-weight: 700; }
+  .stopper p { font-size: 14.5px; line-height: 2; opacity: 0.92; }
+  .stopper p strong { color: var(--gold); }
 
-  /* ===== プロフィール ===== */
-  .profile { background: #fffdf9; }
-  .profile-image {
-    margin: 0 -24px 28px; aspect-ratio: 3 / 4;
-    background: url('images/profile_bloom.jpg') center/contain no-repeat #fbecdd;
+  /* ---------- Profile ---------- */
+  .profile-sec { background: var(--cream); padding-top: 0; }
+  .profile-hero {
+    aspect-ratio: 3 / 4; background: url('images/profile_bloom.jpg') center/cover no-repeat #fbecdd;
+    margin-bottom: 40px;
   }
-  .profile-card { max-width: 520px; margin: 0 auto; }
-  .profile-name {
-    text-align: center; margin-bottom: 24px;
+  .profile-card { max-width: 540px; margin: 0 auto; padding: 0 24px; }
+  .profile-card .role {
+    text-align: center; font-size: 12px; letter-spacing: 0.4em;
+    color: var(--accent); font-family: 'Playfair Display', serif;
+    margin-bottom: 8px;
   }
-  .profile-name .role {
-    font-size: 12px; letter-spacing: 0.3em; color: #b8764d;
-    font-family: "Playfair Display", serif; margin-bottom: 6px;
-  }
-  .profile-name .nm {
-    font-family: "Noto Serif JP", serif; font-size: 22px;
-    color: #3a2e2a; font-weight: 600;
+  .profile-card .nm {
+    text-align: center; font-family: 'Noto Serif JP', serif;
+    font-size: 26px; color: var(--accent-deep);
+    font-weight: 600; margin-bottom: 32px;
   }
   .profile-story {
-    background: #faf4ec; padding: 32px 26px;
-    font-size: 15px; line-height: 2.1; color: #4a3329;
-  }
-  .profile-story p { margin-bottom: 18px; }
-  .profile-story p:last-child { margin-bottom: 0; }
-  .profile-story .hl {
-    font-weight: 600;
-    background: linear-gradient(transparent 60%, rgba(244,217,168,0.7) 60%);
-    padding: 0 2px;
-  }
-  .profile-story .hl-deep { font-weight: 700; color: #b8764d; }
-  .profile-story .quote-line {
-    font-size: 17px; font-weight: 600; color: #8a5a38;
-    text-align: center; line-height: 1.9;
-    border-left: 3px solid #b8764d; border-right: 3px solid #b8764d;
-    padding: 12px 14px; margin: 24px 0; background: #fffdf9;
-  }
-  .profile-story .big-number {
-    display: inline-block; font-weight: 800; font-size: 19px; color: #b8764d;
-    background: linear-gradient(transparent 55%, rgba(244,217,168,0.7) 55%);
-    padding: 0 4px;
-  }
-
-  /* ===== 講座で得られるもの ===== */
-  .benefits-list { background: #fef3e6; }
-  .benefit-row {
-    background: #fff; padding: 24px 22px; margin-bottom: 14px;
-    max-width: 520px; margin-left: auto; margin-right: auto;
-    display: flex; gap: 16px; align-items: flex-start;
+    background: var(--white); padding: 34px 28px;
+    font-size: 15px; line-height: 2.15; color: var(--text-dark);
+    border-radius: 6px;
     box-shadow: 0 4px 14px rgba(120,80,50,0.06);
   }
-  .benefit-row .bnum {
-    flex-shrink: 0; width: 48px; height: 48px;
-    background: linear-gradient(135deg, #e8b89a, #b8764d);
-    color: #fff; display: flex; align-items: center; justify-content: center;
-    font-family: "Playfair Display", serif; font-style: italic;
-    font-size: 20px; font-weight: 600;
+  .profile-story p { margin-bottom: 20px; }
+  .profile-story p:last-child { margin-bottom: 0; }
+  .profile-story .lead-line {
+    font-size: 17px; font-weight: 700; color: var(--accent-deep);
+    padding-bottom: 14px; border-bottom: 1px dashed var(--border); margin-bottom: 20px;
+    font-family: 'Noto Serif JP', serif;
   }
-  .benefit-row .btext h4 {
-    font-size: 16px; font-weight: 700; color: #3a2e2a;
-    margin-bottom: 6px; line-height: 1.5;
+  .profile-story .hl {
+    font-weight: 600;
+    background: linear-gradient(transparent 60%, rgba(230,210,181,0.6) 60%);
+    padding: 0 2px;
   }
-  .benefit-row .btext p {
-    font-size: 14px; color: #5a4538; line-height: 1.8;
+  .profile-story .hl-deep { font-weight: 700; color: var(--accent); }
+  .profile-story .quote-line {
+    font-size: 17px; font-weight: 600; color: var(--accent-deep);
+    text-align: center; line-height: 1.9;
+    border-left: 3px solid var(--accent); border-right: 3px solid var(--accent);
+    padding: 14px 16px; margin: 24px 0; background: var(--cream);
+    font-family: 'Noto Serif JP', serif;
+  }
+  .profile-story .big-number {
+    display: inline-block; font-weight: 800; font-size: 20px; color: var(--terracotta);
+    background: linear-gradient(transparent 55%, rgba(230,210,181,0.7) 55%);
+    padding: 0 5px; font-family: 'Playfair Display', serif; font-style: italic;
   }
 
-  /* ===== 3つの約束 ===== */
-  .promises { background: linear-gradient(180deg, #faf4ec, #f4e4d0); }
+  /* ---------- Benefits list ---------- */
+  .benefits { background: var(--white); }
+  .benefit-row {
+    background: var(--cream); padding: 24px 22px; margin-bottom: 12px;
+    max-width: 540px; margin-left: auto; margin-right: auto;
+    display: flex; gap: 18px; align-items: flex-start;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(120,80,50,0.04);
+  }
+  .benefit-row .bnum {
+    flex-shrink: 0; width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--champagne) 0%, var(--gold) 100%);
+    color: var(--white); display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 18px; font-weight: 700; border-radius: 50%;
+    box-shadow: 0 3px 8px rgba(201,168,120,0.35);
+  }
+  .benefit-row .btext { flex: 1; }
+  .benefit-row .btext h4 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px; font-weight: 700; color: var(--accent-deep);
+    margin-bottom: 6px; line-height: 1.5;
+  }
+  .benefit-row .btext p { font-size: 14px; color: var(--text); line-height: 1.9; }
+
+  /* ---------- 3つの約束 ---------- */
+  .promises { background: var(--bg); }
   .promise-card {
-    background: #fff; padding: 28px 24px; margin-bottom: 16px;
-    max-width: 520px; margin-left: auto; margin-right: auto;
-    border-top: 3px solid #b8764d;
-    box-shadow: 0 6px 18px rgba(120,80,50,0.08);
+    background: var(--white); padding: 32px 26px; margin-bottom: 18px;
+    max-width: 540px; margin-left: auto; margin-right: auto;
+    border-top: 3px solid var(--accent); border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(120,80,50,0.06);
     text-align: center;
   }
   .promise-card .pnum {
-    font-family: "Playfair Display", serif; font-style: italic;
-    color: #b8764d; font-size: 16px; letter-spacing: 0.2em; margin-bottom: 10px;
+    font-family: 'Playfair Display', serif; font-style: italic;
+    color: var(--accent); font-size: 14px; letter-spacing: 0.25em;
+    margin-bottom: 10px; font-weight: 500;
   }
   .promise-card h4 {
-    font-family: "Noto Serif JP", serif; font-size: 19px;
-    color: #3a2e2a; font-weight: 600; margin-bottom: 10px; line-height: 1.6;
+    font-family: 'Noto Serif JP', serif; font-size: 20px;
+    color: var(--accent-deep); font-weight: 600;
+    margin-bottom: 12px; line-height: 1.55;
   }
-  .promise-card p { font-size: 14px; color: #5a4538; line-height: 1.9; }
+  .promise-card p { font-size: 14.5px; color: var(--text); line-height: 2; }
 
-  /* ===== 相談会概要 ===== */
-  .meeting-info {
-    background: #fff; padding: 56px 24px;
-    border-top: 1px solid #ead9c5; border-bottom: 1px solid #ead9c5;
-  }
+  /* ---------- 概要 ---------- */
+  .meeting-info { background: var(--white); }
   .meeting-card {
-    max-width: 520px; margin: 0 auto;
-    background: linear-gradient(135deg, #fffdf9 0%, #f8e3d1 100%);
-    padding: 32px 26px; border: 2px solid #d4a37c;
+    max-width: 540px; margin: 0 auto;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--bg) 100%);
+    padding: 36px 28px; border: 1.5px solid var(--gold);
+    border-radius: 6px;
   }
-  .meeting-card h3 {
-    text-align: center; font-family: "Noto Serif JP", serif;
-    font-size: 20px; font-weight: 600; color: #3a2e2a;
-    margin-bottom: 22px; line-height: 1.5;
+  .meeting-card .m-headline {
+    text-align: center; font-family: 'Noto Serif JP', serif;
+    font-size: 22px; font-weight: 600; color: var(--accent-deep);
+    margin-bottom: 24px; line-height: 1.5;
   }
-  .meeting-card h3 .em { color: #b8764d; }
-  .meeting-info-grid {
-    display: grid; gap: 14px; margin-bottom: 20px;
+  .m-grid { display: grid; gap: 16px; }
+  .m-grid .row {
+    display: grid; grid-template-columns: 100px 1fr; gap: 14px;
+    font-size: 14px; padding: 12px 0; border-bottom: 1px dashed var(--border);
   }
-  .meeting-info-grid .row {
-    display: grid; grid-template-columns: 90px 1fr; gap: 12px;
-    font-size: 14px; padding: 10px 0; border-bottom: 1px dashed #d4a37c;
+  .m-grid .row:last-child { border-bottom: none; }
+  .m-grid .row .k {
+    font-weight: 700; color: var(--accent); letter-spacing: 0.15em;
+    font-size: 12px; font-family: 'Playfair Display', serif;
   }
-  .meeting-info-grid .row:last-child { border-bottom: none; }
-  .meeting-info-grid .row .k {
-    font-weight: 700; color: #b8764d; letter-spacing: 0.1em; font-size: 13px;
-  }
-  .meeting-info-grid .row .v { color: #3a2e2a; }
+  .m-grid .row .v { color: var(--text-dark); font-weight: 500; }
 
-  /* ===== FAQ ===== */
-  .faq { background: #fffdf9; }
+  /* ---------- FAQ ---------- */
+  .faq { background: var(--cream); }
   .faq-item {
-    max-width: 520px; margin: 0 auto 14px;
-    background: #fff; border: 1px solid #ead9c5;
+    max-width: 540px; margin: 0 auto 12px;
+    background: var(--white); border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(120,80,50,0.04);
+    overflow: hidden;
   }
   .faq-q {
-    padding: 18px 22px 18px 50px; font-weight: 700; color: #3a2e2a;
-    font-size: 15px; line-height: 1.6; position: relative; cursor: pointer;
+    padding: 20px 22px 20px 56px;
+    font-weight: 700; color: var(--accent-deep);
+    font-size: 15px; line-height: 1.6; position: relative;
+    font-family: 'Noto Serif JP', serif;
   }
   .faq-q::before {
-    content: "Q"; position: absolute; left: 18px; top: 17px;
-    font-family: "Playfair Display", serif; font-style: italic;
-    color: #b8764d; font-size: 22px; font-weight: 600;
+    content: "Q"; position: absolute; left: 22px; top: 20px;
+    font-family: 'Playfair Display', serif; font-style: italic;
+    color: var(--accent); font-size: 22px; font-weight: 600;
   }
   .faq-a {
-    padding: 0 22px 18px 50px; font-size: 14px;
-    color: #5a4538; line-height: 1.9; position: relative;
+    padding: 0 22px 20px 56px; font-size: 14px;
+    color: var(--text); line-height: 2; position: relative;
+    border-top: 1px dashed var(--border); padding-top: 16px;
   }
   .faq-a::before {
-    content: "A"; position: absolute; left: 18px; top: -2px;
-    font-family: "Playfair Display", serif; font-style: italic;
-    color: #d4a37c; font-size: 22px; font-weight: 600;
+    content: "A"; position: absolute; left: 22px; top: 12px;
+    font-family: 'Playfair Display', serif; font-style: italic;
+    color: var(--gold); font-size: 22px; font-weight: 600;
   }
 
-  /* ===== Final ===== */
+  /* ---------- Final ---------- */
   .final {
-    background: linear-gradient(180deg, #fef3e6 0%, #f8e3d1 100%);
-    text-align: center;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--cream) 100%);
+    text-align: center; padding: 64px 24px;
   }
   .final h2 {
-    font-family: "Noto Serif JP", serif; font-size: 24px;
-    font-weight: 600; line-height: 1.7; color: #3a2e2a; margin-bottom: 18px;
+    font-family: 'Noto Serif JP', serif; font-size: 26px;
+    font-weight: 600; line-height: 1.7; color: var(--accent-deep); margin-bottom: 22px;
   }
-  .final h2 .em { color: #b8764d; }
-  .final p { font-size: 15px; color: #4a3329; margin-bottom: 28px; line-height: 2; }
+  .final h2 .em { color: var(--accent); }
+  .final p { font-size: 15px; color: var(--text); margin-bottom: 32px; line-height: 2; }
 
-  /* ===== Footer ===== */
-  footer { background: #fffdf9; padding: 30px 24px; text-align: center; font-size: 12px; color: #8a7569; }
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--white); padding: 24px 24px 28px;
+    text-align: center; font-size: 12px; color: var(--text-mid);
+    letter-spacing: 0.05em;
+  }
 
-  /* ===== Sticky CTA ===== */
+  /* ---------- Sticky CTA ---------- */
   .sticky-cta {
     position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,253,249,0.97); backdrop-filter: blur(10px);
-    padding: 12px 16px 14px; border-top: 1px solid #ead9c5;
-    box-shadow: 0 -4px 20px rgba(120,80,50,0.1);
+    background: rgba(251,246,241,0.97); backdrop-filter: blur(10px);
+    padding: 12px 16px 14px; border-top: 1px solid var(--border);
+    box-shadow: 0 -4px 20px rgba(120,80,50,0.08);
   }
   .sticky-cta-inner { max-width: 560px; margin: 0 auto; }
   .sticky-cta .label {
-    text-align: center; font-size: 11px; color: #8a7569; margin-bottom: 6px;
-    letter-spacing: 0.1em;
+    text-align: center; font-size: 10.5px; color: var(--text-mid); margin-bottom: 6px;
+    letter-spacing: 0.15em;
   }
   .sticky-cta a {
-    display: block; padding: 13px 14px;
-    background: linear-gradient(135deg, #4ac05c 0%, #06c755 100%);
-    color: #fff; font-weight: 700; font-size: 14px;
+    display: block; padding: 14px 14px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
+    color: var(--white); font-weight: 700; font-size: 14.5px;
     border-radius: 999px; text-align: center; text-decoration: none;
-    box-shadow: 0 4px 12px rgba(6,199,85,0.3);
+    box-shadow: 0 4px 12px rgba(158,90,96,0.35);
+    letter-spacing: 0.05em;
   }
-  .sticky-cta a span.arrow { margin-left: 4px; }
 
-  /* ===== Media Query ===== */
+  /* ---------- Responsive ---------- */
   @media (max-width: 480px) {
-    section { padding: 48px 20px; }
-    .fv h1 { font-size: 23px; }
-    .section-title { font-size: 21px; }
-    .achievement-card .big-num { font-size: 36px; }
+    section { padding: 52px 20px; }
+    .sec-title { font-size: 22px; }
+    .fv-underline .headline { font-size: 17px; }
+    .ach-card .a-headline { font-size: 17px; }
+    .ach-card .a-headline .big-num { font-size: 26px; }
+    .voice-card .v-headline { font-size: 19px; }
+    .voice-card .v-headline .big { font-size: 22px; }
+    .stopper h3 { font-size: 19px; }
+    .final h2 { font-size: 22px; }
+    .cta-btn { font-size: 15.5px; padding: 18px 16px; }
   }
 </style>
 </head>
@@ -479,194 +542,169 @@
 
 <div class="wrap">
 
-  <!-- ============== FV ============== -->
+  <!-- =========== FV =========== -->
   <section class="fv">
-    <div class="fv-tag">D I E T &nbsp; C O A C H &nbsp; A C A D E M Y</div>
-    <h1>
-      <span class="nunn-brand">ぬん式</span><br>
-      ダイエット講師<br>起業アカデミー
-    </h1>
-    <p class="sub-headline">
-      ゼロから<span class="num">月収50万</span>×<br>
-      <span class="accent">「ありがとう」が止まらない</span><br>
-      ぬん式メソッド
-    </p>
-
-    <div class="badges-row">
-      <span class="badge">未経験OK</span>
-      <span class="badge">在宅で完結</span>
-      <span class="badge">伴走型サポート</span>
-    </div>
-
-    <div class="hero-image">
-      <img src="images/profile_bloom.jpg" alt="ぬん">
-    </div>
-
-    <p class="sub-headline" style="margin-top:24px;">
-      痩せた経験を、誰かの希望に。<br>
-      <strong style="color:#b8764d;">あなたの「今」を、収入に変える。</strong>
-    </p>
-  </section>
-
-  <!-- ============== CTA 1 ============== -->
-  <div class="cta-wrap">
-    <a href="https://liff.line.me/2006979316-KnVN3g2V?calendar_salon_id=27080&ts=1779438188" target="_blank" rel="noopener" class="cta-btn">
-      ロードマップ相談会の日程を見る
-      <span class="sub">24時間いつでもOK!!</span>
-    </a>
-    <p class="cta-note">無料・Zoom60分・無理な売り込み一切なし</p>
-  </div>
-
-  <!-- ============== ターゲット ============== -->
-  <section class="target">
-    <span class="section-tag">F O R &nbsp; Y O U</span>
-    <h2 class="section-title">こんな<span class="em">20〜40代の女性</span>へ</h2>
-    <ul>
-      <li>会社員のままで、将来が不安</li>
-      <li>子育てと両立できる働き方がしたい</li>
-      <li>在宅で月10万、できれば月30万以上稼ぎたい</li>
-      <li>ダイエットや美容、健康が好き</li>
-      <li>自分の経験を、誰かの役に立てたい</li>
-      <li>でも、何から始めていいか分からない</li>
-    </ul>
-    <p class="closing">
-      <strong>1つでも当てはまる方は、<br>このまま最後まで読んでみてください。</strong>
-    </p>
-  </section>
-
-  <!-- ============== 実績インパクト ============== -->
-  <section class="results-block">
-    <span class="section-tag">R E S U L T S</span>
-    <h2 class="section-title"><span class="hl">数字で見る</span>、ぬん式の実績</h2>
-
-    <div class="achievement-cards">
-      <div class="achievement-card">
-        <div class="label">N U N N &nbsp; 's &nbsp; R E S U L T</div>
-        <div class="big-num">1,000<small>万円</small></div>
-        <div class="desc">起業から<strong>たった1年で年商1000万円</strong>を達成。<br>元・公務員、ゼロからのスタートでした。</div>
-      </div>
-      <div class="achievement-card">
-        <div class="label">S T U D E N T &nbsp; 's &nbsp; R E S U L T</div>
-        <div class="big-num">118,000<small>円</small></div>
-        <div class="desc">講座生さんが、<strong>受講開始から2ヶ月目でマネタイズに成功</strong>。<br>未経験スタートでした。</div>
-      </div>
-    </div>
-
-    <p style="text-align:center;color:#5a4538;font-size:14px;line-height:2;max-width:480px;margin:24px auto 0;">
-      「特別な才能」ではなく、<br>
-      <strong style="color:#b8764d;">"正しい順序で進む"だけ</strong>で<br>
-      この結果が出ています。
-    </p>
-  </section>
-
-  <!-- ============== CTA 2 ============== -->
-  <div class="cta-wrap">
-    <a href="https://liff.line.me/2006979316-KnVN3g2V?calendar_salon_id=27080&ts=1779438188" target="_blank" rel="noopener" class="cta-btn">
-      ロードマップ相談会の日程を見る
-      <span class="sub">24時間いつでもOK!!</span>
-    </a>
-    <p class="cta-note">無料・Zoom60分・無理な売り込み一切なし</p>
-  </div>
-
-  <!-- ============== お悩み共感 ============== -->
-  <section class="worry">
-    <span class="section-tag">W O R R Y</span>
-    <h2 class="section-title">こんなお悩み、<br><span class="em">ありませんか？</span></h2>
-    <ul class="worry-list">
-      <li>副業や起業に興味はあるけど、何から始めればいいか分からない</li>
-      <li>ブログ・せどり・SNS発信、色々やったけど続かなかった</li>
-      <li>「自分には特別なスキルがない」と感じている</li>
-      <li>ダイエットや健康が好きだけど、仕事にできるとは思えない</li>
-      <li>子育て・家事と両立して稼ぐイメージが湧かない</li>
-      <li>会社員でいる将来に、漠然とした不安がある</li>
-    </ul>
-    <div class="turning">
-      <p>
-        大丈夫。あなたが悪いんじゃなくて、<br>
-        <span class="em">"正しいやり方"を知らなかっただけ</span>です。
+    <img src="images/academy_fv.png" alt="ぬん式ダイエット講師起業アカデミー" class="fv-image">
+    <div class="fv-underline">
+      <span class="kicker serif">D I E T &nbsp; C O A C H &nbsp; A C A D E M Y</span>
+      <p class="headline serif">
+        未経験から、<span class="em">「ありがとう」が止まらない</span><br>
+        ダイエット講師になる。
       </p>
     </div>
   </section>
 
-  <!-- ============== ぬん式メソッドの特徴 ============== -->
-  <section class="features">
-    <span class="section-tag">N U N N &nbsp; M E T H O D</span>
-    <h2 class="section-title">なぜ、ぬん式は<br><span class="hl">未経験からでも成果が出る</span>のか？</h2>
+  <!-- =========== CTA 1 =========== -->
+  <div class="cta-wrap">
+    <p class="cta-lead">
+      アカデミーの全体像・進め方・あなたに合うかを、<br>
+      ぬんが直接お伝えします。
+    </p>
+    <a href="https://liff.line.me/2006979316-KnVN3g2V?calendar_salon_id=27080&ts=1779438188" target="_blank" rel="noopener" class="cta-btn">
+      ロードマップ相談会の日程を見る
+      <span class="sub">24時間いつでもOK / 無料 / Zoom60分</span>
+    </a>
+    <p class="cta-note">無理な売り込みは一切いたしません</p>
+  </div>
 
-    <div class="feature-card">
-      <div class="fnum">01</div>
-      <h3>自分自身も<span class="hl">痩せながら</span>学べる</h3>
-      <p>講師になるために学ぶ知識が、<strong>そのまま自分のダイエットにも効果を発揮</strong>します。受講中に体型が変わっていく講座生さんが続出。だから自信を持って人に教えられるようになります。</p>
+  <!-- =========== ターゲット =========== -->
+  <section class="target">
+    <span class="sec-tag">F O R &nbsp; Y O U</span>
+    <h2 class="sec-title">こんな<span class="em">20〜40代の女性へ</span></h2>
+    <ul>
+      <li>会社員のままで、将来がなんとなく不安</li>
+      <li>子育てや家事と両立できる働き方をしたい</li>
+      <li>在宅で、月10万〜30万以上を目指したい</li>
+      <li>ダイエット・美容・健康の話が好き</li>
+      <li>自分の経験を、誰かの役に立てたい</li>
+      <li>でも、何から始めればいいか分からない</li>
+    </ul>
+    <p class="closing">
+      1つでも当てはまるあなたへ。<br>このまま読み進めてみてください。
+    </p>
+  </section>
+
+  <!-- =========== 実績 =========== -->
+  <section class="achievement">
+    <span class="sec-tag">A C H I E V E M E N T</span>
+    <h2 class="sec-title">数字で見る、<span class="em">ぬん式の実績</span></h2>
+
+    <div class="ach-card">
+      <span class="a-tag">N U N N ' S &nbsp; R E S U L T</span>
+      <h3 class="a-headline">起業<span class="big-num">1</span>年で、年商<span class="big-num">1,000</span>万円を達成。</h3>
+      <p class="a-body">元・公務員、パソコン初心者からのスタート。<br>「自分にできるなら、あなたにもできる」──<strong>再現性を追求したメソッド</strong>を体系化しました。</p>
     </div>
 
-    <div class="feature-card">
-      <div class="fnum">02</div>
-      <h3>予防医学に基づく<span class="hl">"本当に体にいい"</span>メソッド</h3>
-      <p>糖質制限・極端な食事制限は教えません。お客様の<strong>未来の健康まで守れる</strong>知識を学ぶから、自信を持って勧められる。「本当にいいことを教えている」という感覚が、一生もののやりがいに変わります。</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="fnum">03</div>
-      <h3>体重だけじゃない、<span class="hl">人生の質</span>が変わる</h3>
-      <p>受講生さんの満足度が高い理由は、見た目の変化以上に <strong>自律神経が整い・ホルモンバランスが整い・メンタルが明るくなる</strong> から。「痩せたら人生が変わった」という言葉が次々生まれます。</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="fnum">04</div>
-      <h3>完全0→1の方でも進める<span class="hl">明確なロードマップ</span></h3>
-      <p>「知識ゼロ」「SNSやったことない」「ビジネス経験なし」──そんな状態でも大丈夫。<strong>ぬんがあなたの伴走者として、ステップごとに一緒に進みます</strong>。だから迷子になりません。</p>
+    <div class="ach-card">
+      <span class="a-tag">S T U D E N T ' S &nbsp; R E S U L T</span>
+      <h3 class="a-headline">未経験から、<br>受講<span class="big-num">2</span>ヶ月で<span class="big-num">20</span>万円のマネタイズ。</h3>
+      <p class="a-body">「自分ひとりだったら悩みくすぶっていた部分を、ぬんさんに何度も質問しフィードバックをいただける環境だったからこそ、<strong>最短ルートで結果が出せた</strong>」──講座生さんの声より。</p>
     </div>
   </section>
 
-  <!-- ============== CTA 3 ============== -->
+  <!-- =========== CTA 2 =========== -->
   <div class="cta-wrap">
     <a href="https://liff.line.me/2006979316-KnVN3g2V?calendar_salon_id=27080&ts=1779438188" target="_blank" rel="noopener" class="cta-btn">
       ロードマップ相談会の日程を見る
-      <span class="sub">24時間いつでもOK!!</span>
+      <span class="sub">24時間いつでもOK / 無料 / Zoom60分</span>
     </a>
-    <p class="cta-note">無料・Zoom60分・無理な売り込み一切なし</p>
+    <p class="cta-note">無理な売り込みは一切いたしません</p>
   </div>
 
-  <!-- ============== お客様の声（暫定1名） ============== -->
-  <section class="voices">
-    <span class="section-tag">V O I C E</span>
-    <h2 class="section-title">講座生さんの<br><span class="em">リアルな声</span></h2>
-
-    <div class="voice-card">
-      <span class="v-tag">CASE 01</span>
-      <div class="v-num">2ヶ月目で<span style="color:#3a2e2a;">118,000円</span><small>（マネタイズ達成）</small></div>
-
-      <div class="v-text">
-        <p style="font-weight:700;color:#b8764d;margin-bottom:6px;">Q1. 受講前、一番悩んでいたこと</p>
-        <p style="margin-bottom:18px;">「自分がサポート側に立つことで、<span class="hl">どうやってマネタイズしていくのか？</span> そして、インスタの発信の方向性をどうしていけばよいか悩んでいました。」</p>
-
-        <p style="font-weight:700;color:#b8764d;margin-bottom:6px;">Q2. 何が決め手で申し込んでくれた？</p>
-        <p style="margin-bottom:18px;">「これまで数々の成果を出されてきたぬんさんから<span class="hl">直々にご指導いただける！</span>というのが最大の決め手でした。ある意味、ぬんさんをひとり占めできるという感覚です(笑)」</p>
-
-        <p style="font-weight:700;color:#b8764d;margin-bottom:6px;">Q3. 実際に受けて、一番変わったことは？</p>
-        <p style="margin-bottom:18px;">「<span class="hl">マネタイズまでが最短ルートでいけた！</span>ということです。自分ひとりだったら『あーでもない、こーでもない』と悩むくすぶっていたであろう部分を、ぬんさんに何度も質問しフィードバックを頂ける環境下だったため、<span class="hl">サポートを受けはじめ2ヶ月目にはマネタイズに成功</span>できました。ぬんさんが後ろにいてくださるという安心感は大きかったと考えます。」</p>
-
-        <p style="font-weight:700;color:#b8764d;margin-bottom:6px;">Q4. 数字でいうと、どんな変化があった？</p>
-        <p style="margin-bottom:18px;"><span class="hl" style="font-weight:700;font-size:17px;">2ヶ月目で118,000円</span> を達成しました。</p>
-
-        <p style="font-weight:700;color:#b8764d;margin-bottom:6px;">Q5. 迷ってる人に、一言あるとしたら？</p>
-        <p style="margin-bottom:0;">「自分ひとりで悶々と悩むのであれば、<span class="hl">その道のプロのもとで教わるのがほんと最短</span>だよ！と伝えたいです。今が一番若いからこそ、思い立ったが吉日。<span class="hl">行動を起こすなら今だよ！</span>」</p>
-      </div>
-
-      <p class="v-meta">未経験から、ぬん式メソッドで2ヶ月目にマネタイズ達成</p>
+  <!-- =========== Worry =========== -->
+  <section class="worry">
+    <span class="sec-tag">W O R R Y</span>
+    <h2 class="sec-title">こんなお悩み、<br><span class="em">ありませんか？</span></h2>
+    <ul class="worry-list">
+      <li>副業や起業に興味はあるけど、何から始めていいか分からない</li>
+      <li>ブログ・せどり・SNS発信、色々やったけど続かなかった</li>
+      <li>「自分には特別なスキルがない」と感じている</li>
+      <li>ダイエットや健康が好きだけど、仕事にできる自信がない</li>
+      <li>子育て・家事と両立して稼げるイメージが湧かない</li>
+      <li>会社員として働き続ける未来に、漠然とした不安がある</li>
+    </ul>
+    <div class="turning">
+      <p>大丈夫。あなたが悪いのではなく、<br><span class="em">"正しいやり方"を知らなかっただけ</span>です。</p>
     </div>
   </section>
 
-  <!-- ============== Zoomサポート風景 ============== -->
-  <section class="zoom-support">
-    <span class="section-tag">S U P P O R T &nbsp; S C E N E</span>
-    <h2 class="section-title">講座生さんとの<br><span class="em">サポート風景</span></h2>
+  <!-- =========== ぬん式メソッドの特徴 =========== -->
+  <section class="method">
+    <span class="sec-tag">N U N N &nbsp; M E T H O D</span>
+    <h2 class="sec-title">なぜ、ぬん式は<br><span class="em">未経験でも成果が出る</span>のか。</h2>
 
-    <p class="zoom-lead">
-      ぬん式アカデミーでは、<br>
-      <strong>Zoomでの個別＆グループサポート</strong>を行っています。<br>
-      ひとりじゃない、温かい伴走の現場です。
-    </p>
+    <div class="method-card">
+      <span class="num">FEATURE &nbsp; 01</span>
+      <h3>自分自身も<span class="hl">"痩せながら"</span>学べる</h3>
+      <p>講師として学ぶ知識が、<strong>そのままあなた自身のダイエットにも効果を発揮</strong>します。受講中に体型が変わる講座生さんが続出。「教える立場としての自信」が、自然と身につきます。</p>
+    </div>
+
+    <div class="method-card">
+      <span class="num">FEATURE &nbsp; 02</span>
+      <h3>予防医学に基づく<span class="hl">"本当に体にいい"</span>メソッド</h3>
+      <p>糖質制限・極端な食事制限は教えません。お客様の<strong>未来の健康まで守れる知識</strong>を身につけるから、自信を持って勧められる。「本当にいいことを教えている」──それが、一生もののやりがいに変わります。</p>
+    </div>
+
+    <div class="method-card">
+      <span class="num">FEATURE &nbsp; 03</span>
+      <h3>体重だけじゃない、<span class="hl">人生の質</span>が変わる</h3>
+      <p>ぬん式が選ばれる理由は、見た目の変化以上に <strong>自律神経・ホルモンバランスが整い、メンタルが明るくなる</strong>から。「痩せたら人生が変わった」──そう言われるコーチになれます。</p>
+    </div>
+
+    <div class="method-card">
+      <span class="num">FEATURE &nbsp; 04</span>
+      <h3>完全0→1の方でも進める<span class="hl">明確なロードマップ</span></h3>
+      <p>知識ゼロ・SNS未経験・ビジネス経験なし。──そんな状態でも大丈夫。<strong>ぬんが伴走者として、ステップごとに一緒に進みます</strong>。だから迷子にならない。挫折させません。</p>
+    </div>
+  </section>
+
+  <!-- =========== CTA 3 =========== -->
+  <div class="cta-wrap">
+    <a href="https://liff.line.me/2006979316-KnVN3g2V?calendar_salon_id=27080&ts=1779438188" target="_blank" rel="noopener" class="cta-btn">
+      ロードマップ相談会の日程を見る
+      <span class="sub">24時間いつでもOK / 無料 / Zoom60分</span>
+    </a>
+    <p class="cta-note">無理な売り込みは一切いたしません</p>
+  </div>
+
+  <!-- =========== Voice =========== -->
+  <section class="voices">
+    <span class="sec-tag">V O I C E</span>
+    <h2 class="sec-title">講座生さんの<br><span class="em">リアルな声</span></h2>
+
+    <div class="voice-card">
+      <span class="v-tag">CASE 01</span>
+      <div class="v-headline">2ヶ月で<span class="big">20万円</span>のマネタイズを達成</div>
+
+      <div class="q-block">
+        <div class="q-label">Q1. 受講前、一番悩んでいたこと</div>
+        <div class="q-text">「自分がサポート側に立つことで、<span class="hl">どうやってマネタイズしていくのか？</span> そして、インスタの発信の方向性をどうしていけばよいか悩んでいました。」</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-label">Q2. 決め手は？</div>
+        <div class="q-text">「これまで数々の成果を出されてきたぬんさんから<span class="hl">直々にご指導いただける！</span>というのが最大の決め手でした。ある意味、ぬんさんをひとり占めできるという感覚です(笑)」</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-label">Q3. 実際に受けて、一番変わったこと</div>
+        <div class="q-text">「<span class="hl">マネタイズまでが最短ルートでいけた！</span>ということです。自分ひとりだったら『あーでもない、こーでもない』と悩みくすぶっていたであろう部分を、ぬんさんに何度も質問しフィードバックをいただける環境下だったため、<span class="hl">2ヶ月目にはマネタイズに成功</span>できました。ぬんさんが後ろにいてくださる安心感は大きかったです。」</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-label">Q4. 迷っている人へ、一言</div>
+        <div class="q-text">「自分ひとりで悶々と悩むのであれば、<span class="hl">その道のプロのもとで教わるのが本当に最短</span>だよ！と伝えたいです。今が一番若いからこそ、思い立ったが吉日。<span class="hl">行動を起こすなら今だよ！</span>」</div>
+      </div>
+
+      <p class="v-meta">— 未経験からのスタート、ぬん式メソッド受講 —</p>
+    </div>
+  </section>
+
+  <!-- =========== Zoom =========== -->
+  <section class="zoom-support">
+    <span class="sec-tag">S U P P O R T &nbsp; S C E N E</span>
+    <h2 class="sec-title">講座生さんとの<br><span class="em">サポート風景</span></h2>
+    <p class="sec-lead">ぬん式アカデミーは、<br>Zoomでの個別＆グループサポートを大切にしています。<br>ひとりじゃない、温かい伴走の現場です。</p>
 
     <div class="zoom-grid">
       <img src="images/zoom/zoom2.jpg" alt="講座生さんとのZoomサポート" class="wide">
@@ -680,246 +718,166 @@
 
     <p class="zoom-caption">
       毎週のオンラインミーティング・個別フィードバックで、<br>
-      あなたの「やってみよう！」を、結果につなげます。
+      あなたの「やってみよう」を、結果につなげます。
     </p>
   </section>
 
-  <!-- ============== 離脱ブロック ============== -->
+  <!-- =========== 離脱ブロック =========== -->
   <div class="stopper">
-    <div class="stopper-box">
-      <div class="alert">このページを見られるのは、今だけです</div>
+    <div class="stopper-inner">
+      <div class="warning-mark serif">※</div>
+      <h3 class="serif">このページを見られるのは、<br><span class="hl">今このタイミング</span>だけです。</h3>
       <p>
         このページを閉じてしまうと、<br>
-        <span class="em">あなたの人生を変えるかもしれない情報</span>に<br>
+        <strong>あなたの人生を変えるかもしれない情報</strong>に、<br>
         二度と出会えないかもしれません。<br><br>
-        いま、<span class="em">「変わりたい」</span>と少しでも思った方は、<br>
-        この時点で最後まで読み進めてみてください。
+        今、<strong>「変わりたい」</strong>と少しでも思った方は、<br>
+        最後まで読み進めてみてください。
       </p>
     </div>
   </div>
 
-  <!-- ============== プロフィール ============== -->
-  <section class="profile">
-    <div class="profile-image"></div>
+  <!-- =========== Profile =========== -->
+  <section class="profile-sec">
+    <div class="profile-hero"></div>
     <div class="profile-card">
-      <div class="profile-name">
-        <div class="role">D I E T &nbsp; C O A C H</div>
-        <div class="nm">ぬん</div>
-      </div>
-
+      <div class="role">D I E T &nbsp; C O A C H</div>
+      <div class="nm serif">ぬん</div>
       <div class="profile-story">
-        <p><strong>夫大好きな、元公務員・35歳。</strong></p>
+        <p class="lead-line">夫大好きな、元公務員・35歳。</p>
         <p>2年前、<span class="hl">大好きだった夫に冷められた</span>ことをきっかけに、過去最高体重に。職場で「3人目？」と聞かれた日の恥ずかしさは、今も忘れません。</p>
         <p>インスタのレシピ、ジム、痩身エステ──<span class="hl">やれることは全部やった</span>。でも、痩せない。肌は荒れる。イライラは加速する。</p>
         <p class="quote-line">「体の中から、メンタルから変えないと、<br>私は変われない」</p>
         <p>そう気づいてたどり着いたのが、<span class="hl-deep">ファスティングと食事改善</span>でした。</p>
-        <p><span class="big-number">1ヶ月半で−5kg。</span></p>
-        <p>肌が整い、生理痛が消え、朝が軽くなった。そして──冷めきっていた夫に、<span class="hl">私から逆プロポーズ。仲直りができました</span>。</p>
-        <p>その後、ダイエットコーチとして独立。<span class="hl-deep">起業1年で年商1000万円</span>を達成。今では、当時の私と同じように悩む女性たちに、"痩せて稼ぐ"力を届けています。</p>
+        <p><span class="big-number">1ヶ月半で −5kg。</span></p>
+        <p>肌が整い、生理痛が消え、朝が軽くなった。そして──冷めきっていた夫に、<br><span class="hl">私から逆プロポーズ。</span><br><span class="hl">仲直りができました。</span></p>
+        <p>その後、ダイエットコーチとして独立。<span class="hl-deep">起業1年で年商1,000万円</span>を達成。今では、当時の私と同じように悩む女性たちに、"痩せながら稼ぐ"力を届けています。</p>
       </div>
     </div>
   </section>
 
-  <!-- ============== 講座で得られるもの ============== -->
-  <section class="benefits-list">
-    <span class="section-tag">W H A T &nbsp; Y O U &nbsp; G E T</span>
-    <h2 class="section-title">アカデミーで<br><span class="hl">手に入る7つのもの</span></h2>
+  <!-- =========== 得られるもの =========== -->
+  <section class="benefits">
+    <span class="sec-tag">W H A T &nbsp; Y O U &nbsp; G E T</span>
+    <h2 class="sec-title">アカデミーで<br><span class="em">手に入る7つのもの</span></h2>
 
-    <div class="benefit-row">
-      <div class="bnum">01</div>
-      <div class="btext">
-        <h4>自分自身が痩せて自信を取り戻せる</h4>
-        <p>講師として学ぶ知識で、まずあなた自身が変わります。</p>
-      </div>
-    </div>
-    <div class="benefit-row">
-      <div class="bnum">02</div>
-      <div class="btext">
-        <h4>予防医学ベースの本物のダイエット知識</h4>
-        <p>一生もののスキル。お客様の未来の健康まで守れます。</p>
-      </div>
-    </div>
-    <div class="benefit-row">
-      <div class="bnum">03</div>
-      <div class="btext">
-        <h4>SNS集客の具体的なノウハウ</h4>
-        <p>ぬんが実際に1年で1000万円稼いだ集客手法をそのままお伝えします。</p>
-      </div>
-    </div>
-    <div class="benefit-row">
-      <div class="bnum">04</div>
-      <div class="btext">
-        <h4>高単価サービスの作り方</h4>
-        <p>あなたの講座・商品を、堂々と販売できる形に整えます。</p>
-      </div>
-    </div>
-    <div class="benefit-row">
-      <div class="bnum">05</div>
-      <div class="btext">
-        <h4>お客様サポートの実践スキル</h4>
-        <p>「ありがとう」が止まらない、満足度の高いサポート方法を学べます。</p>
-      </div>
-    </div>
-    <div class="benefit-row">
-      <div class="bnum">06</div>
-      <div class="btext">
-        <h4>0→1完全ロードマップ</h4>
-        <p>未経験からでも迷わず進めるステップを、私と一緒に踏みます。</p>
-      </div>
-    </div>
-    <div class="benefit-row">
-      <div class="bnum">07</div>
-      <div class="btext">
-        <h4>ぬんによる伴走サポート</h4>
-        <p>挫折しそうな時、迷った時、いつでも相談できる安心の伴走です。</p>
-      </div>
-    </div>
+    <div class="benefit-row"><div class="bnum">01</div><div class="btext"><h4>自分自身が痩せて、自信を取り戻せる</h4><p>講師として学ぶ知識で、まずあなた自身が変わります。</p></div></div>
+    <div class="benefit-row"><div class="bnum">02</div><div class="btext"><h4>予防医学ベースの、本物のダイエット知識</h4><p>一生もののスキル。お客様の未来の健康まで守れます。</p></div></div>
+    <div class="benefit-row"><div class="bnum">03</div><div class="btext"><h4>SNS集客の、具体的なノウハウ</h4><p>ぬんが実際に1年で1,000万円を作った集客手法をそのままお伝えします。</p></div></div>
+    <div class="benefit-row"><div class="bnum">04</div><div class="btext"><h4>高単価サービスの作り方</h4><p>あなたの講座・商品を、堂々と販売できる形に整えます。</p></div></div>
+    <div class="benefit-row"><div class="bnum">05</div><div class="btext"><h4>お客様サポートの実践スキル</h4><p>「ありがとう」が止まらない、満足度の高いサポート方法を学びます。</p></div></div>
+    <div class="benefit-row"><div class="bnum">06</div><div class="btext"><h4>0→1完全ロードマップ</h4><p>未経験からでも迷わず進めるステップを、私と一緒に踏みます。</p></div></div>
+    <div class="benefit-row"><div class="bnum">07</div><div class="btext"><h4>ぬんによる伴走サポート</h4><p>挫折しそうな時、迷った時、いつでも相談できる安心の伴走です。</p></div></div>
   </section>
 
-  <!-- ============== CTA 4 ============== -->
+  <!-- =========== CTA 4 =========== -->
   <div class="cta-wrap">
     <a href="https://liff.line.me/2006979316-KnVN3g2V?calendar_salon_id=27080&ts=1779438188" target="_blank" rel="noopener" class="cta-btn">
       ロードマップ相談会の日程を見る
-      <span class="sub">24時間いつでもOK!!</span>
+      <span class="sub">24時間いつでもOK / 無料 / Zoom60分</span>
     </a>
-    <p class="cta-note">無料・Zoom60分・無理な売り込み一切なし</p>
+    <p class="cta-note">無理な売り込みは一切いたしません</p>
   </div>
 
-  <!-- ============== 3つの約束 ============== -->
+  <!-- =========== 3つの約束 =========== -->
   <section class="promises">
-    <span class="section-tag">3 &nbsp; P R O M I S E S</span>
-    <h2 class="section-title">ロードマップ相談会<br><span class="em">3つのお約束</span></h2>
+    <span class="sec-tag">3 &nbsp; P R O M I S E S</span>
+    <h2 class="sec-title">ロードマップ相談会<br><span class="em">3つのお約束</span></h2>
 
     <div class="promise-card">
       <div class="pnum">P R O M I S E &nbsp; 01</div>
-      <h4>無理な売り込みは<br>一切しません</h4>
-      <p>「合わない」と感じたら、その場でお断りいただいてOKです。<br>あなたの未来を、私が決めるのではありません。</p>
+      <h4 class="serif">無理な売り込みは、<br>一切いたしません。</h4>
+      <p>「合わない」と感じたら、その場でお断りいただいて構いません。<br>あなたの未来を決めるのは、私ではありません。</p>
     </div>
 
     <div class="promise-card">
       <div class="pnum">P R O M I S E &nbsp; 02</div>
-      <h4>どんな質問でも<br>歓迎します</h4>
-      <p>起業ゼロ知識でも、子育て中でも、PCが苦手でも──<br>あなたが「気になること」全部、お答えします。</p>
+      <h4 class="serif">どんな質問も、<br>歓迎いたします。</h4>
+      <p>起業ゼロ知識でも、子育て中でも、PCが苦手でも──<br>「気になること」を、全部お答えします。</p>
     </div>
 
     <div class="promise-card">
       <div class="pnum">P R O M I S E &nbsp; 03</div>
-      <h4>60分で<br>「未来の選択肢」が見えます</h4>
-      <p>あなたの今の状況をヒアリングして、最適なロードマップを一緒に描きます。<br>たとえ申し込まなくても、「気づき」を持ち帰っていただけます。</p>
+      <h4 class="serif">60分で、<br>「未来の選択肢」が見えます。</h4>
+      <p>あなたの今の状況を丁寧にヒアリングし、最適なロードマップを一緒に描きます。<br>お申し込みされない方にも、「気づき」を持ち帰っていただけます。</p>
     </div>
   </section>
 
-  <!-- ============== 相談会概要 ============== -->
+  <!-- =========== 概要 =========== -->
   <section class="meeting-info">
-    <span class="section-tag">M E E T I N G &nbsp; D E T A I L S</span>
-    <h2 class="section-title">ロードマップ<br><span class="em">相談会の概要</span></h2>
+    <span class="sec-tag">M E E T I N G &nbsp; D E T A I L S</span>
+    <h2 class="sec-title">ロードマップ相談会<br><span class="em">の概要</span></h2>
 
     <div class="meeting-card">
-      <h3>ぬんと話す<br><span class="em">60分の個別ロードマップ相談</span></h3>
-
-      <div class="meeting-info-grid">
-        <div class="row">
-          <span class="k">参加費</span>
-          <span class="v">無料</span>
-        </div>
-        <div class="row">
-          <span class="k">所要時間</span>
-          <span class="v">60分</span>
-        </div>
-        <div class="row">
-          <span class="k">開催形式</span>
-          <span class="v">Zoom（ご自宅から参加OK）</span>
-        </div>
-        <div class="row">
-          <span class="k">参加方法</span>
-          <span class="v">LINEから日程予約</span>
-        </div>
-        <div class="row">
-          <span class="k">対象</span>
-          <span class="v">20〜40代女性／未経験OK</span>
-        </div>
-        <div class="row">
-          <span class="k">準備物</span>
-          <span class="v">スマホorPCだけでOK</span>
-        </div>
+      <p class="m-headline serif">ぬんと話す、<br>60分の個別ロードマップ相談</p>
+      <div class="m-grid">
+        <div class="row"><span class="k">FEE</span><span class="v">無料</span></div>
+        <div class="row"><span class="k">TIME</span><span class="v">60分</span></div>
+        <div class="row"><span class="k">STYLE</span><span class="v">Zoom（ご自宅から参加OK）</span></div>
+        <div class="row"><span class="k">HOW</span><span class="v">LINEから日程予約</span></div>
+        <div class="row"><span class="k">FOR</span><span class="v">20〜40代女性 / 未経験OK</span></div>
+        <div class="row"><span class="k">TOOLS</span><span class="v">スマホ or PC（1台でOK）</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ============== FAQ ============== -->
+  <!-- =========== FAQ =========== -->
   <section class="faq">
-    <span class="section-tag">F A Q</span>
-    <h2 class="section-title">よくある<br><span class="em">ご質問</span></h2>
+    <span class="sec-tag">F A Q</span>
+    <h2 class="sec-title">よくある<br><span class="em">ご質問</span></h2>
 
     <div class="faq-item">
       <div class="faq-q">未経験・知識ゼロでも本当に大丈夫ですか？</div>
-      <div class="faq-a">はい、大丈夫です。実際に未経験スタートの講座生さんが結果を出しています。「分からない」が「分かる」に変わる仕組みが、ぬん式メソッドにはあります。</div>
+      <div class="faq-a">はい、大丈夫です。実際に未経験スタートの講座生さんが結果を出しています。「分からない」が「分かる」に変わる仕組みが、ぬん式メソッドには用意されています。</div>
     </div>
-
     <div class="faq-item">
       <div class="faq-q">子育て中・仕事をしながらでも参加できますか？</div>
       <div class="faq-a">はい、可能です。すべてオンライン完結で、スキマ時間で進められる設計です。実際に小さなお子さんがいる方も多く受講しています。</div>
     </div>
-
     <div class="faq-item">
       <div class="faq-q">SNSをやったことがなくても大丈夫ですか？</div>
       <div class="faq-a">むしろ"ゼロから"の方が伸びやすいです。変な癖がない分、最短ルートで成果を出せます。SNSの基本から丁寧にお伝えします。</div>
     </div>
-
     <div class="faq-item">
       <div class="faq-q">相談会で勧誘されるのが不安です。</div>
-      <div class="faq-a">無理な売り込みは一切しません。「合わない」と感じたら、その場でお断りいただいて構いません。私自身、ゴリゴリの営業が苦手なタイプです。</div>
+      <div class="faq-a">無理な売り込みは一切しません。「合わない」と感じたら、その場でお断りいただいて構いません。私自身、ゴリゴリの営業は好きではないタイプです。</div>
     </div>
-
     <div class="faq-item">
       <div class="faq-q">講座の料金はいくらですか？</div>
-      <div class="faq-a">講座内容・サポート範囲を踏まえた金額を、相談会の中でお伝えします。お支払い方法もご相談に応じます（分割払い・カード払いOK）。</div>
+      <div class="faq-a">講座内容とサポート範囲を踏まえた金額を、相談会の中でお伝えします。お支払い方法もご相談に応じます（分割払い・カード払いOK）。</div>
     </div>
-
     <div class="faq-item">
       <div class="faq-q">どのくらいで結果が出ますか？</div>
-      <div class="faq-a">人によりますが、最速で2ヶ月で月収20万円達成の講座生さんがいらっしゃいます。多くの方が半年〜1年で講師業として独立されています。</div>
+      <div class="faq-a">個人差はありますが、最速で2ヶ月で月収20万円達成の講座生さんもいらっしゃいます。多くの方が半年〜1年で講師業として独立されています。</div>
     </div>
   </section>
 
-  <!-- ============== CTA 5 ============== -->
-  <div class="cta-wrap">
-    <a href="https://liff.line.me/2006979316-KnVN3g2V?calendar_salon_id=27080&ts=1779438188" target="_blank" rel="noopener" class="cta-btn">
-      ロードマップ相談会の日程を見る
-      <span class="sub">24時間いつでもOK!!</span>
-    </a>
-    <p class="cta-note">無料・Zoom60分・無理な売り込み一切なし</p>
-  </div>
-
-  <!-- ============== Final Message ============== -->
+  <!-- =========== Final =========== -->
   <section class="final">
-    <span class="section-tag">L A S T &nbsp; M E S S A G E</span>
-    <h2>「いつか変わりたい」の<br>"いつか"を、<br>今日で<span class="em">終わりにしませんか。</span></h2>
+    <span class="sec-tag">L A S T &nbsp; M E S S A G E</span>
+    <h2 class="serif">「いつか変わりたい」の<br>"いつか"を、<br>今日で <span class="em">終わりにしませんか。</span></h2>
     <p>
-      1年後、<br>
-      あなたはどんな自分でいたいですか？<br><br>
+      1年後、あなたはどんな自分でいたいですか？<br>
       その未来を一緒に描く60分を、<br>
-      ぬんが用意しています。
+      ぬんが用意して、あなたを待っています。
     </p>
     <a href="https://liff.line.me/2006979316-KnVN3g2V?calendar_salon_id=27080&ts=1779438188" target="_blank" rel="noopener" class="cta-btn">
       ロードマップ相談会の日程を見る
-      <span class="sub">24時間いつでもOK!!</span>
+      <span class="sub">24時間いつでもOK / 無料 / Zoom60分</span>
     </a>
-    <p class="cta-note" style="margin-top:18px;">無料・Zoom60分・無理な売り込み一切なし</p>
+    <p class="cta-note" style="margin-top:20px;">無理な売り込みは一切いたしません</p>
   </section>
 
-  <footer>
-    © NUNN DIET COACH ACADEMY. All Rights Reserved.
-  </footer>
+  <footer>© NUNN DIET COACH ACADEMY. All Rights Reserved.</footer>
 
 </div>
 
-<!-- ============== Sticky Bottom CTA ============== -->
+<!-- Sticky CTA -->
 <div class="sticky-cta">
   <div class="sticky-cta-inner">
-    <div class="label">無料・Zoom60分・売り込みなし</div>
+    <div class="label">無料 / Zoom60分 / 売り込みなし</div>
     <a href="https://liff.line.me/2006979316-KnVN3g2V?calendar_salon_id=27080&ts=1779438188" target="_blank" rel="noopener">
-      ロードマップ相談会の日程を見る<span class="arrow">→</span>
+      ロードマップ相談会の日程を見る →
     </a>
   </div>
 </div>
