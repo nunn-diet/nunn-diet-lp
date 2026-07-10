@@ -229,19 +229,76 @@ a { color: inherit; text-decoration: none; }
    COUNTDOWN
    ============================================= */
 .countdown-sec {
-  background: linear-gradient(135deg, var(--accent-deep), var(--accent));
-  padding: 12px 0; text-align: center; color: var(--white);
+  background: linear-gradient(160deg, var(--accent-deep) 0%, var(--accent) 55%, #7a4550 100%);
+  padding: 30px 20px 26px;
+  text-align: center; color: var(--white);
+  position: relative;
+  overflow: hidden;
 }
-.cd-label { font-size: 11px; letter-spacing: .1em; margin-bottom: 6px; opacity: .88; }
-.cd-timer { display: flex; justify-content: center; gap: 6px; margin-bottom: 4px; }
-.cd-block {
-  background: rgba(255,255,255,.15);
-  border-radius: 6px; padding: 4px 8px; min-width: 40px;
-  backdrop-filter: blur(4px);
+.countdown-sec::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,.10) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(255,255,255,.08) 0%, transparent 45%);
+  pointer-events: none;
 }
-.cd-num { font-size: 18px; font-weight: 700; line-height: 1; display: block; }
-.cd-unit { font-size: 9px; letter-spacing: .08em; opacity: .78; margin-top: 2px; display: block; }
-.cd-note { font-size: 11px; opacity: .82; }
+.cd-card {
+  position: relative;
+  max-width: 420px; margin: 0 auto;
+}
+.cd-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: linear-gradient(135deg, #F5E1B8, var(--gold) 60%, #B8873F);
+  color: var(--accent-deep);
+  font-size: 12px; font-weight: 800;
+  letter-spacing: .1em;
+  padding: 6px 18px; border-radius: 30px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.22);
+}
+.cd-price-line {
+  font-size: 13px; letter-spacing: .04em;
+  color: rgba(255,255,255,.85); margin-bottom: 2px;
+}
+.cd-price-old {
+  text-decoration: line-through;
+  text-decoration-color: rgba(255,255,255,.6);
+  font-weight: 700;
+}
+.cd-arrow {
+  font-size: 20px; line-height: 1;
+  margin: 4px 0;
+  color: var(--gold);
+  animation: cdBounce 1.6s ease-in-out infinite;
+}
+@keyframes cdBounce {
+  0%, 100% { transform: translateY(0); opacity: .75; }
+  50% { transform: translateY(5px); opacity: 1; }
+}
+.cd-free {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(26px, 7vw, 34px);
+  font-weight: 700;
+  letter-spacing: .06em;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  background: linear-gradient(180deg, #FFF6DD 0%, #F5DFA0 45%, var(--gold) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
+}
+.cd-note {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12.5px; font-weight: 700;
+  color: var(--accent-deep);
+  background: var(--white);
+  padding: 8px 18px; border-radius: 24px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.18);
+}
+.cd-note .down {
+  animation: cdBounce 1.6s ease-in-out infinite;
+}
 
 /* =============================================
    FORM SECTION
@@ -941,14 +998,13 @@ footer a { color: rgba(255,255,255,.55); margin: 0 10px; }
 
 <!-- ===== COUNTDOWN（最上部） ===== -->
 <div class="countdown-sec">
-  <p class="cd-label">相談会募集終了まで</p>
-  <div class="cd-timer">
-    <div class="cd-block"><span class="cd-num" id="cd-d">--</span><span class="cd-unit">日</span></div>
-    <div class="cd-block"><span class="cd-num" id="cd-h">--</span><span class="cd-unit">時間</span></div>
-    <div class="cd-block"><span class="cd-num" id="cd-m">--</span><span class="cd-unit">分</span></div>
-    <div class="cd-block"><span class="cd-num" id="cd-s">--</span><span class="cd-unit">秒</span></div>
+  <div class="cd-card">
+    <span class="cd-badge">LINEご登録者限定</span>
+    <p class="cd-price-line">通常<span class="cd-price-old">19,800円</span>のロードマップ相談会</p>
+    <div class="cd-arrow">↓</div>
+    <p class="cd-free">無料プレゼント中</p>
+    <p class="cd-note"><span class="down">⬇</span>詳細は下のボタンをタップしてご確認ください</p>
   </div>
-  <p class="cd-note">この期間を過ぎると通常料金（19,800円）に戻ります</p>
 </div>
 
 <div class="divider"></div>
@@ -958,15 +1014,10 @@ footer a { color: rgba(255,255,255,.55); margin: 0 10px; }
   <div class="container">
     <!-- エルメ予約ボタン -->
     <div class="erme-reserve-wrap">
-      <a href="https://line.me/R/ti/p/%40514uqhsp"
+      <a href="https://nunn-diet-lp.vercel.app/tokuten-video.html"
          class="erme-btn" target="_blank">
-         3大特典を今すぐ受け取る
+         3大特典付き動画を視聴する
       </a>
-      <p class="sec-sub" style="margin-top:16px;">
-        上のボタンから空いている日程をお選びください。<br>
-        カレンダーに移動してそのまま予約が完了します。
-      </p>
-      <p class="erme-sub">通常19,800円 → LINE登録者限定で<strong>完全無料</strong></p>
     </div>
   </div>
 </section>
@@ -1276,8 +1327,8 @@ footer a { color: rgba(255,255,255,.55); margin: 0 10px; }
       初期メンバー枠は残りわずかです。
     </div>
 
-    <a href="https://liff.line.me/2010433111-7rSE2SFw?calendar_salon_id=28124&ts=1781750819" class="btn-main" target="_blank" style="max-width:480px;margin:0 auto">
-      【期間限定・無料】今すぐ申し込む
+    <a href="https://nunn-diet-lp.vercel.app/tokuten-video.html" class="btn-main" target="_blank" style="max-width:480px;margin:0 auto">
+      期間限定無料相談会の詳細を見る
     </a>
 
     <div class="limit-badges">
@@ -1299,43 +1350,13 @@ footer a { color: rgba(255,255,255,.55); margin: 0 10px; }
 
 <!-- ===== FLOATING CTA ===== -->
 <div class="float-cta" id="floatCta">
-  <a href="https://liff.line.me/2010433111-7rSE2SFw?calendar_salon_id=28124&ts=1781750819" class="float-cta-btn" target="_blank">
-     無料相談に申し込む（期間限定・無料）
+  <a href="https://liff.line.me/2010433111-7rSE2SFw?calendar_salon_id=28124&ts=1783671420" class="float-cta-btn" target="_blank">
+     期間限定無料の個別相談を予約する
   </a>
   <p class="float-cta-sub">通常19,800円 → LINE登録者限定・完全無料</p>
 </div>
 
 <script>
-/* ===== カウントダウン（個人別・ページを開いた瞬間から3日間）=====
-   仕組み：
-   ① 初めてページを開いた時刻をブラウザのlocalStorageに保存
-   ② 以降は「保存した時刻 + 72時間」を締切として残り時間を計算
-   ③ 同じブラウザで再訪しても残り時間が引き継がれる
-   ★ 公開期間を変えたい場合は HOURS の数値を変更してください */
-var HOURS = 72;
-var KEY   = 'nunn_biz_cd_v1';
-var stored = localStorage.getItem(KEY);
-if(!stored || isNaN(parseInt(stored))){
-  stored = Date.now().toString();
-  localStorage.setItem(KEY, stored);
-}
-var deadline = parseInt(stored) + HOURS * 3600 * 1000;
-
-function updateCD(){
-  var diff = deadline - Date.now();
-  if(diff < 0) diff = 0;
-  var d = Math.floor(diff/864e5);
-  var h = Math.floor(diff%864e5/36e5);
-  var m = Math.floor(diff%36e5/6e4);
-  var s = Math.floor(diff%6e4/1e3);
-  var pad = function(n){ return String(n).padStart(2,'0'); };
-  document.getElementById('cd-d').textContent = pad(d);
-  document.getElementById('cd-h').textContent = pad(h);
-  document.getElementById('cd-m').textContent = pad(m);
-  document.getElementById('cd-s').textContent = pad(s);
-}
-updateCD();
-setInterval(updateCD, 1000);
 
 /* ===== カレンダー ===== */
 function pick(el, dateStr){
