@@ -930,7 +930,7 @@ footer a { color: rgba(255,255,255,.55); margin: 0 10px; }
 
 <!-- ===== TOP BANNER ===== -->
 <div class="top-banner">
-   自分も痩せながら、ダイエットをお仕事にしませんか？
+   「痩せたい」と「インスタを仕事にしたい」<br>同時に叶えませんか？
 </div>
 
 <!-- ===== LP表紙画像 ===== -->
@@ -941,14 +941,14 @@ footer a { color: rgba(255,255,255,.55); margin: 0 10px; }
 
 <!-- ===== COUNTDOWN（最上部） ===== -->
 <div class="countdown-sec">
-  <p class="cd-label">相談会募集終了まで</p>
+  <p class="cd-label">ご予約の受付終了まで</p>
   <div class="cd-timer">
     <div class="cd-block"><span class="cd-num" id="cd-d">--</span><span class="cd-unit">日</span></div>
     <div class="cd-block"><span class="cd-num" id="cd-h">--</span><span class="cd-unit">時間</span></div>
     <div class="cd-block"><span class="cd-num" id="cd-m">--</span><span class="cd-unit">分</span></div>
     <div class="cd-block"><span class="cd-num" id="cd-s">--</span><span class="cd-unit">秒</span></div>
   </div>
-  <p class="cd-note">この期間を過ぎると通常料金（19,800円）に戻ります</p>
+  <p class="cd-note">ご案内は動画を見てから3日間限定です。過ぎると予約できなくなります</p>
 </div>
 
 <div class="divider"></div>
@@ -957,7 +957,7 @@ footer a { color: rgba(255,255,255,.55); margin: 0 10px; }
 <section class="video-sec">
   <div class="container">
     <div class="video-wrap" style="position:relative;">
-      <iframe src="https://www.youtube.com/embed/YRVoZNNtF38?autoplay=1&mute=1&rel=0&playsinline=1&controls=1&modestbranding=1"
+      <iframe src="https://www.youtube.com/embed/3SFpy9hI9vM?autoplay=1&mute=1&rel=0&playsinline=1&controls=1&modestbranding=1"
         frameborder="0" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture"
         style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
     </div>
@@ -970,44 +970,328 @@ footer a { color: rgba(255,255,255,.55); margin: 0 10px; }
   <div class="container">
     <!-- エルメ予約ボタン -->
     <div class="erme-reserve-wrap">
+      <img src="vsl_img/015b_roadmap_new.jpg" alt="ロードマップ相談会 参加者限定プレゼント あなただけのロードマップをプレゼント" style="width:100%;display:block;border-radius:14px;box-shadow:0 6px 22px rgba(150,70,80,.18);margin:0 0 18px;">
       <a href="https://liff.line.me/2010433111-7rSE2SFw?calendar_salon_id=28124&ts=1783671420"
          class="erme-btn" target="_blank">
-         3大特典を今すぐ受け取る
+         特典付き動画を視聴する
       </a>
       <p class="sec-sub" style="margin-top:16px;">
         上のボタンから空いている日程をお選びください。<br>
         カレンダーに移動してそのまま予約が完了します。
       </p>
-      <p class="erme-sub">通常19,800円 → LINE登録者限定で<strong>完全無料</strong></p>
+      <p class="erme-sub">1対1・無料／ご要望がなければ<strong>アカデミーのご案内はしません</strong></p>
+    </div>
+  </div>
+</section>
+
+
+<div class="divider"></div>
+
+<!-- ===== V2: VSL完成版（12分40秒）の流れに合わせた本文 ===== -->
+<style>
+.v2 { padding: 44px 0; }
+.v2 .container { max-width: 560px; margin: 0 auto; padding: 0 20px; }
+.v2-label { font-size: 11px; font-weight: 800; letter-spacing: .2em; color: var(--gold); text-align: center; margin-bottom: 8px; }
+.v2-title { font-family: 'Noto Serif JP', serif; font-size: 22px; font-weight: 700; color: var(--text-dark); text-align: center; line-height: 1.6; margin: 0 0 20px; }
+.v2-title em { font-style: normal; color: var(--accent-deep); }
+.v2-text { font-size: 14px; color: var(--text); line-height: 2.1; margin: 0 0 22px; text-align: center; }
+.v2-text.left { text-align: left; }
+.v2-text strong { color: var(--accent-deep); }
+.v2-mk { background: linear-gradient(transparent 58%, #f9d9b0 58%); font-weight: 700; }
+.v2-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 18px 18px; box-shadow: 0 4px 16px rgba(110,60,66,.08); margin-bottom: 12px; }
+.v2-card-ttl { font-size: 15px; font-weight: 800; color: var(--text-dark); line-height: 1.6; margin: 0 0 6px; }
+.v2-card-txt { font-size: 13.5px; color: var(--text-mid); line-height: 2.1; margin: 0; }
+.v2-card-txt + .v2-card-txt { margin-top: 12px; }
+.v2-list li { line-height: 1.9; padding: 12px 0 12px 26px; }
+.v2-sub { display:block; font-size:13px; color: var(--text-mid); font-weight: 400; margin-top: 2px; }
+.v2-pol { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 6px 22px rgba(110,60,66,.12); margin-bottom: 18px; border: 1px solid var(--border); }
+.v2-pol-head { background: linear-gradient(90deg, var(--accent-deep), var(--accent)); color: #fff; padding: 14px 18px; display: flex; align-items: center; gap: 12px; }
+.v2-pol-head .n { font-family: 'Noto Serif JP', serif; font-size: 26px; font-weight: 700; color: #f5dfae; line-height: 1; }
+.v2-pol-head .t { font-size: 16px; font-weight: 900; line-height: 1.5; }
+.v2-pol-body { padding: 18px 18px 20px; font-size: 13.5px; line-height: 2.1; color: var(--text-mid); }
+.v2-pol-body p { margin: 0 0 12px; }
+.v2-pol-body p:last-child { margin-bottom: 0; }
+.v2-pol-body b { color: var(--text-dark); }
+.v2-pol-body .ul { background: linear-gradient(transparent 55%, #ffc8d8 55%); font-weight: 700; color: var(--text-dark); }
+.v2-pol-body .red { color: var(--accent-deep); font-weight: 900; }
+.v2-pol-key { display: block; margin-top: 14px; padding: 10px 14px; background: #fff4ec; border-left: 4px solid var(--accent-deep); border-radius: 6px; font-weight: 900; color: var(--accent-deep); font-size: 14px; line-height: 1.8; }
+.v2-num { display: inline-block; font-family: 'Noto Serif JP', serif; font-size: 12px; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--accent-deep), var(--accent)); border-radius: 20px; padding: 2px 12px; margin-bottom: 8px; letter-spacing: .08em; }
+.v2-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 0 14px; }
+.v2-stat { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 14px 10px; text-align: center; }
+.v2-stat b { display: block; font-size: 20px; font-weight: 900; color: var(--accent-deep); line-height: 1.3; }
+.v2-stat span { display: block; font-size: 11.5px; color: var(--text-mid); line-height: 1.6; margin-top: 4px; }
+.v2-stat.wide { grid-column: 1 / -1; }
+.v2-list { list-style: none; padding: 0; margin: 0 0 14px; }
+.v2-list li { position: relative; padding: 10px 0 10px 26px; border-bottom: 1px dashed var(--border); font-size: 14px; line-height: 1.85; color: var(--text); }
+.v2-list li::before { content: "✓"; position: absolute; left: 4px; top: 10px; color: var(--accent); font-weight: 900; }
+.v2-dark { background: rgba(61,42,46,.92); color: #f5e0e0; border-radius: 16px; padding: 22px 20px; }
+.v2-dark .v2-pain { border-bottom: 1px solid rgba(255,255,255,.12); padding: 14px 0; font-size: 13.5px; line-height: 1.95; }
+.v2-dark .v2-pain:last-child { border-bottom: 0; }
+.v2-dark .v2-pain b { display: block; color: #ffb3b3; font-size: 14.5px; margin-bottom: 4px; }
+.v2-quote { text-align: center; font-family: 'Noto Serif JP', serif; font-size: 20px; font-weight: 700; color: var(--accent-deep); line-height: 1.7; margin: 22px 0; }
+.v2-glitter { border-radius: 16px; overflow: hidden; position: relative; box-shadow: 0 6px 20px rgba(150,70,80,.20); margin: 18px 0 0; }
+.v2-glitter img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 80%; opacity: .9; }
+.v2-glitter div { position: relative; padding: 26px 20px; text-align: center; background: rgba(80,30,40,.28); color: #fff; }
+.v2-glitter p { margin: 0; text-shadow: 0 1px 6px rgba(0,0,0,.4); }
+.v2-voice { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
+.v2-voice span { background: #fff4ec; border: 1px solid #f1d9c4; color: var(--accent-deep); font-size: 12.5px; font-weight: 700; border-radius: 20px; padding: 6px 14px; }
+.v2-slide { width:100%; display:block; border-radius:12px; box-shadow:0 4px 16px rgba(110,60,66,.12); margin:0 0 12px; }
+.v2-slide.photo { box-shadow:none; }
+.v2-pain-img { display:grid; gap:8px; margin: 10px 0 4px; }
+.v2-gift { width:100%; display:block; border-radius:14px; box-shadow:0 6px 22px rgba(150,70,80,.18); margin: 6px 0 16px; }
+.v2-note { font-size: 11px; color: var(--text-mid); text-align: center; margin-top: 8px; }
+/* --- 11/26 目立たせ追加 --- */
+.v2-stats { gap: 12px; }
+.v2-stat { position: relative; overflow: hidden; background: linear-gradient(150deg, #fff7f9 0%, #ffe4ec 60%, #fbd3df 100%); border: 2px solid #e3c37f; border-radius: 16px; padding: 16px 8px 14px; box-shadow: 0 5px 0 #e8b3c2, 0 10px 22px rgba(214,110,140,.25), inset 0 1px 0 #fff; }
+.v2-stat b { font-size: 23px; letter-spacing: .01em; background: linear-gradient(180deg, #f0679a 0%, #c8325f 55%, #9b2347 100%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 2px 0 #fff) drop-shadow(0 3px 2px rgba(150,40,80,.35)); word-break: keep-all; overflow-wrap: anywhere; }
+.v2-stat span { color: #8a4a5a; font-weight: 700; }
+.v2-stat { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.v2-stat b.long { font-size: 22px; white-space: nowrap; letter-spacing: 0; }
+.v2-stat b.long small.pre { font-size: 13px; margin: 0 2px 0 0; }
+.v2-stat b small { font-size: 11px; margin-left: 1px; }
+.v2-stat::before { content: ""; position: absolute; top: 0; left: -80%; width: 50%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.85), transparent); transform: skewX(-20deg); animation: v2shine 3.2s ease-in-out infinite; }
+.v2-stat::after { content: none; display: none; position: absolute; top: 6px; right: 9px; font-size: 14px; color: #e0b25a; text-shadow: 0 0 6px #ffe39a; animation: v2twinkle 1.8s ease-in-out infinite; }
+.v2-stat:nth-child(2)::after { left: 9px; right: auto; animation-delay: .5s; }
+.v2-stat:nth-child(3)::after { animation-delay: .9s; }
+.v2-stat:nth-child(4)::after { left: 9px; right: auto; animation-delay: 1.3s; }
+.v2-stat:nth-child(2)::before { animation-delay: .4s; }
+.v2-stat:nth-child(3)::before { animation-delay: .8s; }
+.v2-stat:nth-child(4)::before { animation-delay: 1.2s; }
+@keyframes v2shine { 0% { left: -80%; } 60%, 100% { left: 130%; } }
+@keyframes v2twinkle { 0%, 100% { opacity: .35; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.25); } }
+.v2-mk-pink { background: linear-gradient(transparent 55%, #ffc8d8 55%); font-weight: 700; color: var(--text-dark); }
+.v2-pink { color: #d6396b; font-weight: 800; }
+.v2-goldc { color: #b07d2a; font-weight: 800; }
+.v2-ul { text-decoration: underline; text-decoration-color: #e8899f; text-decoration-thickness: 2px; text-underline-offset: 5px; font-weight: 700; color: var(--text-dark); }
+.v2-quote .q-pink { color: #d6396b; background: linear-gradient(transparent 62%, #ffd3df 62%); }
+.v2-quote .q-gold { background: linear-gradient(180deg, #e9bf62, #b47f22); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 1px 0 #fff4d6); }
+.v2-glitter .gold-big { display: inline-block; font-family: 'Noto Serif JP', serif; font-size: 25px !important; font-weight: 700 !important; letter-spacing: .1em; color: #fff; text-shadow: 0 2px 12px rgba(40,10,20,.65) !important; padding: 12px 6px; border-top: 1px solid rgba(233,207,150,.9); border-bottom: 1px solid rgba(233,207,150,.9); }
+.v2-glitter .gold-big em { font-style: normal; color: #f3dca6; }
+.v2-sparkle-title { position: relative; display: inline-block; font-family: 'Noto Serif JP', serif; font-size: 19px !important; font-weight: 900 !important; line-height: 1.6; letter-spacing: .04em !important; background: linear-gradient(90deg, #b47f22 0%, #f6d77c 25%, #d6396b 50%, #f6d77c 75%, #b47f22 100%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent !important; animation: v2grad 3.5s linear infinite; margin-bottom: 12px !important; }
+.v2-sparkle-title::before, .v2-sparkle-title::after { content: "✦"; position: absolute; top: -4px; font-size: 16px; color: #e0b25a; -webkit-text-fill-color: #e0b25a; text-shadow: 0 0 8px #ffe39a; animation: v2twinkle 1.6s ease-in-out infinite; }
+.v2-sparkle-title::before { left: -20px; }
+.v2-sparkle-title::after { right: -20px; animation-delay: .8s; }
+@keyframes v2grad { 0% { background-position: 0% 0; } 100% { background-position: 200% 0; } }
+.v2-limit { display: block; margin-top: 14px; padding: 14px 12px; text-align: center; font-size: 17px; font-weight: 900; line-height: 1.6; color: #fff !important; background: linear-gradient(135deg, #f0679a, #c8325f); border: 2px solid #e3c37f; border-radius: 12px; box-shadow: 0 4px 0 #9b2347, 0 8px 20px rgba(200,50,95,.35); text-shadow: 0 1px 2px rgba(100,20,40,.4); animation: v2pulse 2s ease-in-out infinite; }
+@keyframes v2pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+@media (prefers-reduced-motion: reduce) { .v2-stat::before, .v2-stat::after, .v2-sparkle-title, .v2-sparkle-title::before, .v2-sparkle-title::after, .v2-limit { animation: none; } }
+</style>
+
+<!-- ① 実績（VSL冒頭） -->
+<section class="v2 myrecords-sec">
+  <div class="container">
+    <p class="v2-label">ACHIEVEMENT</p>
+    <h2 class="v2-title">普通の公務員で、子ども2人。<br><em>パソコンも持っていなかった私が</em></h2>
+    <div class="v2-stats">
+      <div class="v2-stat"><b>−5kg</b><span>1ヶ月半で<br>ウエストは−7cm</span></div>
+      <div class="v2-stat"><b>月商72万円</b><span>フォロワー0から<br>5ヶ月目で</span></div>
+      <div class="v2-stat"><b class="long"><small class="pre">年商</small>1000万円<small>以上</small></b><span>発信をはじめて1年で</span></div>
+      <div class="v2-stat"><b>50名全員</b><span>ダイエット指導で<br>サポートした方が成功</span></div>
+    </div>
+    <p class="v2-text">今は月に2回くらい<br>家族で旅行に行けるようになり、<br>グアムとハワイにも行けました。</p>
+    <p class="v2-text"><span class="v2-mk-pink"><strong>5泊6日の家族旅行をした月に、<br>最高月商</strong>を達成しています。</span></p>
+    <p class="v2-text">ここまでに学びへ投資してきたのは<br><span class="v2-mk">400万円以上・2年以上</span>。</p>
+    <p class="v2-text">その学びを全部、<br>ダイエットとインスタのお仕事に<br>落とし込みました。</p>
+    <img src="insta_profile.jpg" alt="ぬんのInstagramプロフィール" style="width:100%;display:block;border-radius:12px;border:1px solid var(--border);box-shadow:0 2px 10px rgba(110,60,66,.08);margin-top:6px;">
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ② アカデミー生さんの結果 -->
+<section class="v2">
+  <div class="container">
+    <p class="v2-label">STUDENTS</p>
+    <h2 class="v2-title">私が一番うれしいのは<br><em>アカデミー生さんの結果です</em></h2>
+    <img src="vsl_img/010.jpg" alt="入ってすぐ−4kg／ゼロから4ヶ月でサポート生8人" class="v2-slide">
+    <img src="vsl_img/011.jpg" alt="39歳・未経験で4投稿2,200フォロワー／入ってすぐ長期コースをご成約" class="v2-slide">
+    <p class="v2-text" style="text-align:center;margin-top:20px;">アカデミー生さんから、<br>実際にこんな声をいただいています。</p>
+    <img src="vsl_img/012.jpg" alt="アカデミー生さんの声" class="v2-slide">
+    <img src="vsl_img/013.jpg" alt="アカデミー生さんの声" class="v2-slide">
+    <p class="v2-note" style="margin:-4px 0 16px;">アカデミー生さんからのアンケート回答です／成果には個人差があります</p>
+    <img src="vsl_img/014.jpg" alt="一番よく言われること：聞きやすい・資料とノウハウが揃っている環境" class="v2-slide">
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ③ 痛み -->
+<section class="v2">
+  <div class="container">
+    <p class="v2-label">CHECK</p>
+    <h2 class="v2-title">もしかして今、<br><em>こんな状況じゃないですか？</em></h2>
+
+    <img src="vsl_img/017.jpg" alt="毎日投稿・リール・ストーリーズも頑張っている" class="v2-slide">
+    <img src="vsl_img/018.jpg" alt="なのに月に数万円、もしくは1円にもなっていない" class="v2-slide">
+    <img src="vsl_img/019.jpg" alt="" class="v2-slide photo">
+    <p class="v2-text">かけている時間で割ったら、<br><strong>時給100円</strong>を下回っている。</p>
+    <img src="vsl_img/020.jpg" alt="だから本業は手放せない・でもやめられない" class="v2-slide">
+    <p class="v2-text">ここでやめたら、<br>今までの努力と時間が<br>全部ムダになる気がして。</p>
+    <p class="v2-text">投稿するのはちょっと怖い。<br><strong>でも、やめるのはもっと怖い。</strong></p>
+
+    <div class="divider" style="margin:26px 0;"></div>
+
+    <img src="vsl_img/022.jpg" alt="フォロワーさんはそれなりにいる" class="v2-slide">
+    <img src="vsl_img/023.jpg" alt="なのにストーリーズを見てくれる人が少ない" class="v2-slide">
+    <img src="vsl_img/024.jpg" alt="アフィリエイトをやってもほとんど売れない" class="v2-slide">
+    <img src="vsl_img/025.jpg" alt="" class="v2-slide photo">
+    <p class="v2-text">それは、フォロワーさんの数はいても<br><strong>「この人から買いたい」と<br>思ってくれる人が少ない</strong><br>ということです。</p>
+    <img src="vsl_img/026.jpg" alt="本当はそこまでおすすめしていない商品を紹介してしまう" class="v2-slide">
+    <img src="vsl_img/027.jpg" alt="これ他のブランドの方がもっといいんだけどな…そう思いながらリンクを貼る" class="v2-slide">
+    <img src="vsl_img/028.jpg" alt="" class="v2-slide photo">
+    <p class="v2-text">あのチクッとする罪悪感を<br>感じながら続けるのは、<br>本当に苦しいことだと思います。</p>
+
+    <div class="divider" style="margin:26px 0;"></div>
+
+    <img src="vsl_img/029.jpg" alt="はじめたときは、子どもとの時間を増やしたくてインスタをお仕事に" class="v2-slide">
+    <img src="vsl_img/030.jpg" alt="気づいたら、子どもと一緒にいる時間もずっとスマホを見ている" class="v2-slide">
+    <img src="vsl_img/031.jpg" alt="" class="v2-slide photo">
+    <p class="v2-text">話しかけられても、<br>スマホばかりで目を合わせられない。</p>
+    <p class="v2-text">ふとした瞬間に<br><strong>「私、何のために始めたんだろう」</strong><br>と思ってしまう。</p>
+
+    <div class="divider" style="margin:26px 0;"></div>
+
+    <p class="v2-text">講座にも入った。<br>教材も買った。<br>時間もお金も投資してきたのに、<br><strong>ほとんど回収できていない。</strong></p>
+    <p class="v2-text">それは、この一番大切なことを<br>後回しにしているからかもしれません。</p>
+    <img src="vsl_img/033.jpg" alt="どんな商品をどんな人に売るか" class="v2-slide">
+    <p class="v2-text">責めているわけではありません。</p>
+    <p class="v2-text"><strong>あなたの貴重な時間を、<br>これ以上使ってほしくない</strong><br>から言っています。</p>
+    <img src="vsl_img/034.jpg" alt="このままの毎日をあと1年続けたいですか" class="v2-slide photo">
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ④ 未来・欲張っていい -->
+<section class="v2">
+  <div class="container">
+    <p class="v2-label">IMAGINE</p>
+    <h2 class="v2-title">ひとつだけ、<br><em>想像してみてください</em></h2>
+    <ul class="v2-list">
+      <li>子どもが熱を出しても、<span class="v2-mk-pink">誰にも謝らずに仕事を休める</span></li>
+      <li>旅行先のカフェでパソコンを開いて、<span class="v2-mk-pink">「ありがとう」と言われながら理想の収入を超えている</span></li>
+      <li>そのうえで<span class="v2-mk-pink">「綺麗になったね」「痩せたね」と声をかけられる自分</span>になる</li>
+    </ul>
+    <p class="v2-quote">これ全部ほしいって、<br>欲張りだと思いますか？</p>
+    <div class="v2-glitter">
+      <img src="glitter_bg.jpg" alt="">
+      <div>
+        <p style="font-size:13px;margin-bottom:8px;">私はこの欲張りを叶えてきました。</p>
+        <p class="gold-big" style="line-height:1.7;">私たち女性は、<br><em>欲張っていいんです。</em></p>
+        <p style="font-size:12.5px;margin-top:8px;">これは特別な人だけの話ではありません。</p>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ===== TOKUTEN ===== -->
+<!-- ⑤ 理由＝順番 -->
+<section class="v2">
+  <div class="container">
+    <p class="v2-label">WHY</p>
+    <h2 class="v2-title">今まで叶わなかったのは、<br><em>別々に頑張っていたから</em></h2>
+    <p class="v2-text">自分磨きは<span class="v2-pink">ダイエット</span>、<br>収入は<span class="v2-goldc">お仕事</span>で。</p>
+    <p class="v2-text"><span class="v2-pink">別々のもの</span>として頑張ると、<br>ダイエットは子どものことが優先で<br><span class="v2-mk-pink">いつも後回し。</span></p>
+    <p class="v2-text">お仕事は<span class="v2-goldc">結果が出るまで時間がかかって</span>、<br><span class="v2-mk-pink">先が見えずに止まってしまう。</span></p>
+    <p class="v2-text"><strong>どちらも中途半端なまま、<br>1年が過ぎていきます。</strong></p>
+    <p class="v2-quote">でも本当は逆です。<br>あなたが<span class="q-pink">今から痩せていく</span><br>その過程そのものが、<br><span class="q-gold">売れる発信になります。</span></p>
+    <div class="v2-card"><p class="v2-card-ttl">完成した人より、変わっていく途中の人が応援される</p><p class="v2-card-txt"><span class="v2-ul">5kg痩せて綺麗になったお腹。</span><br><span class="v2-ul">10kg痩せて別人のように変わった背中。</span></p><p class="v2-card-txt">それを見た人から<br><b class="v2-ul">「どうやったの？」「私もやりたい」</b><br>と言ってもらえる。</p><p class="v2-card-txt"><span class="v2-ul">それがそのままお仕事になります。</span></p></div>
+    <div class="v2-card"><p class="v2-card-ttl">あなたのフォロワーさんは、もう資産</p><p class="v2-card-txt">レシピでも、育児でも、暮らしでも。</p><p class="v2-card-txt">どんなアカウントでも、<br><span class="v2-ul">フォロワーさんはほぼ全員<br><b>「綺麗になれたらいいな」</b>と思っています。</span></p></div>
+    <p class="v2-quote" style="font-size:22px;">足りなかったのは、<br>努力でも才能でもなく<br><span class="v2-mk">順番だけ</span>です。</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ⑥ 相談会でやること -->
+<section class="v2">
+  <div class="container">
+    <p class="v2-label">ROADMAP SESSION</p>
+    <h2 class="v2-title">あなた専用の順番を、<br><em>1対1でお話しします</em></h2>
+    <img src="vsl_img/015.jpg" alt="ロードマップ相談会 参加者限定プレゼント あなただけのロードマップをプレゼント" class="v2-gift">
+    <div class="v2-card" style="border:2px solid var(--gold);">
+      <p class="v2-card-ttl">あなたの90日のロードマップを一緒に決めます</p>
+      <img src="vsl_img/051.jpg" alt="90日ロードマップ" style="width:62%;max-width:240px;display:block;margin:6px auto 12px;border-radius:8px;box-shadow:0 4px 14px rgba(120,90,40,.2);">
+      <p class="v2-card-txt">相談会のあと、お話しした内容をまとめて<br><strong style="color:var(--accent-deep);">あなた専用の90日ロードマップ</strong>をお送りします。</p><p class="v2-card-txt">その日の空気で終わらせず、<br>手元に残して、明日から動けるようにします。</p>
+    </div>
+    <p class="v2-text" style="margin-top:26px;">今のお悩み・生活・使える時間に合わせて、<br><strong>こんなことをお話しします。</strong></p>
+    <ul class="v2-list">
+      <li><span class="v2-ul">毎日投稿しても収入にならなかった理由</span>と、<br><span class="v2-ul">正しい順番</span></li>
+      <li>1万人のフォロワーより、<br><span class="v2-ul">月に数人のお客さまで</span><br><span class="v2-ul">理想の収入に届く考え方</span></li>
+      <li>自分が痩せていく過程を、<br><span class="v2-ul">そのまま発信にする方法</span></li>
+      <li>今のアカウントを<span class="v2-ul">作り直さずに</span>、<br><span class="v2-ul">自社商品をのせていく方法</span></li>
+      <li>美容・ヨガ・コーチングなど<br>すでに売りたいものがある方は、<br><span class="v2-ul">その掛け合わせ</span></li>
+    </ul>
+    <div class="v2-card">
+      <p class="v2-card-ttl">安心して来てください</p>
+      <p class="v2-card-txt"><b>・ご要望がなければ、<br>　アカデミーのご案内はしません</b></p><p class="v2-card-txt"><b>・フォロワーさんが少なくても、<br>　太っていても大丈夫</b><br>　むしろ、やることがはっきりします</p><p class="v2-card-txt"><b>・スライドはほとんど使いません</b><br>　あなたのお話をじっくり聞く時間です</p>
+    </div>
+    <div class="v2-card">
+      <p class="v2-card-ttl">どのステージにいても、あなたに合った順番があります</p>
+      <p class="v2-card-txt"><b style="color:var(--accent-deep);">▶ フォロワーさんは多いのに、<br>　まだ収入になっていない方</b></p><p class="v2-card-txt">自社商品の売り方を学んで、<br>資格を取ったらすぐにマネタイズを始められるよう、<br><span class="v2-mk-pink">資料とノウハウを全部そろえてお渡しします。</span></p><p class="v2-card-txt" style="margin-top:20px;"><b style="color:var(--accent-deep);">▶ フォロワー0から始めたい方</b></p><p class="v2-card-txt">インスタの初期設計から進めます。<br><span class="v2-ul">たった4投稿で<b>2,200フォロワー</b>になった方もいます。</span></p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ⑦ 大事にしている3つ -->
+<section class="v2">
+  <div class="container">
+    <p class="v2-label">POLICY</p>
+    <h2 class="v2-title">ぬん欲張りアカデミーが<br><em>大事にしている3つのこと</em></h2>
+    <div class="v2-pol">
+      <div class="v2-pol-head"><span class="n">01</span><span class="t">添削がとにかく細かい</span></div>
+      <div class="v2-pol-body">
+        <p><span class="ul">リールだけでなくストーリーズ</span>、<br><span class="ul">実際に行ったカウンセリングの内容</span>まで<br>添削します。</p>
+        <p>「旦那さんに相談します」で<br>終わってしまったときに、<br><b>どう伝えたらよかったか</b>まで毎回お話しします。</p>
+        <span class="v2-pol-key">「なんとなく頑張ってね」では<br>絶対に終わらせません。</span>
+      </div>
+    </div>
+    <div class="v2-pol">
+      <div class="v2-pol-head"><span class="n">02</span><span class="t">1か所で、全部そろう</span></div>
+      <div class="v2-pol-body">
+        <p>インスタの伸ばし方・商品の作り方・売り方を<br><b>バラバラの講座で学ぶと、</b><br>先生ごとに言うことが違って<br><span class="red">結局どれもできなくなります。</span></p>
+        <p><span class="ul">インスタの初期設計・売り方・集客</span>、<br>その後のサービスまで。</p>
+        <span class="v2-pol-key">全部ここで学べるから、<br>迷わず進めます。</span>
+      </div>
+    </div>
+    <div class="v2-pol">
+      <div class="v2-pol-head"><span class="n">03</span><span class="t">「何をしたらいいかわからない」<br>時間を作らない</span></div>
+      <div class="v2-pol-body">
+        <p>やることは<span class="ul">アカデミー生専用のロードマップ</span>で<br>最初から決まっています。</p>
+        <p>つまずいたときに<br><b>「次の質問いつできるんだろう」</b><br>と待たなくていいように、</p>
+        <span class="v2-pol-key">グループ相談会と1対1の時間、<br>両方を用意しています。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ⑧ 特典（VSLの順番） -->
 <section class="tokuten-sec">
   <div class="container">
     <div style="text-align:center">
       <span class="tokuten-badge">相談会ご参加者さま限定プレゼント</span>
     </div>
-    <h2 class="sec-title serif" style="margin-top:12px">PDF特典<em>3点セット</em></h2>
+    <h2 class="sec-title serif" style="margin-top:12px">参加特典<em>3点セット</em></h2>
     <p class="sec-sub tokuten-note-top">
-      相談会にご参加いただいた方だけにお渡しする<br>
-      ぬん特製のビジネス資料です。お申し込みだけでは受け取れません。
+      相談会にご参加いただいた方だけにお渡しする資料です。<br>お申し込みだけでは受け取れません。
     </p>
 
     <div class="tokuten-cards">
       <div class="t-card">
         <div class="t-img-wrap">
           <span class="t-img-badge">GIFT 01</span>
-          <img src="tokuten01.png" alt="食事改善コーチvsファスティングコーチ" class="t-img-3d">
+          <img src="tokuten03.png" alt="ポジションの作り方と強み発見シート" class="t-img-3d">
         </div>
         <div class="t-card-inner">
           <div class="t-num">GIFT<span>01</span></div>
           <div class="t-body">
-            <p class="t-name">食事改善コーチ<br>or<br>ファスティングコーチ<br>全メリット・デメリット<br>【完全保存版】</p>
-            <p class="t-desc"><span class="mk">どちらで起業すべきか<br>迷っている方必見。</span><br><br><span class="em">「自分に合うのはどっち？」</span>が<br><span class="bold">この一冊で明確になる</span>。</p>
+            <p class="t-name">「この人じゃないとダメ」と言われる<br>ポジションの作り方と<br>強み発見シート</p>
+            <p class="t-desc"><span class="mk">自社商品の方はもちろん</span>、<br>アフィリエイトや固定案件をしている方にも<br><span class="bold">役立つ内容</span>です。</p>
           </div>
         </div>
       </div>
@@ -1015,13 +1299,13 @@ footer a { color: rgba(255,255,255,.55); margin: 0 10px; }
       <div class="t-card">
         <div class="t-img-wrap">
           <span class="t-img-badge">GIFT 02</span>
-          <img src="tokuten02.png" alt="自己開示ネタ30選" class="t-img-3d">
+          <img src="tokuten02.png" alt="フォロワーさんがファンに変わる自己開示ネタ30" class="t-img-3d">
         </div>
         <div class="t-card-inner">
           <div class="t-num">GIFT<span>02</span></div>
           <div class="t-body">
-            <p class="t-name">フォロワー0から「この人に習いたい」と言われるまでに<br>私がやった自己開示ネタ30選</p>
-            <p class="t-desc"><span class="mk">発信初期に何を投稿すればいいか</span>がすぐわかる。<br><span class="em">「ネタが思いつかない」</span>を解消する<br><span class="bold">実践ネタ集</span>。</p>
+            <p class="t-name">フォロワーさんがファンに変わる<br>自己開示ネタ30</p>
+            <p class="t-desc">レシピや情報だけの投稿では起きない、<br><span class="em">「この人から買いたい」</span>に変わる<br><span class="bold">発信の中身</span>です。</p>
           </div>
         </div>
       </div>
@@ -1029,159 +1313,46 @@ footer a { color: rgba(255,255,255,.55); margin: 0 10px; }
       <div class="t-card">
         <div class="t-img-wrap">
           <span class="t-img-badge">GIFT 03</span>
-          <img src="tokuten03.png" alt="ポジションの作り方と強み発見シート" class="t-img-3d">
+          <img src="tokuten01.png" alt="ダイエットコーチの全メリット・デメリット" class="t-img-3d">
         </div>
         <div class="t-card-inner">
           <div class="t-num">GIFT<span>03</span></div>
           <div class="t-body">
-            <p class="t-name">「この人じゃないとダメ」<br>と思われるポジションの作り方と<br>強み発見シート</p>
-            <p class="t-desc"><span class="mk">競合と差別化できる唯一のポジション</span>を言語化。<br><span class="em">「私の強みってなんだろう？」</span>が<br><span class="bold">シートを埋めるだけで見つかる</span>。</p>
+            <p class="t-name">ダイエットコーチの<br>全メリット・デメリット<br>【完全保存版】</p>
+            <p class="t-desc"><span class="mk">表では話せない、シークレットな内容</span>を<br>載せた<span class="bold">完全保存版</span>です。</p>
           </div>
         </div>
       </div>
     </div>
 
     <div class="tokuten-footer">
-      これら3点は<strong>相談会にご参加いただいた方のみ</strong>へのプレゼントです。<br>
-      当日お話しした内容と合わせて読むことで、より深く理解できます。
+      相談会に参加して、<strong>特典だけ受け取って帰っていただいても全く問題ありません。</strong><br>
+      ご要望がなければアカデミーのご案内はしませんので、安心してご参加ください。
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ===== ACHIEVEMENTS ===== -->
-<section class="myrecords-sec">
+<!-- ⑨ 無料の理由 -->
+<section class="v2">
   <div class="container">
-    <p class="sec-label">ACHIEVEMENT</p>
-    <h2 class="sec-title serif"><em>講師実績</em></h2>
-
-    <div style="display:flex;flex-direction:column;gap:16px;margin-top:24px;">
-
-      <!-- 実績①：ダイエット全員成功 -->
-      <div style="background:var(--white);border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(110,60,66,.10);border:1px solid var(--border);">
-        <div style="background:linear-gradient(90deg,var(--accent-deep),var(--accent));padding:8px 20px;display:flex;align-items:center;gap:8px;">
-          <span style="font-size:10px;font-weight:800;letter-spacing:.18em;color:rgba(255,255,255,.9);">DIET COACHING</span>
-        </div>
-        <div style="padding:18px 18px 4px;">
-          <p style="font-size:19px;font-weight:900;color:var(--text-dark);line-height:1.5;margin-bottom:10px;">指導したサポート生さん、<span style="color:var(--accent-deep);font-size:21px;">全員ダイエット成功。</span></p>
-          <p style="font-size:13px;color:var(--text-mid);line-height:1.9;margin:0;">
-            <strong style="color:var(--text-dark);">一人ひとりの体質・生活スタイル</strong>に合わせた<span style="border-bottom:2px solid var(--accent);padding-bottom:1px;">完全マンツーマン指導</span>で、サポート生全員が<span style="color:var(--accent-deep);font-weight:800;">ダイエットに成功</span>しています。
-          </p>
-        </div>
-        <div style="padding:4px 18px 18px;text-align:center;">
-          <img src="ill_diet.jpg" alt="" style="width:55%;max-width:210px;margin:0 auto;display:block;">
-        </div>
-      </div>
-
-      <!-- 実績②：起業 -->
-      <div style="background:var(--white);border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(110,60,66,.10);border:1px solid var(--border);">
-        <div style="background:linear-gradient(90deg,#8a6a30,var(--gold));padding:8px 20px;display:flex;align-items:center;gap:8px;">
-          <span style="font-size:10px;font-weight:800;letter-spacing:.18em;color:rgba(255,255,255,.9);">BUSINESS</span>
-        </div>
-        <div style="padding:18px 18px 4px;">
-          <p style="font-size:12px;font-weight:700;color:var(--text-mid);margin-bottom:4px;">パソコンなし・起業初心者から</p>
-          <p style="font-size:21px;font-weight:900;color:var(--gold);line-height:1.3;margin-bottom:10px;">月商7桁・年商8桁<span style="font-size:14px;color:var(--text-dark);font-weight:700;">を達成。</span></p>
-          <p style="font-size:13px;color:var(--text-mid);line-height:1.9;margin:0;">
-            <span style="border-bottom:2px solid #e8d5a0;padding-bottom:1px;">会社員の給与を超える収入</span>を、女性に「ありがとう」と<strong style="color:var(--text-dark);">喜ばれながら</strong>実現。子供の急な休みにも対応でき、<span style="color:var(--accent-deep);font-weight:800;">通勤時間ゼロ</span>で働けます。
-          </p>
-        </div>
-        <div style="padding:0 18px 18px;text-align:center;overflow:hidden;">
-          <img src="ill_biz.jpg" alt="" style="width:60%;max-width:230px;margin:-22% auto 0;display:block;">
-        </div>
-      </div>
-
-      <!-- 実績③：フォロワー -->
-      <div style="background:var(--white);border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(110,60,66,.10);border:1px solid var(--border);">
-        <div style="background:linear-gradient(90deg,var(--accent),#c8a0b0);padding:8px 20px;display:flex;align-items:center;gap:8px;">
-          <span style="font-size:10px;font-weight:800;letter-spacing:.18em;color:rgba(255,255,255,.9);">SNS</span>
-        </div>
-        <div style="padding:18px 18px 14px;">
-          <p style="font-size:19px;font-weight:900;color:var(--text-dark);line-height:1.5;margin-bottom:10px;">ありのままを発信して、<br><span style="color:var(--accent);font-size:21px;">フォロワー2.5万人。</span></p>
-          <p style="font-size:13px;color:var(--text-mid);line-height:1.9;margin:0;">
-            <span style="color:var(--accent-deep);font-weight:800;">フォロワー0</span>からの発信で<br>１年で大きく収益化した<strong style="color:var(--text-dark);">ノウハウとメソッド</strong>を<br>そのままアカデミーに落とし込んでいます。
-          </p>
-        </div>
-        <div style="padding:0 14px 16px;">
-          <img src="insta_profile.jpg" alt="ぬんのInstagramプロフィール" style="width:100%;display:block;border-radius:12px;border:1px solid var(--border);box-shadow:0 2px 10px rgba(110,60,66,.08);">
-        </div>
-      </div>
-
-    </div>
-
-    <!-- ミッション -->
-    <div style="margin-top:36px;">
-
-      <!-- ヘッドライン -->
-      <div style="text-align:center;margin-bottom:20px;">
-        <p style="font-size:11px;font-weight:800;letter-spacing:.2em;color:var(--gold);margin-bottom:10px;">— MY MISSION —</p>
-        <p style="font-size:18px;font-weight:900;color:var(--text-dark);line-height:1.8;">
-          会社員以上の収入を、完全在宅で。<br>
-          <span style="background:linear-gradient(transparent 58%,#f9d9b0 58%);">女性に「ありがとう」と喜ばれながら</span>——
-        </p>
-      </div>
-
-      <!-- 自己肯定感 -->
-      <div style="text-align:center;margin-bottom:18px;padding:6px 10px;">
-        <p class="mission-gold">そんな働き方を、<br>一人でも多くの女性に<br>伝えたい。</p>
-        <style>
-        .mission-gold {
-          font-family: 'Noto Serif JP', serif;
-          font-size: 21px;
-          font-weight: 700;
-          line-height: 1.7;
-          letter-spacing: .06em;
-          display: inline-block;
-          margin: 0;
-          background: linear-gradient(180deg, #e3c585 0%, #c9a96e 45%, #a8884c 100%);
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-          text-shadow: 0 1px 1px rgba(120,90,40,.18);
-          filter: drop-shadow(0 1px 2px rgba(150,110,50,.22));
-        }
-        </style>
-      </div>
-
-      <!-- お仕事quote -->
-      <div style="background:var(--white);border-radius:14px;padding:20px;margin-bottom:14px;box-shadow:0 4px 16px rgba(180,130,80,.10);position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#C9A96E,#e8c47a,#C9A96E);"></div>
-        <p style="font-size:11px;font-weight:800;letter-spacing:.2em;color:var(--gold);margin-bottom:10px;text-align:center;"> ぬんの想い </p>
-        <p style="font-size:20px;font-weight:900;color:var(--accent-deep);text-align:center;margin-bottom:10px;line-height:1.4;">お仕事って、<br>本当は楽しいこと。</p>
-        <p style="font-size:13px;color:var(--text-mid);line-height:1.8;text-align:center;">人に「変化」を与えて喜んでもらう対価として、<br>「お金」をいただけるのが、お仕事。</p>
-      </div>
-
-      <!-- 問題提起 -->
-      <div style="background:rgba(61,42,46,0.55);border-radius:14px;padding:18px 20px;margin-bottom:14px;text-align:center;">
-        <p style="font-size:12px;font-weight:700;color:#e8a0a0;letter-spacing:.1em;margin-bottom:10px;">なのに…</p>
-        <p style="font-size:14px;color:#f5e0e0;line-height:2;margin:0;">
-          <span style="color:#ffb3b3;font-weight:700;">「会社に通う平日が辛い」<br>「仕事辞めたい」<br>「起業してみたけど全然稼げない」</span><br>
-          <span style="font-size:13px;color:#d0b0b0;">と悩んでいる女性が、あまりに多い。</span>
-        </p>
-      </div>
-
-      <!-- クライマックス -->
-      <div style="border-radius:16px;overflow:hidden;position:relative;box-shadow:0 6px 20px rgba(150,70,80,.20);">
-        <img src="glitter_bg.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 80%;opacity:0.90;">
-        <div style="position:relative;padding:28px 20px;text-align:center;background:rgba(80,30,40,0.25);">
-          <p style="font-size:11px;font-weight:700;letter-spacing:.2em;color:rgba(255,255,255,.9);margin-bottom:10px;text-shadow:0 1px 6px rgba(0,0,0,.4);">だから私は——</p>
-          <p style="font-size:22px;font-weight:900;color:#fff;margin-bottom:8px;line-height:1.5;letter-spacing:.02em;
-            text-shadow:
-              0 1px 0 #c9a96e,
-              0 2px 0 #b8860b,
-              0 3px 6px rgba(100,50,20,.5),
-              0 6px 16px rgba(0,0,0,.25);">もっと楽しく、<br>感謝の循環を作りたい！</p>
-          <p style="font-size:13px;color:rgba(255,255,255,.95);margin:0;text-shadow:0 1px 4px rgba(0,0,0,.4);">それが、私がこのアカデミーを作った理由です。</p>
-        </div>
-      </div>
-
-    </div>
+    <p class="v2-label">WHY FREE</p>
+    <h2 class="v2-title">ここまで無料なのは、<br><em>時間が何より大切だから</em></h2>
+    <p class="v2-text">インスタを頑張るとき、<br><span class="v2-ul">必ず何かを削っているはずです。</span></p>
+    <p class="v2-text"><span class="v2-ul">子どもと遊ぶ時間。</span><br><span class="v2-ul">ご夫婦でゆっくり話す時間。</span><br><span class="v2-ul">一人でのんびりお風呂に入る時間。</span></p>
+    <p class="v2-text">「とりあえず万垢にしよう」<br>「とりあえず何か売ってみよう」</p>
+    <p class="v2-text">そうやって使った時間は、<br><span class="v2-ul">正直ほとんど何も変えてくれません。</span></p>
+    <p class="v2-text">それを削ってまで使った時間なら、<br><strong class="v2-ul">ちゃんと収益と、<br>お客さまからの「ありがとう」に<br>つなげてほしい。</strong></p>
+    <p class="v2-text">そのために必要なのは、<br>才能でも頑張りでもなく、<span class="v2-ul">順番だけ。</span></p>
+    <p class="v2-text"><span class="v2-mk">この順番だけでも持って帰ってほしくて、<br>相談会を無料にしています。</span></p>
+    <img src="vsl_img/015b_roadmap_new.jpg" alt="ロードマップ相談会 参加者限定プレゼント" class="v2-gift" style="margin-top:16px;">
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ===== PROFILE ===== -->
+<!-- ⑩ プロフィール -->
 <section class="profile-sec">
   <div class="container">
     <p class="sec-label">PROFILE</p>
@@ -1191,30 +1362,21 @@ footer a { color: rgba(255,255,255,.55); margin: 0 10px; }
       <div class="profile-header">
         <img src="nunn_profile_biz.jpg" class="profile-avatar" alt="ぬん">
         <div class="profile-header-text">
-          <p class="profile-role">ダイエットビジネスコーチ</p>
+          <p class="profile-role">ぬん欲張りアカデミー主宰</p>
           <p class="profile-name" style="margin-bottom:0;margin-top:2px;">ぬん</p>
         </div>
       </div>
 
       <ul class="profile-list">
-        <li>
-          <span class="pi">・</span>
-          <span>自身の経験を発信でインスタフォロワー<strong>2.5万人</strong>を達成</span>
-        </li>
-        <li>
-          <span class="pi">・</span>
-          <span>自身の体質改善メソッドで<strong>受講生全員をダイエット成功</strong>に導く</span>
-        </li>
-        <li>
-          <span class="pi">・</span>
-          <span>2児のママ。<br>パソコンも持っていないところから起業。</span>
-        </li>
-        <li>
-          <span class="pi">・</span>
-          <span>ファスティングマイスター所有 /<br>ダイエット講師養成アカデミー主宰</span>
-        </li>
+        <li><span class="pi">・</span><span>公務員時代は、後輩にミスを直してもらい、パソコンの使い方もわからない<strong>“ポンコツ”</strong>だった2児のママ</span></li>
+        <li><span class="pi">・</span><span>1ヶ月半で<strong>−5kg・ウエスト−7cm</strong>。痩せて自分を好きになれたら、夫婦の関係まで変わった</span></li>
+        <li><span class="pi">・</span><span>その過程を発信して、フォロワー0から<strong>5ヶ月目で月商72万円</strong>・<strong>年商1000万円以上</strong></span></li>
+        <li><span class="pi">・</span><span>ダイエット指導で<strong>50名をサポートし、全員が成功</strong></span></li>
+        <li><span class="pi">・</span><span>ファスティングマイスター所有</span></li>
       </ul>
     </div>
+    <p class="v2-text" style="margin-top:24px;">そんな私でも、<br>正しい順番でやったらここまで来られました。</p>
+    <p class="v2-text">だから、あなたがつまずくところも、<br>不安になる気持ちも、<strong>全部わかります。</strong></p>
   </div>
 </section>
 
@@ -1224,78 +1386,34 @@ footer a { color: rgba(255,255,255,.55); margin: 0 10px; }
 <section class="final-sec">
   <div class="container" style="position:relative;z-index:1;">
     <p class="final-catch serif">
-      ダイエットと起業、<br>
-      <em>同時進行しませんか？</em>
+      自分が痩せるのを、<br>
+      <em>待たなくていいんです。</em>
     </p>
     <p class="final-sub">
-      2.5万フォロワー・受講生全員ダイエット成功・<br>
-      女性に「ありがとう」と喜ばれながら<br>
-      会社員以上の収入を得る仕組みを作った私が、<br><br>
-      <strong>そのロードマップを全てお伝えします。</strong>
+      変わっていく途中のあなたが、一番応援されます。<br>
+      インスタで足りなかったのは、努力じゃなくて順番。<br><br>
+      <strong>ダイエットも理想の収入も、<br>欲張りに同時に叶えていきましょう。</strong>
     </p>
 
-    <!-- モニター生募集バナー -->
-    <div style="margin:20px 0;background:linear-gradient(135deg,#fff8f0,#fdeee0);border:2px solid #C9A96E;border-radius:18px;padding:22px 20px;text-align:center;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:0;left:0;right:0;background:linear-gradient(90deg,#C9A96E,#e8c47a,#C9A96E);height:4px;"></div>
-      <p style="font-size:11px;font-weight:800;letter-spacing:.2em;color:var(--gold);margin-bottom:8px;"> 2nd GENERATION MEMBER </p>
-      <p class="monitor-title">第2期<br>正規メンバー募集中</p>
-      <style>
-      .monitor-title {
-        font-family: 'Noto Serif JP', serif;
-        font-size: 27px;
-        font-weight: 700;
-        margin-bottom: 10px;
-        line-height: 1.4;
-        letter-spacing: .14em;
-        display: inline-block;
-        position: relative;
-        background: linear-gradient(180deg, #e3c585 0%, #c9a96e 45%, #a8884c 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 0 1px 1px rgba(120,90,40,.18);
-        filter: drop-shadow(0 1px 2px rgba(150,110,50,.22));
-      }
-      </style>
-      <p style="font-size:13.5px;color:var(--text);line-height:1.85;margin-bottom:14px;">
-        今だけ、<strong style="color:var(--accent-deep);">ぬんと近い距離</strong>で<br>
-        スタートできるチャンス。<br>
-        わからないことはすぐ聞ける。<br>
-        気軽に相談できる距離感で、<br>
-        一緒に進んでいけます。
-      </p>
-      <div style="display:inline-block;background:linear-gradient(135deg,var(--accent-deep),#c47080);color:#fff;font-size:12px;font-weight:700;padding:6px 18px;border-radius:20px;letter-spacing:.06em;">初期メンバー枠・残りわずか</div>
-    </div>
-
-    <!-- 直接フィードバック強調 -->
-    <div style="margin:16px 0 24px;background:var(--white);border-radius:14px;border:1.5px solid var(--border);padding:18px 20px;text-align:center;box-shadow:0 4px 16px rgba(180,130,80,.10);">
-      <p style="font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.1em;margin-bottom:8px;">ぬんから直接サポート</p>
-      <p style="font-size:15px;font-weight:800;color:var(--text-dark);line-height:1.7;margin-bottom:8px;">
-        私が直接・<span style="color:var(--accent-deep);">無制限で</span><br>
-        フィードバックできるのは、<br>
-        <span style="background:linear-gradient(transparent 58%,#f9d9b0 58%);">今この時期だけです。</span>
-      </p>
-      <p style="font-size:13px;color:var(--text-mid);line-height:1.75;margin:0;">
-        アカデミー開講初期だからこそ、<br>
-        制限なく一人一人に向き合っています。<br>
-        今のうちに、一番近い距離で始めてみませんか？
+    <div style="margin:20px 0;background:var(--white);border-radius:14px;border:1.5px solid var(--border);padding:18px 20px;text-align:left;box-shadow:0 4px 16px rgba(180,130,80,.10);">
+      <p style="text-align:center;margin:4px 0 0;"><span class="v2-sparkle-title">この順番は、<br>早く知った人ほど得をします</span></p>
+      <p style="font-size:13px;color:var(--text-mid);line-height:1.9;margin:0;">
+        先が見えないまま投稿を続ける3ヶ月と、順番を決めてから進める3ヶ月。同じ3ヶ月なのに、着く場所が全然違います。<br><br>
+        アカデミー生さんとは個別のやり取りやグルコンでかなり濃くやり取りしているので、<strong class="v2-limit">相談会でお受けできる人数には<br>限りがあります。</strong>
       </p>
     </div>
 
-    <!-- 緊急性ボックス -->
+    <img src="vsl_img/015.jpg" alt="ロードマップ相談会 参加者限定プレゼント あなただけのロードマップをプレゼント" style="width:100%;display:block;border-radius:14px;box-shadow:0 6px 22px rgba(150,70,80,.18);margin:0 0 18px;">
     <div style="background:linear-gradient(135deg,#6F3C42,#9E5A60);color:#fff;border-radius:14px;padding:16px 20px;margin:0 0 24px;text-align:center;font-size:14px;line-height:1.8;">
-       <strong>近々値上げ予定。</strong><br>
-      初期メンバー枠は残りわずかです。
+      <strong>ご予約は、この動画を見てから3日間限定。</strong><br>次にこのページを開いたときには、予約できなくなっている可能性があります。
     </div>
 
     <a href="https://liff.line.me/2010433111-7rSE2SFw?calendar_salon_id=28124&ts=1783671420" class="btn-main" target="_blank" style="max-width:480px;margin:0 auto">
-      【期間限定・無料】今すぐ申し込む
+      特典付き動画を視聴する
     </a>
 
     <div class="limit-badges">
-      <span class="l-badge">完全無料</span>
-      <span class="l-badge">LINE登録者限定</span>
-      <span class="l-badge">初期メンバー枠・残りわずか</span>
+      <span class="l-badge">1対1・無料</span><span class="l-badge">LINE登録者限定</span><span class="l-badge">動画を見てから3日間</span>
     </div>
   </div>
 </section>
@@ -1312,9 +1430,9 @@ footer a { color: rgba(255,255,255,.55); margin: 0 10px; }
 <!-- ===== FLOATING CTA ===== -->
 <div class="float-cta" id="floatCta">
   <a href="https://liff.line.me/2010433111-7rSE2SFw?calendar_salon_id=28124&ts=1783671420" class="float-cta-btn" target="_blank">
-     無料相談に申し込む（期間限定・無料）
+     特典付き動画を視聴する
   </a>
-  <p class="float-cta-sub">通常19,800円 → LINE登録者限定・完全無料</p>
+  <p class="float-cta-sub">動画を見てから3日間限定・1対1・無料</p>
 </div>
 
 <script>
