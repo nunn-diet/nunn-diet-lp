@@ -1075,6 +1075,10 @@ footer a { color: rgba(255,255,255,.55); margin: 0 10px; }
 .v2-limit { display: block; margin-top: 14px; padding: 14px 12px; text-align: center; font-size: 17px; font-weight: 900; line-height: 1.6; color: #fff !important; background: linear-gradient(135deg, #f0679a, #c8325f); border: 2px solid #e3c37f; border-radius: 12px; box-shadow: 0 4px 0 #9b2347, 0 8px 20px rgba(200,50,95,.35); text-shadow: 0 1px 2px rgba(100,20,40,.4); animation: v2pulse 2s ease-in-out infinite; }
 @keyframes v2pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
 @media (prefers-reduced-motion: reduce) { .v2-stat::before, .v2-stat::after, .v2-sparkle-title, .v2-sparkle-title::before, .v2-sparkle-title::after, .v2-limit { animation: none; } }
+.v2-vbox { background: linear-gradient(160deg, #fdf3f4, #f8e6e9); border: 1.5px solid #d9bf8c; border-radius: 14px; padding: 18px 10px 6px; margin: 0 0 12px; text-align: center; }
+.v2-voice-badge { display: table; margin-left: auto; margin-right: auto; background: #c4a066; color: #fff; font-weight: 800; font-size: 15px; padding: 6px 18px; border-radius: 6px; margin-bottom: 14px; letter-spacing: .04em; }
+.v2-voice-card { background: #fff; border: 1.5px solid #d9bf8c; border-radius: 10px; padding: 14px 12px; margin: 0 0 12px !important; text-align: left; font-size: 15.5px; letter-spacing: 0; font-weight: 700; line-height: 1.85; color: var(--text-dark); box-shadow: 0 2px 8px rgba(150,110,60,.10); }
+.v2-voice-card .vv-hl { color: #a3324f; background: linear-gradient(transparent 60%, #ffe58a 60%); }
 </style>
 
 <!-- ① 実績（VSL冒頭） -->
@@ -1106,8 +1110,15 @@ footer a { color: rgba(255,255,255,.55); margin: 0 10px; }
     <img src="vsl_img/010.jpg" alt="入ってすぐ−4kg／ゼロから4ヶ月でサポート生8人" class="v2-slide">
     <img src="vsl_img/011.jpg" alt="39歳・未経験で4投稿2,200フォロワー／入ってすぐ長期コースをご成約" class="v2-slide">
     <p class="v2-text" style="text-align:center;margin-top:20px;">アカデミー生さんから、<br>実際にこんな声をいただいています。</p>
-    <img src="vsl_img/012.jpg" alt="アカデミー生さんの声" class="v2-slide">
-    <img src="vsl_img/013.jpg" alt="アカデミー生さんの声" class="v2-slide">
+    <div class="v2-vbox">
+      <div class="v2-voice-badge">アカデミー生さんの声</div>
+      <p class="v2-voice-card"><span class="vv-hl">いつでもぬんさんに質問できる</span>ところ。<br>経験談ベースで、いろんな方法を教えてもらえます</p>
+      <p class="v2-voice-card">やっぱり<br><span class="vv-hl">個別でお話しできる</span>のがすごい！<br>細かいことも、<span class="vv-hl">分かるまで教えてくれる</span>ので心強いです</p>
+      <p class="v2-voice-card">優しくて温かい講師と、<br>優しい受講生さんたち。<br><span class="vv-hl">このアカデミーなら安心して大丈夫</span></p>
+      <p class="v2-voice-card">自分のファスティングが終わった段階で、<span class="vv-hl">−3.2kg</span>できました</p>
+      <p class="v2-voice-card">地道に進めるのも大事ですが、プロに教わると<span class="vv-hl">成果が何倍にも加速する</span>のを体感しました</p>
+      <p class="v2-voice-card">サポートを受けはじめて<span class="vv-hl">2ヶ月も経たないうちに、</span><span class="vv-hl">6桁の初収益</span>を達成しました</p>
+    </div>
     <p class="v2-note" style="margin:-4px 0 16px;">アカデミー生さんからのアンケート回答です／成果には個人差があります</p>
     <img src="vsl_img/014.jpg" alt="一番よく言われること：聞きやすい・資料とノウハウが揃っている環境" class="v2-slide">
   </div>
